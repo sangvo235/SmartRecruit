@@ -1,0 +1,42 @@
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 381 69" style="enable-background:new 0 0 381 69;" xml:space="preserve">
+    <title>SMAART RECRUITMENT</title>
+<style type="text/css">
+	.logost0{filter:url(#Adobe_OpacityMaskFilter);}
+	.logost1{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}
+	.logost2{mask:url(#mask-2_1_);fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFE;}
+	.logost3{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFE;}
+	.logost4{fill-rule:evenodd;clip-rule:evenodd;fill:#E57130;}
+</style>
+<g id="stylesheet">
+	<g id="SMAART_REV_RGB" transform="translate(-713.000000, -211.000000)">
+		<g transform="translate(713.000000, 211.000000)">
+			<g id="Group-3">
+				<defs>
+					<filter id="Adobe_OpacityMaskFilter" filterUnits="userSpaceOnUse" x="0" y="0.8" width="49.7" height="68.2">
+						<feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"></feColorMatrix>
+					</filter>
+				</defs>
+				<mask maskUnits="userSpaceOnUse" x="0" y="0.8" width="49.7" height="68.2" id="mask-2_1_">
+					<g class="logost0">
+						<polygon id="path-1_1_" class="logost1" points="0.1,0.8 49.7,0.8 49.7,69 0.1,69 						"></polygon>
+					</g>
+				</mask>
+				<path id="Fill-1" class="logost2" d="M31,21.7c0-2.8-2.8-5.2-6.1-5.2c-3.3,0-6,2.4-6,5.2s2.7,5.1,6,5.1c7.9,0,15,3.2,19.5,8.1
+					c3.4,3.6,5.4,8.2,5.4,13.2C49.7,59.7,38.6,69,24.9,69S0,59.8,0,47.8h18.8c0,2.9,2.7,5.2,6,5.2c3.3,0,6.1-2.3,6.1-5.1
+					c0-2.8-2.8-5.2-6.1-5.2c-13.8,0-24.8-9.3-24.8-20.9c0-11.6,11-21,24.8-21s24.9,9.3,24.9,20.9H31"></path>
+			</g>
+			<polyline id="Fill-4" class="logost3" points="92.9,26.1 120.6,0.8 128.7,0.8 128.7,69 110.7,69 110.7,34 92.9,50.3 75,34.1 75,69 
+				57,69 57,0.8 65.1,0.8 92.9,26.1 			"></polyline>
+			<path id="Fill-5" class="logost3" d="M161.4,45h13.9l-6.9-15L161.4,45z M132.4,69l31.8-68.2h8.1L204.4,69h-17.9l-4.2-8.9h-27.9
+				l-4.1,8.9H132.4L132.4,69z"></path>
+			<path id="Fill-6" class="logost3" d="M229.6,33.5h10.2l-5.1-11L229.6,33.5z M208.3,51.1L231.7,1h5.9l23.6,50.1h-13.2l-3.1-6.5h-20.5
+				l-3,6.5H208.3L208.3,51.1z"></path>
+			<path id="Fill-7" class="logost3" d="M283.6,35.5h11.1c5.5,0,9.8-4.3,9.8-9.7s-4.4-9.8-9.8-9.8h-11.1V35.5z M305.3,69l-10.5-18.1
+				h-11.1V69h-17.9V0.8h28.7c13.8,0,25.1,11.3,25.1,25.1c0,7.3-3.2,13.8-8.1,18.4L325.9,69H305.3L305.3,69z"></path>
+			<polyline id="Fill-8" class="logost3" points="326.4,0.8 380.1,0.8 380.1,18.6 362.1,18.6 362.1,69 344.2,69 344.2,18.6 326.4,18.6 
+				326.4,0.8 			"></polyline>
+			<polygon id="Fill-9" class="logost4" points="207.9,68.8 261.4,68.8 261.4,56.8 207.9,56.8 			"></polygon>
+		</g>
+	</g>
+</g>
+</svg>
