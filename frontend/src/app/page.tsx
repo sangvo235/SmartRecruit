@@ -1,6 +1,6 @@
 export default function Home() {
   return (
-    <main className="text-smart-orange">
+    <main className="text-smartorange">
       Smart Recruit
     </main>
   );
