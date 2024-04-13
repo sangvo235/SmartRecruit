@@ -4,7 +4,7 @@ import { Button } from "@/app/components/button/button"
 
 export default function Home() {
   return (
-    <main className="max-w-[1500px] mx-auto px-6 pb-6">
+    <main className="max-w-[1500px] m-auto p-6">
       <div className="grid grid-cols-2 gap-6 flex justify-center items-center">
         <div className="col-span-1 text-center px-28">
           <p className="mb-4">
