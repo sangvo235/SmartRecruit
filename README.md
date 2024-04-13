@@ -16,5 +16,5 @@ TBC:
 - Dynamic Page Routing (Job Listing, Online Assessments)
 - Authetication
 - Integration with ML Component for Resume Upload
-- 
+
 ![octocat-1713021287104](https://github.com/sangvo235/SmartRecruit/assets/97276811/8708a92c-cd91-479d-89fd-9df721b11dfa)
