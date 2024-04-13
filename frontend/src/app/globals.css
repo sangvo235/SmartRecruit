@@ -74,3 +74,9 @@
       @apply bg-background text-foreground;
     }
   }
+
+  @layer components {
+    .active {
+      @apply border-b-4 border-smartorange text-smartorange pb-2; 
+    }
+  }
