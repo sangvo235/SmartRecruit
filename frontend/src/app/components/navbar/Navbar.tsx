@@ -6,7 +6,7 @@ import { User } from 'lucide-react';
 
 const Navbar = () => {
     return (
-        <nav className="w-full fixed top-0 left-0 py-6 border-b bg-smartblue z-10">
+        <nav className="w-full fixed top-0 left-0 py-6 border-b bg-smartblue z-10 text-lg font-semibold">
             <div className="max-w-[1500px] mx-auto px-6 text-white">
                 <div className="flex justify-between items-center">
                     <Link href="/">
@@ -27,7 +27,7 @@ const Navbar = () => {
                     </ul>
                     
                     <div className="lg:flex-center">
-                        <Button icon={<User />}>Login</Button>
+                        <Button size="lg" icon={<User />}>Login</Button>
                     </div>
 
                 </div>

@@ -11,7 +11,7 @@ export default function Home() {
             Whether you’re job hunting or looking to fill a vacancy, SMAART Recruitment can help. 
             We specialise in Contact Centre, Sales, Marketing and Office Support roles and ensure the very best service for both our clients and candidates.
           </p>
-          <Button>
+          <Button size="lg">
             <Link href="/job">Start Your Search</Link>
           </Button>
         </div>
