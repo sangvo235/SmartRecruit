@@ -1,7 +1,7 @@
 export default function Home() {
   return (
-    <main className="text-smartorange">
-      Smart Recruit
+    <main className="max-w-[1500px] mx-auto px-6 pb-6">
+      Home Page
     </main>
   );
 }
