@@ -3,8 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { NAV_LINKS } from '../../../../constants';
-import { Button } from "@/app/components/Button/Button"
-import { User } from 'lucide-react';
+import Profile from '../Profile/Profile';
 import { usePathname } from 'next/navigation';
 
 const Navbar = () => {
@@ -36,9 +35,7 @@ const Navbar = () => {
                         ))}
                     </ul>
                     
-                    <div className="lg:flex-center">
-                        <Button size="lg" icon={<User />}>Login</Button>
-                    </div>
+                    <Profile />
 
                 </div>
             </div>
