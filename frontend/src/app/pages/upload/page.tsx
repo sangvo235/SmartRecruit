@@ -1,4 +1,4 @@
-import UploadFile from '../components/UploadFile/UploadFile';
+import UploadFile from '../../components/UploadFile/UploadFile';
 
 const UploadResumePage = () => {
     return (
