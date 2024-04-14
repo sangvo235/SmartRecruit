@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { NAV_LINKS } from '../../../../constants';
-import { Button } from "@/app/components/button/button"
+import { Button } from "@/app/components/Button/Button"
 import { User } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 

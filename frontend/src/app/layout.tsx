@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/navbar/Navbar";
-import Footer from "./components/footer/Footer";
+import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
 import { MantineProvider } from '@mantine/core';
 
 const inter = Open_Sans({ subsets: ["latin"] });
