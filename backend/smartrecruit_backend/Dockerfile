@@ -1,6 +1,6 @@
 FROM python:3.13.0a4-slim
 
-WORKDIR /usr/src/backend
+WORKDIR /usr/src/smartrecruit_backend
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1

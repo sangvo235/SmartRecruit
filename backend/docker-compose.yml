@@ -2,10 +2,10 @@ version: '3.8'
 
 services:
   web:
-    build: ./backend
+    build: ./smartrecruit_backend
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
-      - .:/backend/ :/usr/src/backend/
+      - ./smartrecruit_backend/:/usr/src/smartrecruit_backend/
     ports:
       - 8000:8000
     env_file: 
