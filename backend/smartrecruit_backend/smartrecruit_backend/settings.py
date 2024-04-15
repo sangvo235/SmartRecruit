@@ -72,7 +72,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'rest_framework.authtoken',
-    'rest_framework.simplejwt',
+    'rest_framework_simplejwt',
 
     'allauth',
     'allauth.account',
@@ -82,7 +82,7 @@ INSTALLED_APPS = [
 
     'corsheaders',
 
-    'property'
+    'property',
     'useraccount',
 ]
 
