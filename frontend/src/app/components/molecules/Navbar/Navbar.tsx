@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { NAV_LINKS } from '../../../../constants';
+import { NAV_LINKS } from '../../../../../constants';
 import Profile from '../Profile/Profile';
 import { usePathname } from 'next/navigation';
 

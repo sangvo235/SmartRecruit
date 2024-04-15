@@ -1,8 +1,8 @@
-import { Avatar, AvatarFallback, AvatarImage } from "../Avatar/Avatar";
-import { Label } from "../Label/Label";
+import { Avatar, AvatarFallback, AvatarImage } from "../../atoms/Avatar/Avatar";
+import { Label } from "../../atoms/Label/Label";
 import { useEffect, useState } from "react";
-import { AVATAR_LIST } from '../../../../constants';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuLabel, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "../DropDownMenu/DropDownMenu";
+import { AVATAR_LIST } from '../../../../../constants';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuLabel, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "../../atoms/DropDownMenu/DropDownMenu";
 import Link from 'next/link';
 
 const Profile = () => {

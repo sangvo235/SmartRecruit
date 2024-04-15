@@ -1,7 +1,7 @@
 "use client"
 import { CloudUpload } from 'lucide-react';
-import { Label } from "../Label/Label";
-import { Input } from "../Input/Input";
+import { Label } from "../../atoms/Label/Label";
+import { Input } from "../../atoms/Input/Input";
 
 function UploadFile() {
   return (

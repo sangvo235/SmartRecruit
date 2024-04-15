@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/app/components/Button/Button"
+import { Button } from "@/app/components/atoms/Button/Button"
 
 export default function Home() {
   return (
