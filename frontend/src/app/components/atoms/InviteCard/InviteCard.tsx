@@ -3,6 +3,7 @@ import { cn } from "../../../lib/utils"
 import { Avatar, AvatarFallback, AvatarImage } from "../Avatar/Avatar";
 import { Button } from "../Button/Button";
 import { CalendarDays, ChevronDown } from "lucide-react";
+import Link from "next/link";
 
 const Card = React.forwardRef<
   HTMLDivElement,
@@ -82,7 +83,8 @@ const CardContent = React.forwardRef<
     </div>
 
     <Button size="invite">
-        Accept
+        {/* will be id instead of 1 */}
+        <Link href="/pages/online-assessment/1">Accept</Link>
     </Button>
 
     <Button size="invite" variant="outline">
