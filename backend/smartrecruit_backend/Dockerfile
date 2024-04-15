@@ -12,8 +12,8 @@ COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
 COPY ./entrypoint.sh .
-RUN sed -i 's/\r$//g' /user/src/smartrecruit_backend/entrypoint.sh
-RUN chmod +x /user/src/smartrecruit_backend/entrypoint.sh
+RUN sed -i 's/\r$//g' /usr/src/smartrecruit_backend/entrypoint.sh
+RUN chmod +x /usr/src/smartrecruit_backend/entrypoint.sh
 
 COPY . .
 
