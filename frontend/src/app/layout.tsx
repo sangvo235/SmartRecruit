@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/Navbar/Navbar";
-import Footer from "./components/Footer/Footer";
-import { MantineProvider } from '@mantine/core';
+import Navbar from "./components/molecules/Navbar/Navbar";
+import Footer from "./components/molecules/Footer/Footer";
 
 const inter = Open_Sans({ subsets: ["latin"] });
 
@@ -20,13 +19,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <MantineProvider>
           <Navbar />
           <div className="pt-24">
             {children}
           </div>
           <Footer />
-        </MantineProvider>
       </body>
     </html>
   );

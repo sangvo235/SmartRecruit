@@ -1,9 +1,9 @@
 "use client"
 
-import { Avatar, AvatarFallback, AvatarImage } from "../../components/Avatar/Avatar";
-import { Label } from "../../components/Label/Label";
-import { Input } from "../../components/Input/Input";
-import { Button } from "../../components/Button/Button";
+import { Avatar, AvatarFallback, AvatarImage } from "../../components/atoms/Avatar/Avatar";
+import { Label } from "../../components/atoms/Label/Label";
+import { Input } from "../../components/atoms/Input/Input";
+import { Button } from "../../components/atoms/Button/Button";
 
 const AccountPage = () => {
     return (
