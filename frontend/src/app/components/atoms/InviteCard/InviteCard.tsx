@@ -1,10 +1,8 @@
 import * as React from "react";
-
 import { cn } from "../../../lib/utils"
-
 import { Avatar, AvatarFallback, AvatarImage } from "../Avatar/Avatar";
-
-import { CalendarDays } from "lucide-react";
+import { Button } from "../Button/Button";
+import { CalendarDays, ChevronDown } from "lucide-react";
 
 const Card = React.forwardRef<
   HTMLDivElement,
@@ -13,7 +11,7 @@ const Card = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "w-full bg-gray-100 text-card-foreground shadow-sm my-4",
+      "w-full bg-white text-card-foreground shadow-lg my-4",
       className,
     )}
     {...props}
@@ -70,18 +68,28 @@ const CardContent = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("flex items-center space-x-4 p-4", className)}
+    className={cn("flex items-center space-x-4 pt-6 pb-2 px-4", className)}
     {...props}
   >
-    <Avatar>
+    <Avatar className="w-20 h-20">
       <AvatarImage src="https://randomuser.me/api/portraits/men/32.jpg" />
       <AvatarFallback>CN</AvatarFallback>
     </Avatar>
 
     <div className="flex-1 space-y-1">
-      <p className="text-sm font-medium leading-none">User Name</p>
-      <div className="text-sm text-muted-foreground">Description</div>
+      <p className="text-sm font-medium leading-none">Jared Smith</p>
+      <div className="text-sm text-muted-foreground">Recruiter from Technology Games Company</div>
     </div>
+
+    <Button size="invite">
+        Accept
+    </Button>
+
+    <Button size="invite" variant="outline">
+        Ignore
+    </Button>
+
+    <ChevronDown />
 
     {/* <div className="flex-1 space-y-1">
       <p className="text-sm font-medium leading-none">{userId}</p>
