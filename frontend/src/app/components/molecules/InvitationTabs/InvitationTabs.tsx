@@ -23,6 +23,21 @@ const InvitationTabs = () => {
           <CardContent/>
           <CardFooter />
         </Card>
+
+        <Card>
+          <CardContent/>
+          <CardFooter />
+        </Card>
+
+        <Card>
+          <CardContent/>
+          <CardFooter />
+        </Card>
+
+        <Card>
+          <CardContent/>
+          <CardFooter />
+        </Card>
       </TabsContent>
 
       <TabsContent value="completed">
