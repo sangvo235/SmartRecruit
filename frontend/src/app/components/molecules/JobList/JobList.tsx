@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import { useEffect, useState } from "react"
 import Image from 'next/image';
@@ -17,24 +17,20 @@ export type JobType = {
 
 const JobList = () => {
     const [jobs, setJobs] = useState<JobType[]>([]);
-    const getJobs = async () => {
-        const url = 'http://localhost:8000/api/jobs/';
+    
+    useEffect(() => {
+        const getJobs = async () => {
+            const url = 'http://localhost:8000/api/jobs/';
 
-        await fetch(url, {
-            method: 'GET',
-        })
-            .then(response => response.json())
-            .then((json) => {
-                console.log('json', json);
-
-                setJobs(json.data);
-            })
-            .catch((error) => {
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                setJobs(data.data);
+            } catch (error) {
                 console.error('Error:', error);
-            });
+            }
         };
 
-    useEffect(() => {
         getJobs();
     }, []);
 
