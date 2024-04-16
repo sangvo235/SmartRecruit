@@ -13,19 +13,18 @@ General Set Up:
 
 <img width="567" alt="sys-arc" src="https://github.com/sangvo235/SmartRecruit/assets/97276811/232909b7-8765-4250-8c33-3801bfe907e3">
 
--------------------
-## TASK
+## Task List
 Frontend:
-
-Backend:
-- ~Set up docker for Django with postgreSQL~
-- ~Backend with Django set up with REST API~
-- Models (~User~, ~Job~, Online Assessment)
-- Authetication
-  
-
 - Page Content (Job Listing & Online Assessments)
 - Invite Toast + Invite on Job Recruiter Login
+
+Backend:
+- ~Docker for Django project with postgreSQL~
+- ~Django REST API~
+- ~Configurations~
+- Models (~User~, ~Job~, Online Assessment)
+- Serializers 
+- Authetication
 - Integration with ML Component for Resume Upload
 
 ![octocat-1713021287104](https://github.com/sangvo235/SmartRecruit/assets/97276811/8708a92c-cd91-479d-89fd-9df721b11dfa)
