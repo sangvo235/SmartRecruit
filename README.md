@@ -25,7 +25,7 @@ Backend:
 - ~Docker for Django project with postgreSQL~
 - ~Django REST API~
 - ~Configurations~
-- Models (~User~, ~Job~ & Online Assessment)
+- Models (~User~, ~Job~, Invite & Online Assessment)
 - ~Serializers & API URLs~ 
 - Authentication
 - Integration with ML Component for Resume Upload
