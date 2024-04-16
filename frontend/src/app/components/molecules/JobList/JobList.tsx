@@ -17,7 +17,7 @@ export type JobType = {
 const JobList = () => {
     const [jobs, setJobs] = useState<JobType[]>([]);
     const getJobs = async () => {
-        const url = 'http://localhost:8000/api/jobs/'
+        const url = 'http://localhost:8000/api/jobs/';
 
         await fetch(url, {
             method: 'GET',
