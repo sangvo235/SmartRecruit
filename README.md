@@ -15,7 +15,7 @@ General Set Up:
 
 -------------------
 TBC:
-- Backend with Django set up with REST API
+- ~Backend with Django set up with REST API~
 - Authetication
 - Page Content (Job Listing & Online Assessments)
 - Invite Toast + Invite on Job Recruiter Login
