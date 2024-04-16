@@ -12,7 +12,7 @@ export default function Home() {
             We specialise in Contact Centre, Sales, Marketing and Office Support roles and ensure the very best service for both our clients and candidates.
           </p>
           <Button size="lg">
-            <Link href="/job">Start Your Search</Link>
+            <Link href="/pages/job">Start Your Search</Link>
           </Button>
         </div>
         <div className="col-span-1">
