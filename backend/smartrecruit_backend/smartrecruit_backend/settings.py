@@ -82,8 +82,8 @@ INSTALLED_APPS = [
 
     'corsheaders',
 
-    'property',
     'useraccount',
+    'job',
 ]
 
 MIDDLEWARE = [
