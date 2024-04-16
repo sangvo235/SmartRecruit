@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from "react"
+import Image from 'next/image';
 
 export type JobType = {
     id: string;
@@ -9,8 +10,8 @@ export type JobType = {
     salary: number;
     industry: string;
     company: string;
-    image: string;
-    recruiter: string;
+    image_url: string;
+    // recruiter: string;
     description: string;
 }
 
@@ -47,9 +48,12 @@ const JobList = () => {
                     <p>{job.salary}</p>
                     <p>{job.industry}</p>
                     <p>{job.company}</p>
-                    <img src={job.image} alt="job image" />
-                    <p>{job.recruiter}</p>
+
+                    <Image src={job.image_url} alt="logo" width={200} height={200} />
+
                     <p>{job.description}</p>
+
+                    {/* <p>{job.recruiter}</p> */}
                 </div>
             ))}
         </div>
