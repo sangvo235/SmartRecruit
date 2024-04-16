@@ -15,14 +15,17 @@ General Set Up:
 
 ## Task List
 Frontend:
-- Page Content (Job Listing & Online Assessments)
-- Invite Toast + Invite on Job Recruiter Login
+- ~Nextjs & Typescript~
+- ~Tailwind~
+- ~Navigation & Page Creation~
+- Page Content (~Home~, ~Resume Upload~, ~Acount Details~, ~Invitations~, Job Listing & Online Assessments)
+- Components/Molecules (~Navbar~, ~Footer~, ~Upload Resume~, ~Profile~, ~Invitation Tabs~, Job List, Online Assessment Cards, Invite Toast & Invite Option for Job Recruiter) 
 
 Backend:
 - ~Docker for Django project with postgreSQL~
 - ~Django REST API~
 - ~Configurations~
-- Models (~User~, ~Job~, Online Assessment)
+- Models (~User~, ~Job~ & Online Assessment)
 - Serializers 
 - Authetication
 - Integration with ML Component for Resume Upload
