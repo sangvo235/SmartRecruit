@@ -8,6 +8,11 @@ class JobListSerializer(serializers.ModelSerializer):
         fields = (
             'id',
             'title',
+            'company',
+            'industry',
+            'location',
+            'description',
             'salary',
             'recruiter',
+            'image',
         )
