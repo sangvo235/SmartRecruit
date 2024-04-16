@@ -26,7 +26,7 @@ Backend:
 - ~Django REST API~
 - ~Configurations~
 - Models (~User~, ~Job~ & Online Assessment)
-- Serializers 
+- ~Serializers & API URLs~ 
 - Authetication
 - Integration with ML Component for Resume Upload
 
