@@ -12,8 +12,9 @@ class JobListSerializer(serializers.ModelSerializer):
             'industry',
             'location',
             'description',
-            'info'
+            'info',
             'salary',
             'recruiter',
             'image',
+            'created_at',
         )

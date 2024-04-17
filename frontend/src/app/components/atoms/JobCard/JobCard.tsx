@@ -5,6 +5,12 @@ import { Button } from "../Button/Button";
 import { CalendarDays } from "lucide-react";
 import Link from "next/link";
 import { Separator } from "../Separator/Separator";
+import { JobType } from "../../molecules/JobList/JobList";  
+import { Building2, MapPin, PiggyBank } from 'lucide-react';
+
+interface JobCardProps {
+    job: JobType;
+}
 
 const Card = React.forwardRef<
   HTMLDivElement,
@@ -22,13 +28,10 @@ const Card = React.forwardRef<
 Card.displayName = "Card";
 
 const CardContent = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement> & {
-    // userId: string;
-    // text: (string | JSX.Element)[];
-    // isRead: boolean;
-  }
->(({ className, ...props }, ref) => (
+    HTMLDivElement, 
+    React.HTMLAttributes<HTMLDivElement> & 
+    JobCardProps
+>(({ className, job, ...props }, ref) => (
   <div
     ref={ref}
     className={cn("flex items-center space-x-4 pt-6 pb-2 px-4", className)}
@@ -36,31 +39,42 @@ const CardContent = React.forwardRef<
   >
     {/* Company Logo */}
     <Avatar className="w-20 h-20">
-      <AvatarImage src="https://i.pravatar.cc/300" alt="avatar" />
+      <AvatarImage src={job.image_url} alt="company_logo" />
       <AvatarFallback>JD</AvatarFallback>
     </Avatar>
 
+    {/* Job Title, Company Logo, Location & Salary */}
     <div className="flex-1 space-y-2 font-medium">
-        <div className="text-xl pb-1">Job Title</div>
-        <div className="flex h-5 text-muted-foreground items-center space-x-4 text-sm">
-            <div>Company</div>
-            <Separator orientation="vertical" />
-            <div>Location</div>
-            <Separator orientation="vertical" />
-            <div>Salary</div>
-        </div>
-        <div className="text-sm text-muted-foreground">This is a random discription of the job!</div>
-        
-    </div>
-    
-    <Button size="invite">
-        <Link href="/pages/online-assessment/1">Apply</Link>
-    </Button>
+        <div className="text-xl pb-1">{job.title}</div>
 
+        <div className="flex h-5 text-muted-foreground items-center space-x-4 text-sm">
+            <div className="flex items-center space-x-2">
+                <Building2 />
+                <span>{job.company}</span>
+            </div>
+            <Separator orientation="vertical" />
+            <div className="flex items-center space-x-2">
+                <MapPin />
+                <span>{job.location}</span>
+            </div>
+            <Separator orientation="vertical" />
+            <div className="flex items-center space-x-2">
+                <PiggyBank />
+                <span>${job.salary}</span>
+            </div>
+        </div>
+
+        <div className="text-sm text-muted-foreground">{job.description}</div>
+    </div>
+
+    
+    {/* Buttons for Apply & Read More*/}
+    <Button size="invite">
+        <Link href="/pages/job/`{jobs.id}`">Apply</Link>
+    </Button>
     <Button size="invite" variant="outline">
         Read More
     </Button>
-
   </div>
 ));
 CardContent.displayName = "CardContent";
@@ -93,13 +107,11 @@ const calculateTimeAgo = (timestamp: number) => {
 
 const CardFooter = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement> & {
-    // stringTime: string;
-  }
+  React.HTMLAttributes<HTMLDivElement> & 
+  JobCardProps
 >(({ className, ...props }, ref) => {
 
-    const stringTime = "2024-04-14T12:00:00Z";
-  const timestamp = new Date(stringTime).getTime();
+  const timestamp = new Date(props.job.created_at).getTime();
 
   return (
     <div
