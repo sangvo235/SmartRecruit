@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import Image from 'next/image';
-import { Card, CardContent, CardDescription, CardFooter } from "../../atoms/JobCard/JobCard";
+import { Card, CardContent, CardFooter } from "../../atoms/JobCard/JobCard";
 
 export type JobType = {
     id: string;
