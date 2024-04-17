@@ -22,7 +22,7 @@ AUTH_USER_MODEL = 'useraccount.User'
 
 SITE_ID = 1
 
-WEBAPP_URL = 'http://localhost:8000'
+WEBSITE_URL = 'http://localhost:8000'
 
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
@@ -52,6 +52,7 @@ REST_FRAMEWORK = {
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
+    "http://localhost:8000",
     "http://127.0.0.1:8000",
     "http://127.0.0.1:3000",
 ]
@@ -171,7 +172,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
-MEDIA_URL = '/media/'
+MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type

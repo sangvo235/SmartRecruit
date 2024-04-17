@@ -1,59 +1,54 @@
-'use client'
+"use client"
 
 import { useEffect, useState } from "react"
+import Image from 'next/image';
+import { Card, CardContent, CardFooter } from "../../atoms/JobCard/JobCard";
+// import JobCard from "../../atoms/JobCard/JobCard";
 
 export type JobType = {
     id: string;
     title: string;
+    company: string;
     location: string;
     salary: number;
-    industry: string;
-    company: string;
-    image: string;
-    recruiter: string;
     description: string;
+    industry: string;
+    info: string;
+    image_url: string;
+    recruiter: string;
+    created_at: string;
 }
 
 const JobList = () => {
     const [jobs, setJobs] = useState<JobType[]>([]);
-    const getJobs = async () => {
-        const url = 'http://localhost:8000/api/jobs/';
+    
+    useEffect(() => {
+        const getJobs = async () => {
+            const url = 'http://localhost:8000/api/jobs/';
 
-        await fetch(url, {
-            method: 'GET',
-        })
-            .then(response => response.json())
-            .then((json) => {
-                console.log('json', json);
-
-                setJobs(json.data);
-            })
-            .catch((error) => {
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                setJobs(data.data);
+            } catch (error) {
                 console.error('Error:', error);
-            });
+            }
         };
 
-    useEffect(() => {
         getJobs();
     }, []);
 
     return (
         <div>
-            <h1>Info from db will be displayed below, component still WIP:</h1>
-            {jobs.map((job) => (
-                <div key={job.id}>
-                    <h2>{job.title}</h2>
-                    <p>{job.location}</p>
-                    <p>{job.salary}</p>
-                    <p>{job.industry}</p>
-                    <p>{job.company}</p>
-                    <img src={job.image} alt="job image" />
-                    <p>{job.recruiter}</p>
-                    <p>{job.description}</p>
-                </div>
-            ))}
+          {jobs.map((job) => (
+            <Card key={job.id}>
+              <CardContent job={job} />
+              <CardFooter job={job}/>
+            </Card>
+          ))}
         </div>
-    )
+      );
+      
 }
 
 export default JobList;
