@@ -18,8 +18,12 @@ Frontend:
 - ~Nextjs & Typescript~
 - ~Tailwind~
 - ~Navigation & Page Creation~
-- Page Content (~Home~, ~Resume Upload~, ~Acount Details~, ~Invitations~, Job Listing & Online Assessments)
+- Page Content (~Home~, ~Resume Upload~, ~Account Details~, ~Invitations~, ~Job Listing~ & Online Assessments)
+- Dynamic Page Content (Job Listing & Online Assessments) 
 - Components/Molecules (~Navbar~, ~Footer~, ~Upload Resume~, ~Profile~, ~Invitation Tabs~, Job List, Online Assessment Cards) 
+
+Both:
+- Integration/Display Backend Data to Frontend (Resume Upload, Account Details, Invitations, ~Job Listing~ & Online Assessments)
 
 Backend:
 - ~Docker for Django project with postgreSQL~
