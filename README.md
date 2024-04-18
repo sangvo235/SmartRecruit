@@ -140,7 +140,7 @@ docker-compose down
 - Migration (if there is any changes to the database schema / model)
 ```
 docker-compose exec web python manage.py makemigrations
-``
+```
 
 - Creating new models (most likely won't have to use this as I will have all the models created already)
 ```
