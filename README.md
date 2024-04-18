@@ -151,10 +151,12 @@ docker-compose exec web python manage.py startapp XXXXX
 ```
 docker exec -it backend-web-1 python manage.py createsuperuser
 ```
-- Examples of this:
-Email: test@test.com
-Name: Test
-Password: test12345
-- To sign in and use this please access: [Django Admin](localhost:8000/admin/).
+
+Example:
+   - Email: test@test.com
+   - Name: Test
+   - Password: test12345
+
+- To sign in and use this please access: localhost:8000/admin/.
 
 ![octocat-1713021287104](https://github.com/sangvo235/SmartRecruit/assets/97276811/8708a92c-cd91-479d-89fd-9df721b11dfa)
