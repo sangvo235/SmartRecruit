@@ -107,15 +107,54 @@ npm run dev
 ### 3. Running the Backend
 We will be using Docker and Docker Compose to build the necessary services to run the backend of our application.
 
-- 
-
-
+- Change the directory to the backend
 ```
-git clone git@github.com:sangvo235/SmartRecruit.git
+cd backend
+``
+
+- Build an image based on the Dockerfile found in the path associated with build (and then run a container based on that image).
+```
+docker-compose build
+``
+
+- Rebuild an image.
+```
+docker-compose up --build
+``
+
+- Running the image
+```
+docker-compose up
+``
+
+- I recommend using this instead as you can run the image but still add commands after (think of the d as detached)
+```
+docker-compose up -d
+``
+
+- Shutting down the image.
+```
+docker-compose down
+``
+
+- Migration (if there is any changes to the database schema / model)
+```
+docker-compose exec web python manage.py makemigrations
+``
+
+- Creating new models (most likely won't have to use this as I will have all the models created already)
+```
+docker-compose exec web python manage.py startapp XXXXX
 ```
 
-
-- Installing modules: npm i
-- Running application: npm run dev
+- Create superuser (admin portal where you can put data into the models)
+```
+docker exec -it backend-web-1 python manage.py createsuperuser
+```
+- Examples of this:
+Email: test@test.com
+Name: Test
+Password: test12345
+- To sign in and use this please access: [Django Admin](localhost:8000/admin/).
 
 ![octocat-1713021287104](https://github.com/sangvo235/SmartRecruit/assets/97276811/8708a92c-cd91-479d-89fd-9df721b11dfa)
