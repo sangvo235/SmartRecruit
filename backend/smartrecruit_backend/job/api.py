@@ -3,17 +3,6 @@ from rest_framework.decorators import api_view, authentication_classes, permissi
 from .models import Job
 from .serializers import JobListSerializer, JobDetailSerializer
 
-# @api_view(['GET'])
-# @authentication_classes([])
-# @permission_classes([])
-# def job_list(request):
-#     jobs = Job.objects.all()
-#     serializer = JobListSerializer(jobs, many=True)
-
-#     return JsonResponse({
-#         'data': serializer.data,
-#     })
-
 @api_view(['GET'])
 @authentication_classes([])
 @permission_classes([])

@@ -57,7 +57,7 @@ const JobDetailsPage = () => {
                     <CardDescription>
                         <ReceiptText className="w-4 h-4 mr-2" />
                         <span>Contract Type:</span>
-                        <span>TBC</span>
+                        <span>{job.contract_type}</span>
                     </CardDescription>
                     <CardDescription>
                         <Building2 className="w-4 h-4 mr-2" />
@@ -102,7 +102,7 @@ const JobDetailsPage = () => {
                 </CardHeader>
                 <CardContent >
                     <h1 className="text-2xl mb-4">Job Description</h1>
-                    <p className="ml-6">{job.info}</p>
+                    <p className="ml-6">{job.description}</p>
                 </CardContent>
                 <CardFooter>
                     <Button size="invite">

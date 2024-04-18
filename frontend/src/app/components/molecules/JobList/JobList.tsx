@@ -6,7 +6,7 @@ import { Card, CardContent, CardFooter } from "../../atoms/JobCard/JobCard";
 export type JobType = {
     id: string;
     title: string;
-    // contract_type: string;
+    contract_type: string;
     company: string;
     location: string;
     industry: string;
@@ -14,9 +14,7 @@ export type JobType = {
     description: string;
     info: string;
     image_url: string;
-    // recruiter: string;
-        // contact_name: string;
-        // contact_email: string;
+    // recruiter: Recruiter[];
     created_at: string;
 }
 
