@@ -81,12 +81,20 @@ Clone the project repository to your local machine using Git.
 git clone git@github.com:sangvo235/SmartRecruit.git
 ```
 
-### 2. Enviroment Variables Configuration 
+### 2. Build a branch from main
+- Ensures that any changes you are making will be self-contained on the same branch and not affect the main branch.
+- Any conflict resolution is possible before merging.
+- Additionally, it acts as a type of versioning allowing us to go back and restore if anything happens to the main.
+```
+git checkout -b my-branch-name
+```
+
+### 3. Enviroment Variables Configuration 
 - Download env.dev file from Google Drive
 - Place in the following directory SmartRecruit/backend.
 - Edit the file to include the period at the front of "env.dev" --> ".env.dev" and you will notice the file will be greyed out indicated it is successfully flagged by .gitignore.
 
-### 3. Running the Frontend
+### 4. Running the Frontend
 We will be using Next.js for our frontend, running this is very simple compared to the backend.
   
 - Change the directory to the frontend
@@ -104,7 +112,7 @@ npm i
 npm run dev
 ```
 
-### 3. Running the Backend
+### 5. Running the Backend
 We will be using Docker and Docker Compose to build the necessary services to run the backend of our application.
 
 - Change the directory to the backend
@@ -144,7 +152,7 @@ docker-compose exec web python manage.py makemigrations
 
 - Creating new models (most likely won't have to use this as I will have all the models created already)
 ```
-docker-compose exec web python manage.py startapp XXXXX
+docker-compose exec web python manage.py startapp my-new-model-name
 ```
 
 - Create superuser (admin portal where you can put data into the models)
@@ -158,5 +166,15 @@ docker exec -it backend-web-1 python manage.py createsuperuser
    - Password: test12345
 
 - To sign in and use this please access: localhost:8000/admin/.
+
+### 6. Recommendations
+- If your using VSCode you can install the following which will help in streamlining the coding process.
+
+1. [Prettier](https://prettier.io/)
+   - Uniform code formatter.
+
+2. [Github Copilot](https://github.com/features/copilot)
+   - Free after verifying with your Swinburne email.
+   - Uses AI to help propagate generic code. 
 
 ![octocat-1713021287104](https://github.com/sangvo235/SmartRecruit/assets/97276811/8708a92c-cd91-479d-89fd-9df721b11dfa)
