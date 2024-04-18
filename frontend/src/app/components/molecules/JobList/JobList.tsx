@@ -1,21 +1,20 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import Image from 'next/image';
 import { Card, CardContent, CardFooter } from "../../atoms/JobCard/JobCard";
-// import JobCard from "../../atoms/JobCard/JobCard";
 
 export type JobType = {
     id: string;
     title: string;
+    contract_type: string;
     company: string;
     location: string;
+    industry: string;
     salary: number;
     description: string;
-    industry: string;
     info: string;
     image_url: string;
-    recruiter: string;
+    // recruiter: Recruiter[];
     created_at: string;
 }
 
