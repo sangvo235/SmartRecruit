@@ -30,7 +30,8 @@ Backend:
 - Authentication
 - Integration with ML Component for Resume Upload
 
-# Setting Up the Application - Prerequisites (before starting please have these installed): 
+# Software Required
+Before starting please have the following installed...
 
 ## Python
 - [Python3.12](https://www.python.org/downloads/)
