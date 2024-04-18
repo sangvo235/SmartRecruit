@@ -19,19 +19,19 @@ Frontend:
 - ~Navigation & Page Creation~
 - Page Content (~Home~, ~Resume Upload~, ~Account Details~, ~Invitations~, ~Job Listing~ & Online Assessments)
 - Dynamic Page Content (~Job Listing~ & Online Assessments) 
-- Components/Molecules (~Navbar~, ~Footer~, ~Upload Resume~, ~Profile~, ~Invitation Tabs~, Job List, Online Assessment Cards) 
-
-Both:
-- Integration/Display Backend Data to Frontend (Resume Upload, Account Details, Invitations, ~Job Listing~ & Online Assessments)
+- Components/Molecules (~Navbar~, ~Footer~, ~Upload Resume~, ~Profile~, ~Invitation Tabs~, Job List, Online Assessment Cards)
+- Integration with Backend Data (Resume Upload, Account Details, Invitations, ~Job Listing~ & Online Assessments)
 
 Backend:
 - ~Docker for Django project with postgreSQL~
 - ~Django REST API~
 - ~Configurations~
 - Models (~User~, ~Job~, Invite & Online Assessment)
-- ~Serializers & API URLs~ 
+- ~Serializers & API URLs~
 - Authentication
 - Integration with ML Component for Resume Upload
+- Cloud Storage
+- Deployment
 
 # Software Required 💻
 Before starting please have the following installed.
