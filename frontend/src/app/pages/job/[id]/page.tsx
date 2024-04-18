@@ -4,6 +4,7 @@ import { useParams } from "next/navigation";
 import { JobType } from "../../../components/molecules/JobList/JobList";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from "../../../components/atoms/Card/Card";
 import { ReceiptText, Building2, MapPin, Briefcase, PiggyBank, Hash, Contact, Mail, CalendarDays } from 'lucide-react';
+import { Button } from "../../../components/atoms/Button/Button";
 
 interface JobCardProps {
     job: JobType;
@@ -99,11 +100,14 @@ const JobDetailsPage = () => {
                         <span>{formattedDate}</span>
                     </CardDescription>
                 </CardHeader>
-                <CardContent>
-                    <p>Card Content</p>
+                <CardContent >
+                    <h1 className="text-2xl mb-4">Job Description</h1>
+                    <p className="ml-6">{job.info}</p>
                 </CardContent>
                 <CardFooter>
-                    <p>Card Footer</p>
+                    <Button size="invite">
+                        Apply 
+                    </Button>
                 </CardFooter>
             </Card>
         </main>
