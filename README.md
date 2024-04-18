@@ -110,32 +110,32 @@ We will be using Docker and Docker Compose to build the necessary services to ru
 - Change the directory to the backend
 ```
 cd backend
-``
+```
 
 - Build an image based on the Dockerfile found in the path associated with build (and then run a container based on that image).
 ```
 docker-compose build
-``
+```
 
 - Rebuild an image.
 ```
 docker-compose up --build
-``
+```
 
 - Running the image
 ```
 docker-compose up
-``
+```
 
 - I recommend using this instead as you can run the image but still add commands after (think of the d as detached)
 ```
 docker-compose up -d
-``
+```
 
 - Shutting down the image.
 ```
 docker-compose down
-``
+```
 
 - Migration (if there is any changes to the database schema / model)
 ```
