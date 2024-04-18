@@ -40,7 +40,7 @@ Before starting please have the following installed...
 1. All Platforms:
    - Download the LTS version from the [official Node.js website](https://nodejs.org/).
    - Run the installer and follow the instructions to install Node.js and npm.
-   - 
+  
 2. Alternatively, use nvm:
    - Install `nvm` (Node Version Manager) from [nvm's GitHub page](https://github.com/nvm-sh/nvm).
    - Install Node.js using nvm with the command `nvm install 20.9`.
