@@ -81,6 +81,40 @@ Clone the project repository to your local machine using Git.
 git clone git@github.com:sangvo235/SmartRecruit.git
 ```
 
+### 2. Enviroment Variables Configuration 
+- Download env.dev file from Google Drive
+- Place in the following directory SmartRecruit/backend.
+- Edit the file to include the period at the front of "env.dev" --> ".env.dev" and you will notice the file will be greyed out indicated it is successfully flagged by .gitignore.
+
+### 3. Running the Frontend
+We will be using Next.js for our frontend, running this is very simple compared to the backend.
+  
+- Change the directory to the frontend
+```
+cd frontend
+```
+
+- Installing Modules
+```
+npm i
+```
+
+- Running the Development Environment
+```
+npm run dev
+```
+
+### 3. Running the Backend
+We will be using Docker and Docker Compose to build the necessary services to run the backend of our application.
+
+- 
+
+
+```
+git clone git@github.com:sangvo235/SmartRecruit.git
+```
+
+
 - Installing modules: npm i
 - Running application: npm run dev
 
