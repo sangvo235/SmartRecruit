@@ -33,8 +33,8 @@ Backend:
 - Authentication
 - Integration with ML Component for Resume Upload
 
-# Software Required
-Before starting please have the following installed...
+# Software Required 💻
+Before starting please have the following installed.
 
 ## Python
 - [Python3.12](https://www.python.org/downloads/)
@@ -71,6 +71,15 @@ Before starting please have the following installed...
 ## .env.dev file
 - Access to the .env.dev file found in the Team's Google Drive
 
+# Running the Application 👨‍🚀
+Follow the following steps to get the application up and running.
+
+### 1. Clone the Repository
+Clone the project repository to your local machine using Git.
+
+```
+git clone git@github.com:sangvo235/SmartRecruit.git
+```
 
 - Installing modules: npm i
 - Running application: npm run dev
