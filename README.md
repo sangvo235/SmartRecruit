@@ -152,7 +152,7 @@ docker-compose exec web python manage.py startapp XXXXX
 docker exec -it backend-web-1 python manage.py createsuperuser
 ```
 
-Example:
+1. Example:
    - Email: test@test.com
    - Name: Test
    - Password: test12345
