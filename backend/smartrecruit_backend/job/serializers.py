@@ -18,3 +18,20 @@ class JobListSerializer(serializers.ModelSerializer):
             'image',
             'created_at',
         )
+
+class JobDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Job
+        fields = (
+            'id',
+            'title',
+            'company',
+            'industry',
+            'location',
+            'description',
+            'info',
+            'salary',
+            'recruiter',
+            'image',
+            'created_at',
+        )
