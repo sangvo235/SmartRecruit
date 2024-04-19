@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { Card, CardContent, CardFooter } from "../../atoms/JobCard/JobCard";
+import apiService from "@/app/services/apiService";
 
 export type JobType = {
     id: string;
@@ -21,19 +22,12 @@ export type JobType = {
 const JobList = () => {
     const [jobs, setJobs] = useState<JobType[]>([]);
     
-    useEffect(() => {
-        const getJobs = async () => {
-            const url = 'http://localhost:8000/api/jobs/';
-
-            try {
-                const response = await fetch(url);
-                const data = await response.json();
-                setJobs(data.data);
-            } catch (error) {
-                console.error('Error:', error);
-            }
-        };
-
+      const getJobs = async () => {
+        const tmpJobs = await apiService.get("/api/jobs/");
+        setJobs(tmpJobs.data);
+      };
+      
+      useEffect(() => {
         getJobs();
     }, []);
 

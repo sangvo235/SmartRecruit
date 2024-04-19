@@ -5,7 +5,7 @@ import { JobType } from "../../../components/molecules/JobList/JobList";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from "../../../components/atoms/Card/Card";
 import { ReceiptText, Building2, MapPin, Briefcase, PiggyBank, Hash, Contact, Mail, CalendarDays } from 'lucide-react';
 import { Button } from "../../../components/atoms/Button/Button";
-
+import apiService from "@/app/services/apiService";
 interface JobCardProps {
     job: JobType;
 }
@@ -13,26 +13,17 @@ interface JobCardProps {
 const JobDetailsPage = () => {
     const params = useParams();
     const { id } = params;
-    const [job, setJob] = useState<JobCardProps | null>(null);
+    const [job, setJob] = useState<JobCardProps[]>([]);
     const [formattedDate, setFormattedDate] = useState<string>("");
 
-    useEffect(() => {
-        const fetchJobDetails = async () => {
-            if (!id) return; 
-            try {
-                const response = await fetch(`http://localhost:8000/api/jobs/${id}/`);
-                if (!response.ok) {
-                    throw new Error("Failed to fetch job details");
-                }
-                const data = await response.json();
-                setJob(data);
-            } catch (error) {
-                console.error("Error fetching job details:", error);
-            }
-        };
-
-        fetchJobDetails();
-    }, [id]);
+    const getJob = async () => {
+        const tmpJobs = await apiService.get(`/api/jobs/${id}`);
+        setJob(tmpJobs);
+      };
+      
+      useEffect(() => {
+        getJob();
+    }, []);
 
     // Logic for formatting the date
     useEffect(() => {
