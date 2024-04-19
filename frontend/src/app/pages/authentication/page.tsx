@@ -1,43 +1,40 @@
 "use client"
-
-import { Avatar, AvatarFallback, AvatarImage } from "../../components/atoms/Avatar/Avatar";
 import { Label } from "../../components/atoms/Label/Label";
 import { Input } from "../../components/atoms/Input/Input";
 import { Button } from "../../components/atoms/Button/Button";
+import { LogIn } from 'lucide-react';
+import Image from "next/image";
 
 const AuthenticationPage = () => {
     return (
-        <main className="max-w-[1500px] m-auto p-6">
-            <div className="text-5xl text-center pb-8">Accounts Page</div>
-            
-            <div className="flex flex-col items-center">
-                <Avatar className="h-48 w-48 mb-4">
-                    <AvatarImage src="https://randomuser.me/api/portraits/men/32.jpg" />
-                    <AvatarFallback>CN</AvatarFallback>
-                </Avatar>
-                <div className="text-xl">Change Profile Picture</div>
-
-                <div className="grid w-full max-w-sm gap-2 mt-8">
-                    <div className="mb-4">
-                        <Label htmlFor="name">Name</Label>
-                        <Input type="name" id="name" placeholder="Name" />
+        <main className="max-w-[1250px] m-auto p-6">
+            <div className="grid grid-cols-2 gap-6">
+                <div className="col-span-1 flex flex-col items-center">
+                    <div className="text-5xl text-center pt-8 pb-4 flex items-center">
+                        Log In
+                        <LogIn className="w-16 h-16 ml-4" />
                     </div>
 
-                    <div className="mb-4">
+                    <p>Welcome back! Please enter your details.</p>
+
+                    <div className="mb-4 w-full max-w-sm gap-2 mt-8">
                         <Label htmlFor="email">Email</Label>
-                        <Input type="email" id="email" placeholder="Email" />
+                        <Input type="email" id="email" placeholder="Please enter your email" />
                     </div>
 
-                    <div className="mb-4">
+                    <div className="mb-4 w-full max-w-sm gap-2 mt-4">
                         <Label htmlFor="password">Password</Label>
-                        <Input type="password" id="password" placeholder="Password" />
+                        <Input type="password" id="password" placeholder="Please enter your password" />
                     </div>
+                    
+                    <Button size="lg" className="mt-4">
+                    Login
+                    </Button>
                 </div>
 
-                <Button size="lg" className="mt-4">
-                    Confirm Change
-                </Button>
-
+                <div className="col-span-1 flex justify-center items-center">
+                    <Image src="/hot-air-balloon.gif" alt="logo" width={400} height={400} />
+                </div>
             </div>
         </main>
     )
