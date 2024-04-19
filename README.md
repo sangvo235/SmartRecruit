@@ -17,7 +17,7 @@ Frontend:
 - ~Nextjs & Typescript~
 - ~Tailwind~
 - ~Navigation & Page Creation~
-- Page Content (~Login Page~, ~Home~, ~Resume Upload~, ~Account Details~, ~Invitations~, ~Job Listing~ & Online Assessments)
+- Page Content (~Login~, ~Home~, ~Resume Upload~, ~Account Details~, ~Invitations~, ~Job Listing~ & Online Assessments)
 - Dynamic Page Content (~Job Listing~ & Online Assessments) 
 - Components/Molecules (~Navbar~, ~Footer~, ~Upload Resume~, ~Profile~, ~Invitation Tabs~, Job List, Online Assessment Cards)
 - ~Frontend Env File~
