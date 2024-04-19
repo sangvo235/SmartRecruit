@@ -17,14 +17,16 @@ Frontend:
 - ~Nextjs & Typescript~
 - ~Tailwind~
 - ~Navigation & Page Creation~
-- Page Content (~Home~, ~Resume Upload~, ~Account Details~, ~Invitations~, ~Job Listing~ & Online Assessments)
+- Page Content (~Login Page~, ~Home~, ~Resume Upload~, ~Account Details~, ~Invitations~, ~Job Listing~ & Online Assessments)
 - Dynamic Page Content (~Job Listing~ & Online Assessments) 
 - Components/Molecules (~Navbar~, ~Footer~, ~Upload Resume~, ~Profile~, ~Invitation Tabs~, Job List, Online Assessment Cards)
+- ~Frontend Env File~
 - Integration with Backend Data (Resume Upload, Account Details, Invitations, ~Job Listing~ & Online Assessments)
 
 Backend:
 - ~Docker for Django project with postgreSQL~
 - ~Django REST API~
+- ~Backend Env File~
 - ~Configurations~
 - Models (~User~, ~Job~, Invite & Online Assessment)
 - ~Serializers & API URLs~
