@@ -1,11 +1,25 @@
+"use client";
 import { Avatar, AvatarFallback, AvatarImage } from "../../atoms/Avatar/Avatar";
 import { Label } from "../../atoms/Label/Label";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AVATAR_LIST } from '../../../../../constants';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuLabel, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "../../atoms/DropDownMenu/DropDownMenu";
-import Link from 'next/link';
+import { useRouter } from "next/navigation";
+import { resetAuthCookies } from "@/app/lib/actions";
 
 const Profile = () => {
+
+    const router = useRouter();
+
+    const handleAccount = () => {
+        router.push("/pages/account");
+    }
+
+    const handleLogout = () => {
+        resetAuthCookies();
+        router.push("/pages/authentication");
+    }
+
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
     const cycleAvatarImages = () => {
@@ -32,8 +46,8 @@ const Profile = () => {
             <DropdownMenuContent className="w-56">
                 <DropdownMenuLabel>Settings</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <Link href="/pages/account"><DropdownMenuItem>Account Details</DropdownMenuItem></Link>
-                <DropdownMenuItem>Log Out</DropdownMenuItem>
+                <DropdownMenuItem onClick={handleAccount}>Account Details</DropdownMenuItem>
+                <DropdownMenuItem onClick={handleLogout}>Logout</DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>
  

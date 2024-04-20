@@ -21,3 +21,9 @@ export async function handleLogin(userId: string, accessToken: string, refreshTo
         path: "/",
     });
 }
+
+export async function resetAuthCookies() {
+    cookies().set("session_userId", "");
+    cookies().set("session_accessToken", "");
+    cookies().set("session_refreshToken", "");
+}
