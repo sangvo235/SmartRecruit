@@ -30,7 +30,7 @@ Backend:
 - ~Configurations~
 - Models (~User~, ~Job~, Invite & Online Assessment)
 - ~Serializers & API URLs~
-- Authentication
+- ~Authentication~
 - Integration with ML Component for Resume Upload
 - Cloud Storage
 - Deployment
