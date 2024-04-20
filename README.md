@@ -70,8 +70,9 @@ Before starting please have the following installed.
 ## IDE
 - Recommended IDE: [VSCode](https://code.visualstudio.com/)
 
-## .env.dev file
-- Access to the .env.dev file found in the Team's Google Drive
+## .env files
+- Access to the .env.dev file for backend found in the Team's Google Drive.
+- Access to the .env.local file for frontend found in the Team's Google Drive.
 
 # Running the Application 👨‍🚀
 Follow the following steps to get the application up and running.
@@ -92,8 +93,9 @@ git checkout -b my-branch-name
 ```
 
 ### 3. Enviroment Variables Configuration 
-- Download env.dev file from Google Drive
-- Place in the following directory SmartRecruit/backend.
+- Download env.dev & env.local files from Google Drive
+- Place env.dev in the SmartRecruit/backend directory.
+- Place env.local in the SmartRecruit/frontend directory.
 - Edit the file to include the period at the front of "env.dev" --> ".env.dev" and you will notice the file will be greyed out indicated it is successfully flagged by .gitignore.
 
 ### 4. Running the Frontend
