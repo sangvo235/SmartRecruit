@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader,CardTitle } 
 import { Label } from "../../atoms/Label/Label";
 import { Input } from "../../atoms/Input/Input";
 import { Button } from "../../atoms/Button/Button";
-import { LogIn, PencilLine } from 'lucide-react';
+import { KeyRound, PencilLine } from 'lucide-react';
 
 const AuthenticationTabs = () => {
 
@@ -20,7 +20,7 @@ const AuthenticationTabs = () => {
               <CardHeader>
                   <CardTitle>
                       Log In
-                      <LogIn className="w-8 h-8 ml-2" />
+                      <KeyRound className="w-8 h-8 ml-2" />
                   </CardTitle>
                   <CardDescription>Welcome back! Please enter your details.</CardDescription>
               </CardHeader>
@@ -50,7 +50,7 @@ const AuthenticationTabs = () => {
               <CardHeader>
                   <CardTitle>
                       Sign Up
-                      <LogIn className="w-8 h-8 ml-2" />
+                      <PencilLine className="w-8 h-8 ml-2" />
                   </CardTitle>
                   <CardDescription>Welcome back! Please enter your details.</CardDescription>
               </CardHeader>
@@ -63,8 +63,13 @@ const AuthenticationTabs = () => {
                           </div>
 
                           <div className="mb-4 w-full max-w-sm">
-                              <Label htmlFor="password">Password</Label>
-                              <Input type="password" id="password" placeholder="Please enter your password" />
+                              <Label htmlFor="password1">Password</Label>
+                              <Input type="password1" id="password1" placeholder="Please enter your password" />
+                          </div>
+
+                          <div className="mb-4 w-full max-w-sm">
+                              <Label htmlFor="password2">Re-enter Password</Label>
+                              <Input type="password2" id="password2" placeholder="Please re-enter your password" />
                           </div>
                       </div>
                   </form>
