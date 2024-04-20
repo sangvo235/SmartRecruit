@@ -1,20 +1,13 @@
-"use client";
-
 import Link from 'next/link';
 import Image from 'next/image';
-import { NAV_LINKS } from '../../../../../constants';
 import Profile from '../Profile/Profile';
-import { usePathname } from 'next/navigation';
+import NavLinks from '../NavLinks/NavLinks';
+import { getUserId } from '@/app/lib/actions';
 
-const Navbar = () => {
-    const currentPath = usePathname();
-
-    const isActive = (href: string) => {
-        return currentPath === href ? 'text-accent' : '';
-    }
+const Navbar = async () => {
+    const userId = await getUserId();
 
     return (
-
         <nav className="w-full fixed top-0 left-0 py-6 border-b bg-smartblue z-10 text-lg font-semibold">
             <div className="max-w-[1500px] mx-auto px-6 text-white">
                 <div className="flex justify-between items-center">
@@ -27,15 +20,9 @@ const Navbar = () => {
                         />
                     </Link>
 
-                    <ul className="hidden h-full gap-12 lg:flex">
-                        {NAV_LINKS.map((link) => (
-                            <Link href={link.href} key={link.key} className={isActive(link.href) ? 'active' : ''}>
-                                {link.label}
-                            </Link>
-                        ))}
-                    </ul>
+                    <NavLinks userId={userId}/>
                     
-                    <Profile />
+                    <Profile userId={userId}/>
 
                 </div>
             </div>

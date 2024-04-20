@@ -1,13 +1,16 @@
 "use client";
+import React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "../../atoms/Avatar/Avatar";
 import { Label } from "../../atoms/Label/Label";
-import React, { useEffect, useState } from "react";
-import { AVATAR_LIST } from '../../../../../constants';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuLabel, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "../../atoms/DropDownMenu/DropDownMenu";
 import { useRouter } from "next/navigation";
 import { resetAuthCookies } from "@/app/lib/actions";
 
-const Profile = () => {
+interface UserProps {
+    userId?: string | null;
+}
+
+const Profile: React.FC<UserProps> = ({ userId }) => {
 
     const router = useRouter();
 
@@ -15,42 +18,54 @@ const Profile = () => {
         router.push("/pages/account");
     }
 
-    const handleLogout = () => {
+    const handleLogout = async () => {
         resetAuthCookies();
         router.push("/pages/authentication");
     }
 
-    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const handleSignIn = async () => {
+        router.push("/pages/authentication");
+    }
 
-    const cycleAvatarImages = () => {
-        setCurrentImageIndex((prevIndex) => (prevIndex + 1) % AVATAR_LIST.length);
-    };
-
-    useEffect(() => {
-        const intervalId = setInterval(cycleAvatarImages, 15000);
-        return () => clearInterval(intervalId);
-    }, []);
-
-    return (
-       
-        <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-                <div className="inline-flex items-center text-center gap-2">
-                    <Label className="text-lg font-semibold">{AVATAR_LIST[currentImageIndex].name}</Label>
-                    <Avatar>
-                        <AvatarImage src={AVATAR_LIST[currentImageIndex].src} />
-                        <AvatarFallback>CN</AvatarFallback>
-                    </Avatar>
-                </div>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-56">
-                <DropdownMenuLabel>Settings</DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={handleAccount}>Account Details</DropdownMenuItem>
-                <DropdownMenuItem onClick={handleLogout}>Logout</DropdownMenuItem>
+        return (
+            <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                    <div className="inline-flex items-center text-center gap-2">
+                        {userId ? (
+                            <>
+                                <Label className="text-lg font-semibold">{userId}</Label>
+                                <Avatar className="h-12 w-12">
+                                    <AvatarImage src="https://randomuser.me/api/portraits/men/32.jpg" />
+                                    <AvatarFallback>CN</AvatarFallback>
+                                </Avatar>
+                            </>
+                        ) : 
+                            <>
+                                <Avatar className="h-12 w-12">
+                                    <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+                                    <AvatarFallback>CN</AvatarFallback>
+                                </Avatar>
+                            </>
+                        }
+                    </div>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-56">
+                {userId ? (
+                    <>
+                        <DropdownMenuLabel>Settings</DropdownMenuLabel>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuItem onClick={handleAccount}>Account Details</DropdownMenuItem>
+                        <DropdownMenuItem onClick={handleLogout}>Logout</DropdownMenuItem>
+                    </>
+                ) : (
+                    <>
+                        <DropdownMenuLabel>We hope to see you soon!</DropdownMenuLabel>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuItem onClick={handleSignIn}>Sign In</DropdownMenuItem>
+                    </>
+                )}
             </DropdownMenuContent>
         </DropdownMenu>
- 
     );
 }
 
