@@ -75,7 +75,7 @@ const AuthenticationTabs = () => {
                   </form>
               </CardContent>
               <CardFooter className="flex justify-center">
-                  <Button size="lg">Login</Button>
+                  <Button size="lg">Sign Up</Button>
               </CardFooter>
           </Card>
         </TabsContent>
