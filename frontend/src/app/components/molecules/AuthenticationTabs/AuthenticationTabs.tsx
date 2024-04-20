@@ -26,13 +26,13 @@ const AuthenticationTabs = () => {
               </CardHeader>
               <CardContent>
                   <form>
-                      <div className="grid w-full items-center gap-4">
-                          <div className="mb-4 w-full max-w-sm">
+                      <div className="grid max-w-sm items-center gap-4">
+                          <div className="mb-4">
                               <Label htmlFor="email">Email</Label>
                               <Input type="email" id="email" placeholder="Please enter your email" />
                           </div>
 
-                          <div className="mb-4 w-full max-w-sm">
+                          <div className="mb-4">
                               <Label htmlFor="password">Password</Label>
                               <Input type="password" id="password" placeholder="Please enter your password" />
                           </div>
@@ -52,22 +52,22 @@ const AuthenticationTabs = () => {
                       Sign Up
                       <PencilLine className="w-8 h-8 ml-2" />
                   </CardTitle>
-                  <CardDescription>Welcome back! Please enter your details.</CardDescription>
+                  <CardDescription>Welcome! Please register your details.</CardDescription>
               </CardHeader>
               <CardContent>
                   <form>
-                      <div className="grid w-full items-center gap-4">
-                          <div className="mb-4 w-full max-w-sm">
+                      <div className="grid max-w-sm items-center gap-4">
+                          <div className="mb-4">
                               <Label htmlFor="email">Email</Label>
                               <Input type="email" id="email" placeholder="Please enter your email" />
                           </div>
 
-                          <div className="mb-4 w-full max-w-sm">
+                          <div className="mb-4">
                               <Label htmlFor="password1">Password</Label>
                               <Input type="password1" id="password1" placeholder="Please enter your password" />
                           </div>
 
-                          <div className="mb-4 w-full max-w-sm">
+                          <div className="mb-4">
                               <Label htmlFor="password2">Re-enter Password</Label>
                               <Input type="password2" id="password2" placeholder="Please re-enter your password" />
                           </div>
