@@ -8,6 +8,7 @@ import { KeyRound, PencilLine } from 'lucide-react';
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import apiService from "@/app/services/apiService";
+import { handleLogin } from "@/app/lib/actions";
 
 const AuthenticationTabs = () => {
     const router = useRouter();
@@ -28,6 +29,7 @@ const AuthenticationTabs = () => {
       const response = await apiService.post("/api/auth/register/", JSON.stringify(formData));
 
       if (response.access) {
+        handleLogin(response.userId, response.access, response.refresh);
         router.push("/");
       } else {
           const tmpErrors: string[] = Object.values(response).map((error: any) => {
