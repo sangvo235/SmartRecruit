@@ -21,7 +21,7 @@ Frontend:
 - Dynamic Page Content (~Job Listing~ & Online Assessments) 
 - Components/Molecules (~Authentication~, ~Navbar~, ~Footer~, ~Upload Resume~, ~Profile~, ~Invitation Tabs~, ~Job List~ & Online Assessment Cards)
 - ~Frontend Env File~
-- Integration with Backend Data (Resume Upload, Account Details, Invitations, ~Job Listing~ & Online Assessments)
+- Integration with Backend Data (Resume Upload, ~Account Details~, Invitations, ~Job Listing~ & Online Assessments)
 
 Backend:
 - ~Docker for Django project with postgreSQL~
@@ -34,6 +34,10 @@ Backend:
 - Integration with ML Component for Resume Upload
 - Cloud Storage
 - Deployment
+
+Extra:
+- User able to add/change account details on frontend 
+- Recruiter to add job listing on frontend
 
 # Software Required 💻
 Before starting please have the following installed.
