@@ -1,3 +1,4 @@
+"use client"
 import { Avatar, AvatarFallback, AvatarImage } from "../../atoms/Avatar/Avatar";
 import { Label } from "../../atoms/Label/Label";
 import { Input } from "../../atoms/Input/Input";

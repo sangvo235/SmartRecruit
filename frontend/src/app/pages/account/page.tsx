@@ -1,4 +1,4 @@
-"use client"
+// "use client"
 import AccountDetails from "@/app/components/molecules/AccountDetails/AccountDetails";
 
 const AccountPage = () => {
