@@ -19,11 +19,8 @@ const Navbar = async () => {
                             height={50}
                         />
                     </Link>
-
                     <NavLinks userId={userId}/>
-                    
                     <Profile userId={userId}/>
-
                 </div>
             </div>
         </nav>

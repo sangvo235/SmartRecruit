@@ -14,9 +14,7 @@ interface UserProps {
 }
 
 const Profile: React.FC<UserProps> = ({ userId }) => {
-
     const id =  userId;
-
     const [userDetails, setUserDetails] = useState<UserDetailsType | null>(null);
     
     const getUserDetails = async () => {

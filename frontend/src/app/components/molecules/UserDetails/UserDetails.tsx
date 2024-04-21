@@ -20,9 +20,7 @@ export interface UserDetailsType {
 }
 
 const UserDetails: React.FC<UserProps> = ({ userId }) => {
-
     const id =  userId;
-
     const [userDetails, setUserDetails] = useState<UserDetailsType | null>(null);
     
     const getUserDetails = async () => {

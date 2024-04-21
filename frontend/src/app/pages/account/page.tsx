@@ -2,13 +2,6 @@
 import UserDetails from "@/app/components/molecules/UserDetails/UserDetails";
 import { getUserId } from "@/app/lib/actions";
 
-interface UserDetailsType {
-    id: string;
-    name: string;
-    email: string;
-    avatar_url: string;
-}
-
 const AccountPage = async () => {
     const userId = await getUserId();
 
