@@ -3,6 +3,14 @@ from rest_framework.decorators import api_view, authentication_classes, permissi
 from .models import User
 from .serializers import UserDetailsSerializer
 
+# @api_view(['GET'])
+# @authentication_classes([])
+# @permission_classes([])
+# def user_list(request):
+#     user = user.objects.all()
+#     serializer = UserDetailsSerializer(user, many=True)
+#     return JsonResponse({'data': serializer.data})
+
 @api_view(['GET'])
 @authentication_classes([])
 @permission_classes([])
