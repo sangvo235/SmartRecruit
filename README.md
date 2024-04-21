@@ -36,8 +36,8 @@ Backend:
 - Deployment
 
 Extra:
-- User able to add/change account details on frontend 
-- Recruiter to add job listing on frontend
+- User to change account details on frontend 
+- Recruiter to change job listing on frontend
 
 # Software Required 💻
 Before starting please have the following installed.
