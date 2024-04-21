@@ -1,5 +1,4 @@
 import uuid 
-
 from django.conf import settings
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, UserManager
 from django.db import models
@@ -31,6 +30,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(max_length=255, unique=True)
     name = models.CharField(max_length=255, blank=True, null=True)
     avatar = models.ImageField(upload_to='uploads/avatars')
+    bio = models.TextField(blank=True, null=True)
+    location = models.CharField(max_length=255, blank=True, null=True)
+    phone = models.CharField(max_length=15,blank=True, null=True)
 
     is_active = models.BooleanField(default=True)
     is_superuser = models.BooleanField(default=False)
@@ -44,3 +46,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'email'
     EMAIL_FIELDS = 'email'
     REQUIRED_FIELDS = ['name',]
+
+    def avatar_url(self):
+        if self.avatar:
+            return f'{settings.WEBSITE_URL}{self.avatar.url}'
+        else: 
+            return ''

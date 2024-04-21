@@ -11,6 +11,7 @@ import { handleLogin } from "@/app/lib/actions";
 
 const SignUpCard = () => {
     const router = useRouter();
+    // const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password1, setPassword1] = useState("");
     const [password2, setPassword2] = useState("");
@@ -19,6 +20,7 @@ const SignUpCard = () => {
     // Submit Function
     const submitSignUp = async () => {
       const formData = {
+        // name: name,
         email: email,
         password1: password1,
         password2: password2
@@ -49,6 +51,11 @@ const SignUpCard = () => {
               <CardContent>
                   <form action={submitSignUp}>
                       <div className="grid max-w-sm items-center gap-4">
+                          {/* <div className="mb-4">
+                              <Label htmlFor="name">Name</Label>
+                              <Input onChange={(e) => setName(e.target.value)} type="name" placeholder="Please enter your name" />
+                          </div> */}
+
                           <div className="mb-4">
                               <Label htmlFor="email">Email</Label>
                               <Input onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Please enter your email" />
