@@ -10,7 +10,7 @@ interface UserProps {
     userId?: string | null;
 }
 
-interface UserDetailsType {
+export interface UserDetailsType {
     id: string;
     name: string;
     email: string;
