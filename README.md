@@ -38,6 +38,7 @@ Backend:
 Extra:
 - User to change account details on frontend 
 - Recruiter to change job listing on frontend
+- Extending online assessment questionnaire format 
 
 # Software Required 💻
 Before starting please have the following installed.
