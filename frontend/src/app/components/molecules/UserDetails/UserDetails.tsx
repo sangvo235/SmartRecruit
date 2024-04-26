@@ -44,6 +44,8 @@ const UserDetails: React.FC<UserProps> = ({ userId }) => {
         location: "",
     });
 
+    const [errors, setErrors] = useState<string[]>([]);
+
     useEffect(() => {
         if (userDetails) {
             setFormValues({
@@ -77,19 +79,17 @@ const UserDetails: React.FC<UserProps> = ({ userId }) => {
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        // http://localhost:8000/api/user_details/d4547052-8218-438a-b393-3ad725d1c594/update/
+        // Example: http://localhost:8000/api/user_details/d4547052-8218-438a-b393-3ad725d1c594/update/
+
         const response = await apiService.post(`/api/user_update/${id}/update/`, JSON.stringify(formValues));
-
-        if (response.access) {
+        
+        if ('detail' in response) {
+            setErrors([response.detail]);
         } else {
-            const tmpErrors: string[] = Object.values(response).map((error: any) => {
-                return error;
-            })
-            // setErrors(tmpErrors);
+            setErrors([]);
         }
-    };
 
-    // const [errors, setErrors] = useState<string[]>([]);
+    };
 
     return (            
         <div className="flex flex-col items-center">
@@ -122,7 +122,7 @@ const UserDetails: React.FC<UserProps> = ({ userId }) => {
                         </div>
                         <div className="mb-4">
                             <Label htmlFor="email">Email</Label>
-                            <Input type="email" id="email" value={userDetails.email} />
+                            <Input type="email" id="email" name="email" value={formValues.email} onChange={handleInputChange}/>
                         </div>
                         <div className="mb-4">
                             <Label htmlFor="phone">Phone</Label>
@@ -138,6 +138,14 @@ const UserDetails: React.FC<UserProps> = ({ userId }) => {
                         <Button type="submit" size="invite" >Submit</Button>
                         <Button type="reset" size="invite" variant="outline">Cancel</Button>
                     </div>
+
+                    {errors.length > 0 && (
+                        <div className="mt-4 text-red-600">
+                            {errors.map((error, index) => (
+                                <p key={index}>{error}</p>
+                            ))}
+                        </div>
+                    )}
                 </form>
             )}
         </div>
