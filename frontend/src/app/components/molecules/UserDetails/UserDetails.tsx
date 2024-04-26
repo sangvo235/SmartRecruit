@@ -7,6 +7,8 @@ import apiService from "@/app/services/apiService";
 import { Card, CardContent, CardHeader, CardTitle } from "../../atoms/Card/Card";
 import { Textarea } from "../../atoms/Textarea/Textarea";
 import { Button } from "../../atoms/Button/Button";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../atoms/Select/Select";
+
 interface UserProps {
     userId?: string | null;
 }
@@ -54,7 +56,7 @@ const UserDetails: React.FC<UserProps> = ({ userId }) => {
         }
     }, [userDetails]);
 
-    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement> | React.ChangeEvent<HTMLSelectElement>) => {
         const { name, value } = event.target;
         setFormValues({
             ...formValues,
@@ -89,6 +91,18 @@ const UserDetails: React.FC<UserProps> = ({ userId }) => {
             setErrors([]);
         }
 
+    };
+
+    const handleCancel = () => {
+        setFormValues({
+            id: userDetails?.id || "",
+            name: userDetails?.name || "",
+            email: userDetails?.email || "",
+            avatar_url: userDetails?.avatar_url || "",
+            bio: userDetails?.bio || "",
+            phone: userDetails?.phone || "",
+            location: userDetails?.location || "",
+        });
     };
 
     return (            
@@ -130,13 +144,26 @@ const UserDetails: React.FC<UserProps> = ({ userId }) => {
                         </div>
                         <div className="mb-4">
                             <Label htmlFor="location">Location</Label>
-                            <Input type="text" id="location" name="location" value={formValues.location} onChange={handleInputChange} />
+                                <Select name="location" value={formValues.location} onValueChange={(value) => setFormValues({ ...formValues, location: value })}>
+                                    <SelectTrigger>
+                                        <SelectValue>{formValues.location}</SelectValue>
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectItem value="ACT">ACT</SelectItem>
+                                        <SelectItem value="QLD">QLD</SelectItem>
+                                        <SelectItem value="NSW">NSW</SelectItem>
+                                        <SelectItem value="NT">NT</SelectItem>
+                                        <SelectItem value="SA">SA</SelectItem>
+                                        <SelectItem value="TAS">TAS</SelectItem>
+                                        <SelectItem value="VIC">VIC</SelectItem>
+                                    </SelectContent>
+                                </Select>
                         </div>
                     </div>
       
                     <div className="flex justify-center space-x-4"> 
                         <Button type="submit" size="invite" >Submit</Button>
-                        <Button type="reset" size="invite" variant="outline">Cancel</Button>
+                        <Button type="button" size="invite" variant="outline" onClick={handleCancel}>Cancel</Button>
                     </div>
 
                     {errors.length > 0 && (

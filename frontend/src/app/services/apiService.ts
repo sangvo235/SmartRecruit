@@ -26,14 +26,14 @@ const apiService = {
     post: async function(url: string, data: any): Promise<any> {
         console.log('post', url, data);
 
-        const token = await getAccessToken();
+        // const token = await getAccessToken();
 
         return new Promise((resolve, reject) => {
             fetch(`${process.env.NEXT_PUBLIC_API_HOST}${url}`, {
                 method: 'POST',
                 body: data,
                 headers: {
-                    'Authorization': `Bearer ${token}`,
+                    // 'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json' // Ensure Content-Type is set to application/json
                 }
             })

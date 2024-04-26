@@ -107,9 +107,7 @@ const SelectLabel = React.forwardRef<
     {...props}
   />
 ))
-SelectLabel.displayName = SelectPrimitive.Label.displayName
-
-const SelectItem = React.forwardRef<
+const SelectItem: React.ForwardRefExoticComponent<React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item>> = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item>
 >(({ className, children, ...props }, ref) => (
