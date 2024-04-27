@@ -12,7 +12,7 @@ export type JobType = {
     industry: string;
     salary: number;
     description: string;
-    info: string;
+    intro: string;
     image_url: string;
     recruiter: string;
     recruiter_name: string;

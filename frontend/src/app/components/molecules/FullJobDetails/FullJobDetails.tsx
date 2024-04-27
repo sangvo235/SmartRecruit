@@ -6,6 +6,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription }
 import { ReceiptText, Building2, MapPin, Briefcase, PiggyBank, Hash, Contact, Mail, CalendarDays } from 'lucide-react';
 import { Button } from "../../../components/atoms/Button/Button";
 import apiService from "@/app/services/apiService";
+import { Avatar, AvatarFallback, AvatarImage } from "../../../components/atoms/Avatar/Avatar";
 
 const FullJobDetails: React.FC<JobType | null> = () => {
     const params = useParams();
@@ -47,6 +48,11 @@ const FullJobDetails: React.FC<JobType | null> = () => {
                 <CardHeader>
                     <CardTitle>{job.title}</CardTitle>
 
+                    <Avatar className="w-40 h-40 mx-2">
+                        <AvatarImage src={job.image_url} alt="company_logo" />
+                        <AvatarFallback>JD</AvatarFallback>
+                    </Avatar>
+                    
                     <CardDescription>
                         <ReceiptText className="w-4 h-4 mr-2" />
                         <span>Contract Type:</span>
