@@ -6,22 +6,19 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription }
 import { ReceiptText, Building2, MapPin, Briefcase, PiggyBank, Hash, Contact, Mail, CalendarDays } from 'lucide-react';
 import { Button } from "../../../components/atoms/Button/Button";
 import apiService from "@/app/services/apiService";
-interface JobCardProps {
-    job: JobType;
-}
 
 const JobDetailsPage = () => {
     const params = useParams();
     const { id } = params;
-    const [job, setJob] = useState<JobCardProps[]>([]);
+    const [job, setJob] = useState<JobType | null>(null);
     const [formattedDate, setFormattedDate] = useState<string>("");
 
     const getJob = async () => {
-        const tmpJobs = await apiService.get(`/api/jobs/${id}`);
-        setJob(tmpJobs);
-      };
+        const tmpJob = await apiService.get(`/api/jobs/${id}`);
+        setJob(tmpJob);
+    };
       
-      useEffect(() => {
+    useEffect(() => {
         getJob();
     }, []);
 
