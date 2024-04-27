@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { JobType } from "../../../components/molecules/JobList/JobList";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from "../../../components/atoms/Card/Card";
-import { ReceiptText, Building2, MapPin, Briefcase, PiggyBank, Hash, Contact, Mail, CalendarDays } from 'lucide-react';
+import { ReceiptText, Building2, MapPin, Briefcase, PiggyBank, Hash, Contact, Mail, CalendarDays, Car } from 'lucide-react';
 import { Button } from "../../../components/atoms/Button/Button";
 import apiService from "@/app/services/apiService";
 import { Avatar, AvatarFallback, AvatarImage } from "../../../components/atoms/Avatar/Avatar";
@@ -48,10 +48,12 @@ const FullJobDetails: React.FC<JobType | null> = () => {
                 <CardHeader>
                     <CardTitle>{job.title}</CardTitle>
 
-                    <Avatar className="w-40 h-40 mx-2">
-                        <AvatarImage src={job.image_url} alt="company_logo" />
-                        <AvatarFallback>JD</AvatarFallback>
-                    </Avatar>
+                    <div className="py-6"> 
+                        <Avatar className="w-40 h-40">
+                            <AvatarImage src={job.image_url} alt="company_logo" />
+                            <AvatarFallback>JD</AvatarFallback>
+                        </Avatar>
+                    </div>
                     
                     <CardDescription>
                         <ReceiptText className="w-4 h-4 mr-2" />
@@ -98,11 +100,16 @@ const FullJobDetails: React.FC<JobType | null> = () => {
                         <span className="mr-4">Date Published:</span>
                         <span>{formattedDate}</span>
                     </CardDescription>
+                    <CardDescription>
+                    <div className="ml-6 mt-4 text-black">{job.intro}</div>
+                    </CardDescription>
                 </CardHeader>
+
                 <CardContent >
-                    <h1 className="text-2xl mb-4">Job Description</h1>
+                    <h1 className="text-2xl font-semibold flex items-center leading-none tracking-tight mb-4">Job Description</h1>
                     <p className="ml-6">{job.description}</p>
                 </CardContent>
+
                 <CardFooter>
                     <Button size="invite">
                         Apply 
