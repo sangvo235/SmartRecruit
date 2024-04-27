@@ -46,6 +46,7 @@ Backend:
 - Models (~User~, ~Job~, Invite & Online Assessment)
 - ~Serializers & API URLs~
 - ~Authentication~
+- APIs (~GET User Details~, ~POST User Details~, ~POST Avatar Upload~, ~GET Jobs~, POST Jobs (Admin), GET Invites, GET Online Assessment & POST Online Assessment).  
 - Integration with ML Component for Resume Upload
 - Cloud Storage
 - Deployment
