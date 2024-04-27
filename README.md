@@ -52,7 +52,7 @@ Backend:
 - Deployment
 
 Extra:
-- User to change account details on frontend 
+- ~User to change account details on frontend~ 
 - Recruiter to change job listing on frontend
 - Extending online assessment questionnaire format 
 
