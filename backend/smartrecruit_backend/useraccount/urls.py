@@ -13,4 +13,5 @@ urlpatterns = [
     path('token/refresh/', get_refresh_view().as_view(), name='token_refresh'),
     path('<uuid:pk>/', api.user_details, name='api_user_details'),
     path('<uuid:pk>/update/', api.user_update, name='api_user_update'),
+    path('<uuid:pk>/avatar/', api.upload_avatar, name='api_upload_avatar'),
 ]

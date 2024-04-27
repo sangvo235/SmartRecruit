@@ -64,25 +64,39 @@ const UserDetails: React.FC<UserProps> = ({ userId }) => {
         });
     };
 
+    const [uploadedAvatar, setUploadedAvatar] = useState<File | null>(null);
+
     const handleAvatarChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
         if (file) {
-            const reader = new FileReader();
-            reader.readAsDataURL(file);
-            reader.onload = () => {
-                setFormValues({
-                    ...formValues,
-                    avatar_url: reader.result as string,
-                });
-            };
+            setUploadedAvatar(file);
         }
-    };    
-
+    };
+    
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-
-        // Example: http://localhost:8000/api/user_details/d4547052-8218-438a-b393-3ad725d1c594/update/
-
+    
+        if (uploadedAvatar) {
+            try {
+                const formData = new FormData();
+                formData.append('avatar', uploadedAvatar);
+                const response = await apiService.postAvatarImageUpload(`/api/upload_avatar/${id}/avatar/`, formData);
+                if (response.avatar_url) {
+                    setUserDetails(prevDetails => ({
+                        ...prevDetails as UserDetailsType,
+                        avatar_url: response.avatar_url
+                    }));
+                } else {
+                    setErrors(['Avatar upload failed']);
+                    return; 
+                }
+            } catch (error) {
+                console.error('Avatar upload failed:', error);
+                setErrors(['Avatar upload failed']);
+                return; 
+            }
+        }
+    
         const response = await apiService.post(`/api/user_update/${id}/update/`, JSON.stringify(formValues));
         
         if ('detail' in response) {
@@ -90,20 +104,11 @@ const UserDetails: React.FC<UserProps> = ({ userId }) => {
         } else {
             setErrors([]);
         }
-
     };
-
+    
     const handleCancel = () => {
-        setFormValues({
-            id: userDetails?.id || "",
-            name: userDetails?.name || "",
-            email: userDetails?.email || "",
-            avatar_url: userDetails?.avatar_url || "",
-            bio: userDetails?.bio || "",
-            phone: userDetails?.phone || "",
-            location: userDetails?.location || "",
-        });
-    };
+        window.location.reload();
+    };    
 
     return (            
         <div className="flex flex-col items-center">
@@ -113,12 +118,19 @@ const UserDetails: React.FC<UserProps> = ({ userId }) => {
                         {/* Avatar and Bio */}
                         <div className="col-span-2 flex items-center mb-6 gap-24">
                             <div>
-                                <Avatar className="h-48 w-48">
-                                    <AvatarImage src={formValues.avatar_url} />
-                                    <AvatarFallback>{userDetails.name}</AvatarFallback>
-                                </Avatar>
-                                <Label htmlFor="avatar" className="my-4 block text-center">New Avatar Upload</Label>
-                                <Input id="avatar" type="file" onChange={handleAvatarChange} />
+                                {uploadedAvatar ? (
+                                    <Avatar className="h-48 w-48">
+                                        <AvatarImage src={URL.createObjectURL(uploadedAvatar)} />
+                                        <AvatarFallback>{userDetails.name}</AvatarFallback>
+                                    </Avatar>
+                                ) : (
+                                    <Avatar className="h-48 w-48">
+                                        <AvatarImage src={formValues.avatar_url} />
+                                        <AvatarFallback>{userDetails.name}</AvatarFallback>
+                                    </Avatar>
+                                )}
+                                <Label htmlFor="avatar_url" className="my-4 block text-center">New Avatar Upload</Label>
+                                <Input type="file" name="avatar_url" accept="image/*" onChange={handleAvatarChange} />
                             </div>
                             <Card>
                                 <CardHeader>

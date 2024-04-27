@@ -1,4 +1,4 @@
-import { getAccessToken } from "../lib/actions";
+// import { getAccessToken } from "../lib/actions";
 
 const apiService = {
     get: async function (url: string): Promise<any> {
@@ -34,7 +34,8 @@ const apiService = {
                 body: data,
                 headers: {
                     // 'Authorization': `Bearer ${token}`,
-                    'Content-Type': 'application/json' // Ensure Content-Type is set to application/json
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json' 
                 }
             })
                 .then(response => response.json())
@@ -48,8 +49,29 @@ const apiService = {
                 }))
         })
     },
+
+    postAvatarImageUpload: async function(url: string, formData: FormData): Promise<any> {
+        console.log('postFormData', url, formData);
+
+        try {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}${url}`, {
+                method: 'POST',
+                body: formData,
+            });
+
+            if (!response.ok) {
+                throw new Error(`Request failed with status ${response.status}`);
+            }
+
+            const json = await response.json();
+            console.log('Response:', json);
+
+            return json;
+        } catch (error) {
+            console.error('Request failed:', error);
+            throw error;
+        }
+    }
 }
-
-
 
 export default apiService;
