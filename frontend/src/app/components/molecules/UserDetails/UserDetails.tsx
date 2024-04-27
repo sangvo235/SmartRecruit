@@ -104,6 +104,8 @@ const UserDetails: React.FC<UserProps> = ({ userId }) => {
         } else {
             setErrors([]);
         }
+
+        window.location.reload();
     };
     
     const handleCancel = () => {

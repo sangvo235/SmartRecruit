@@ -16,7 +16,7 @@ class JobListSerializer(serializers.ModelSerializer):
             'description',
             'salary',
             'recruiter',
-            'image',
+            'image_url',
             'created_at',
         )
 
@@ -38,7 +38,7 @@ class JobDetailSerializer(serializers.ModelSerializer):
             'recruiter',
             'recruiter_name',
             'recruiter_email',            
-            'image',
+            'image_url',
             'created_at',
         )
 
