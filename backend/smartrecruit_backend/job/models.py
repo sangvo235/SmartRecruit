@@ -17,7 +17,10 @@ class Job(models.Model):
     description = models.TextField()
     recruiter = models.ForeignKey(User, related_name='jobs', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
-    image = models.ImageField(upload_to='uploads/jobs')
+    image = models.ImageField(upload_to='uploads/jobs', default='uploads/jobs/default.jpg')
 
     def image_url(self):
-        return f'{settings.WEBSITE_URL}{self.image.url}'
+        if self.image:
+            return f'{settings.WEBSITE_URL}{self.image.url}'
+        else: 
+            return ''
