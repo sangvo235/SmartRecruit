@@ -43,7 +43,7 @@ const FullJobDetails: React.FC<JobType | null> = () => {
 
     return (
         <>
-            <div className="text-5xl text-center pb-8">{job.title}</div>
+            <div className="text-5xl font-semibold leading-none tracking-tight text-center pb-8">{job.title}</div>
             <Card>
                 <CardHeader>
                     <CardTitle>{job.title}</CardTitle>
