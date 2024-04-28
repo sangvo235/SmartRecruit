@@ -88,6 +88,9 @@ INSTALLED_APPS = [
 
     'useraccount',
     'job',
+    'online_assessment',
+    'results',
+    'questions',
 ]
 
 MIDDLEWARE = [
