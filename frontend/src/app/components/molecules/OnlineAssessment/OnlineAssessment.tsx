@@ -22,19 +22,6 @@ const OnlineAssessment = () => {
       useEffect(() => {
         getOnlineAssessment();
     }, []);
-
-
-  //   useEffect(() => {
-  //     const getJobs = async () => {
-  //         try {
-  //             const tmpJobs = await apiService.get("/api/jobs/");
-  //             setJobs(tmpJobs.data);
-  //         } catch (error) {
-  //             console.error("Error fetching jobs:", error);
-  //         }
-  //     };
-  //     getJobs();
-  // }, []);
   
     return (
         <div>
