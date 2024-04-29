@@ -38,12 +38,15 @@ const OnlineAssessment = () => {
   
     return (
         <div>
-          {/* {jobs.map((job) => (
-            <Card key={job.id}>
-              <CardContent job={job} />
-              <CardFooter job={job}/>
-            </Card>
-          ))} */}
+          {onlineAssessment.map((onlineAssessment) => (
+            <div key={onlineAssessment.id}>
+              <h1>{onlineAssessment.name}</h1>
+              <p>{onlineAssessment.topic}</p>
+              <p>{onlineAssessment.number_of_questions}</p>
+              <p>{onlineAssessment.time}</p>
+              <p>{onlineAssessment.required_score_to_pass}</p>
+            </div>
+          ))}
         </div>
       );
       

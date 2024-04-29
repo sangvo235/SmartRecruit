@@ -8,6 +8,6 @@ from .serializers import AssessmentListSerializer
 @permission_classes([])
 def assessment_list(request):
     assessments = Assessment.objects.all()
-    serializer = AssessmentListSerializer(jobs, many=True)
+    serializer = AssessmentListSerializer(assessments, many=True)
     return JsonResponse({'data': serializer.data})
 
