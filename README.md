@@ -43,7 +43,7 @@ Backend:
 - ~Django REST API~
 - ~Backend Env File~
 - ~Configurations~
-- Models (~User~, ~Job~, Invite & Online Assessment)
+- Models (~User~, ~Job~, ~Invite~, ~Online Assessment~, ~Question~ and ~Answer~)
 - ~Serializers & API URLs~
 - ~Authentication~
 - APIs (~GET User Details~, ~POST User Details~, ~POST Avatar Upload~, ~GET Jobs~, POST Jobs (Admin), ~GET Invites~, ~Filter Invites~, ~GET Online Assessment~ & POST Online Assessment).  
