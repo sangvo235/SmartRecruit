@@ -1,4 +1,4 @@
-from django.http import JsonResponse, Http404   
+from django.http import JsonResponse   
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from .models import Invite
 from .serializers import InviteSerializer

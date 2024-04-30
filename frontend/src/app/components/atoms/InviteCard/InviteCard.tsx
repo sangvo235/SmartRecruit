@@ -40,7 +40,7 @@ const CardContent = React.forwardRef<
       {...props}
     >
       <Avatar className="w-20 h-20">
-        <AvatarImage src="" alt="company_logo" />
+        <AvatarImage src={invite.assessment.image_url} alt="company_logo" />
         <AvatarFallback>Smart Recruit</AvatarFallback>
       </Avatar>
 
