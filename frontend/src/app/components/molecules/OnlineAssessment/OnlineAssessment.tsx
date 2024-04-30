@@ -12,6 +12,10 @@ export type OnlineAssessmentType = {
     time: number;
     required_score_to_pass: number;
     job: string;
+    job_title: string;
+    job_company: string;
+    job_location: string;
+    image_url: string;
 }
 
 const OnlineAssessment = () => {

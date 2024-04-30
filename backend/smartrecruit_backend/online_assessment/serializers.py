@@ -6,6 +6,7 @@ from django.conf import settings
 class AssessmentSerializer(serializers.ModelSerializer):
     job_title = serializers.CharField(source='job.title')
     job_company = serializers.CharField(source='job.company')
+    job_location = serializers.CharField(source='job.location')
     image_url = serializers.SerializerMethodField(source='job.image_url')   
 
     class Meta:
@@ -20,6 +21,7 @@ class AssessmentSerializer(serializers.ModelSerializer):
             'job',
             'job_title',
             'job_company',
+            'job_location',
             'image_url',
         )
 
@@ -28,6 +30,9 @@ class AssessmentSerializer(serializers.ModelSerializer):
     
     def get_job_company(self, obj):
         return obj.job.company
+    
+    def get_job_location(self, obj):
+        return obj.job.location
     
     def get_image_url(self, obj):
         return obj.job.image_url()

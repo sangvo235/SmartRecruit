@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { OnlineAssessmentType } from "../OnlineAssessment/OnlineAssessment";
 
 export type InviteType = {
+  job: any;
   id: string;
   user_id: string;
   user_email: string;
