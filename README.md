@@ -41,6 +41,8 @@ Frontend:
 - Components/Molecules (~Authentication~, ~Navbar~, ~Footer~, ~Upload Resume~, ~Profile~, ~Invitation Tabs~, ~Job List~ & Online Assessment Cards)
 - ~Frontend Env File~
 - Integration with Backend Data (Resume Upload, ~Account Details~, ~Invitations~, ~Job Listing~ & ~Online Assessments~)
+- Job Recruiter Interface (Create Online Assessments, Create Job Listing, Candidate Scores from Online Assessments Page, Candidate Profile Access)
+
 
 Backend:
 - ~Docker for Django project with postgreSQL~
@@ -50,7 +52,8 @@ Backend:
 - ~Models (~User~, ~Job~, ~Invite~, ~Online Assessment~, ~Question~ and ~Answer~)~
 - ~Serializers & API URLs~
 - ~Authentication~
-- APIs (~GET User Details~, ~POST User Details~, ~POST Avatar Upload~, ~GET Jobs~, POST Jobs (Admin), ~GET Invites~, ~Filter Invites~, ~GET Online Assessment~ & POST Online Assessment).  
+- APIs (~GET User Details~, ~POST User Details~, ~POST Avatar Upload~, ~GET Jobs~, ~GET Invites~, ~Filter Invites~, ~GET Online Assessment~ & POST Online Assessment).
+- APIs for Job Recruiter (POST Jobs & GET Candidate Details)
 - Integration with ML Component for Resume Upload
 - Cloud Storage
 - Debugging and Test Cases
@@ -59,7 +62,7 @@ Backend:
 Extra:
 - ~User to change account details on frontend~ 
 - Recruiter to change job listing on frontend
-- Extending online assessment questionnaire format 
+- Extending online assessment questionnaire format
 
 # Software Required 💻
 Before starting please have the following installed.
