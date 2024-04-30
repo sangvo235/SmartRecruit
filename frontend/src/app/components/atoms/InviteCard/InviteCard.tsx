@@ -2,7 +2,7 @@ import * as React from "react";
 import { cn } from "../../../lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "../Avatar/Avatar";
 import { Button } from "../Button/Button";
-import { Building2, MapPin, UserRound, BookType, Hash, Timer, CalendarDays, CalendarClock } from "lucide-react";
+import { Building2, MapPin, UserRound, BookType, Hash, Timer, CalendarClock } from "lucide-react";
 import { InviteType } from "../../molecules/InvitationTabs/InvitationTabs";
 import { Separator } from "../Separator/Separator";
 import { useRouter } from "next/navigation";
@@ -83,7 +83,7 @@ const CardContent = React.forwardRef<
           </div>
       </div>
       
-        <Button size="invite" onClick={() => router.push(`/pages/online-assessment/${invite.assessment}`)}>
+        <Button size="invite" onClick={() => router.push(`/pages/online-assessment/${invite.assessment.id}`)}>
           Accept
         </Button>
 
