@@ -49,6 +49,7 @@ Backend:
 - APIs (~GET User Details~, ~POST User Details~, ~POST Avatar Upload~, ~GET Jobs~, POST Jobs (Admin), ~GET Invites~, ~Filter Invites~, ~GET Online Assessment~ & POST Online Assessment).  
 - Integration with ML Component for Resume Upload
 - Cloud Storage
+- Debugging and Test Cases
 - Deployment
 
 Extra:
