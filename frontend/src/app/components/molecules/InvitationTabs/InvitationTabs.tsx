@@ -3,11 +3,13 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "../../atoms/Tabs/Tabs"
 import { Card, CardContent, CardFooter } from "../../atoms/InviteCard/InviteCard";
 import apiService from "@/app/services/apiService";
 import { useEffect, useState } from "react";
+import { OnlineAssessmentType } from "../OnlineAssessment/OnlineAssessment";
 
 export type InviteType = {
+  id: string;
   user_id: string;
   user_email: string;
-  assessment: string;
+  // assessment: OnlineAssessmentType;
   invite_date: string;
   expire_date: string;
   expired: boolean;
@@ -15,17 +17,21 @@ export type InviteType = {
 }
 
 const InvitationTabs = () => {
+  const [activeInvites, setActiveInvites] = useState<InviteType[]>([]);
+  const [completedInvites, setCompletedInvites] = useState<InviteType[]>([]);
+  const [expiredInvites, setExpiredInvites] = useState<InviteType[]>([]);
 
-      const [invites, setInvites] = useState<InviteType[]>([]);
-        
-      const getUserInvites = async (userId: string) => {
-        const response = await apiService.get(`/api/invite/user/${userId}`);
-        setInvites(response.data);
-      };
-      
-      useEffect(() => {
-        getUserInvites("e5b81074-f591-4e2b-bc7f-6742d0998387");
-      }, []);
+  const getUserInvites = async () => {
+    const tmpInvites = await apiService.get(`/api/invite/`);
+    setActiveInvites(tmpInvites.data.active);
+    setCompletedInvites(tmpInvites.data.completed);
+    setExpiredInvites(tmpInvites.data.expired);
+  };
+  
+  useEffect(() => {
+    getUserInvites();
+  }, []);
+
 
     return (
       <Tabs defaultValue="active" className="w-5/6">
@@ -36,25 +42,25 @@ const InvitationTabs = () => {
         </TabsList>
 
         <TabsContent value="active">
-          {invites.map((invite) => (
-            (invite.expired === false && invite.completed === false) ? (
-              <Card key={invite.user_id}>
-                <CardContent invite={invite} />
-                <CardFooter invite={invite}/>
-              </Card>
-            ) : null
+        <div>
+          {activeInvites.map((invite) => (
+            <Card key={invite.id}>
+              <CardContent invite={invite} />
+              <CardFooter invite={invite} />
+            </Card>
           ))}
+        </div>
         </TabsContent>
 
         <TabsContent value="completed">
-          {invites.map((invite) => (
-            invite.completed ? (
-              <Card key={invite.user_id}>
-                <CardContent invite={invite} />
-                <CardFooter invite={invite}/>
-              </Card>
-            ) : null
+        <div>
+        {completedInvites.map((invite) => (
+            <Card key={invite.id}>
+              <CardContent invite={invite} />
+              <CardFooter invite={invite} />
+            </Card>
           ))}
+        </div>
         </TabsContent>
 
         <TabsContent value="expired">

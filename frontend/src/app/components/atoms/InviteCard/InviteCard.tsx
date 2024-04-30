@@ -4,9 +4,10 @@ import { Avatar, AvatarFallback, AvatarImage } from "../Avatar/Avatar";
 import { Button } from "../Button/Button";
 import { CalendarDays, CalendarClock } from "lucide-react";
 import { InviteType } from "../../molecules/InvitationTabs/InvitationTabs";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import { Separator } from "../Separator/Separator";
 import { Building2, PiggyBank } from 'lucide-react';
+
 interface InviteCardProps {
   invite: InviteType;
 }
@@ -26,52 +27,11 @@ const Card = React.forwardRef<
 ));
 Card.displayName = "Card";
 
-const CardHeader = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn("flex flex-col space-y-1.5 p-6", className)}
-    {...props}
-  />
-));
-CardHeader.displayName = "CardHeader";
-
-const CardTitle = React.forwardRef<
-  HTMLParagraphElement,
-  React.HTMLAttributes<HTMLHeadingElement>
->(({ className, ...props }, ref) => (
-  <h3
-    ref={ref}
-    className={cn(
-      "text-2xl font-semibold leading-none tracking-tight",
-      className
-    )}
-    {...props}
-  />
-));
-CardTitle.displayName = "CardTitle";
-
-const CardDescription = React.forwardRef<
-  HTMLParagraphElement,
-  React.HTMLAttributes<HTMLParagraphElement>
->(({ className, ...props }, ref) => (
-  <p
-    ref={ref}
-    className={cn("text-sm text-muted-foreground", className)}
-    {...props}
-  />
-));
-CardDescription.displayName = "CardDescription";
-
 const CardContent = React.forwardRef<
     HTMLDivElement, 
     React.HTMLAttributes<HTMLDivElement> & 
     InviteCardProps
 >(({ className, invite, ...props }, ref) => {
-
-  const router = useRouter(); 
 
   return (
     <div
@@ -85,17 +45,19 @@ const CardContent = React.forwardRef<
       </Avatar>
 
       <div className="flex-1 space-y-2 font-medium">
-          <div className="text-xl pb-1">{invite.assessment}</div>
+        <div className="text-xl pb-1">{invite.id}</div>
 
           <div className="flex h-5 text-muted-foreground items-center space-x-4 text-sm">
               <div className="flex items-center space-x-2">
                   <Building2 />
-                  <span>new</span>
+                  <span>{invite.user_id}</span>
+                  <span>{invite.user_email}</span>
               </div>
               <Separator orientation="vertical" />
               <div className="flex items-center space-x-2">
                   <PiggyBank />
-                  <span>new</span>
+                  <span>{invite.expired}</span>
+                  <span>{invite.completed}</span>              
               </div>
           </div>
 
@@ -103,9 +65,9 @@ const CardContent = React.forwardRef<
       </div>
       
       {/* Apply (will code this at a later time) */}
-        <Button size="invite" onClick={() => router.push(`/pages/online-assessment/${invite.assessment}`)}>
+        {/* <Button size="invite" onClick={() => router.push(`/pages/online-assessment/${invite.assessment}`)}>
           Accept
-        </Button>
+        </Button> */}
 
       <Button size="invite" variant="outline">
           Decline 
@@ -145,8 +107,10 @@ const CardFooter = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement> & InviteCardProps
 >(({ className, ...props }, ref) => {
-  const timestampInvite = new Date(props.invite.invite_date).getTime();
-  const timestampExpire = new Date(props.invite.expire_date).getTime();
+  const expireDate = props.invite?.expire_date;
+  const inviteDate = props.invite?.invite_date;
+  // const timestampInvite = new Date(props.invite.invite_date).getTime();
+  // const timestampExpire = new Date(props.invite.expire_date).getTime();
 
   return (
     <div
@@ -158,18 +122,15 @@ const CardFooter = React.forwardRef<
       {...props}
     >
       <CalendarDays />
-      <div className="pl-2">{calculateTimeAgo(timestampInvite)}</div>
+      <div className="pl-2">{calculateTimeAgo(Number(expireDate))}</div>
       <CalendarClock />
-      <div className="pl-2">{calculateTimeAgo(timestampExpire)}</div>
+      <div className="pl-2">{calculateTimeAgo(Number(inviteDate))}</div>
     </div>
   );
 });
 
 export {
   Card,
-  CardHeader,
-  CardFooter,
-  CardTitle,
-  CardDescription,
   CardContent,
+  CardFooter,
 };

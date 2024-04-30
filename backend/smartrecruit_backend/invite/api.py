@@ -6,11 +6,8 @@ from .serializers import InviteSerializer
 @api_view(['GET'])
 @authentication_classes([])
 @permission_classes([])
-def invite(request, user_id):
-    try:
-        invite = Invite.objects.get(user_id=user_id)
-    except Invite.DoesNotExist:
-        raise Http404("Invite does not exist")
+def invite_details(request, user_id):
+    invites = Invite.objects.filter(user_id=user_id)
+    serializer = InviteSerializer(invites, many=True)
+    return JsonResponse({'data': serializer.data})
 
-    serializer = InviteSerializer(invite)
-    return JsonResponse(serializer.data)

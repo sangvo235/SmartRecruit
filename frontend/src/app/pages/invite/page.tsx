@@ -1,4 +1,5 @@
-import InvitationTabs from "../../components/molecules/InvitationTabs/InvitationTabs";
+"use server"
+import InvitationTabs from "@/app/components/molecules/InvitationTabs/InvitationTabs";
 
 const InvitationsPage = () => {
     return (
