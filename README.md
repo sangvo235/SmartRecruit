@@ -25,8 +25,11 @@
 
 # Task List 📋
 Non-Coding:
-- ~Project README~
+- ~Google Drive~
 - ~Figma Prototyping~
+- ~System Architecture & Tech Stack~ 
+- ~Project README~
+- Diagram of Models
 
 Frontend:
 - ~Nextjs & Typescript~
