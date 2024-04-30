@@ -1,9 +1,15 @@
 import * as React from "react";
-import { cn } from "../../../lib/utils"
+import { cn } from "../../../lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "../Avatar/Avatar";
 import { Button } from "../Button/Button";
-import { CalendarDays, ChevronDown } from "lucide-react";
-import Link from "next/link";
+import { CalendarDays, CalendarClock } from "lucide-react";
+import { InviteType } from "../../molecules/InvitationTabs/InvitationTabs";
+import { useRouter } from "next/navigation";
+import { Separator } from "../Separator/Separator";
+import { Building2, PiggyBank } from 'lucide-react';
+interface InviteCardProps {
+  invite: InviteType;
+}
 
 const Card = React.forwardRef<
   HTMLDivElement,
@@ -13,7 +19,7 @@ const Card = React.forwardRef<
     ref={ref}
     className={cn(
       "w-full bg-white text-card-foreground shadow-lg my-4",
-      className,
+      className
     )}
     {...props}
   />
@@ -40,7 +46,7 @@ const CardTitle = React.forwardRef<
     ref={ref}
     className={cn(
       "text-2xl font-semibold leading-none tracking-tight",
-      className,
+      className
     )}
     {...props}
   />
@@ -60,46 +66,53 @@ const CardDescription = React.forwardRef<
 CardDescription.displayName = "CardDescription";
 
 const CardContent = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement> & {
-    // userId: string;
-    // text: (string | JSX.Element)[];
-    // isRead: boolean;
-  }
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn("flex items-center space-x-4 pt-6 pb-2 px-4", className)}
-    {...props}
-  >
-    <Avatar className="w-20 h-20">
-      <AvatarImage src="https://randomuser.me/api/portraits/men/32.jpg" />
-      <AvatarFallback>CN</AvatarFallback>
-    </Avatar>
+    HTMLDivElement, 
+    React.HTMLAttributes<HTMLDivElement> & 
+    InviteCardProps
+>(({ className, invite, ...props }, ref) => {
 
-    <div className="flex-1 space-y-1">
-      <p className="text-sm font-medium leading-none">Jared Smith</p>
-      <div className="text-sm text-muted-foreground">Recruiter from Technology Games Company</div>
+  const router = useRouter(); 
+
+  return (
+    <div
+      ref={ref}
+      className={cn("flex items-center space-x-4 pt-6 pb-2 px-4", className)}
+      {...props}
+    >
+      <Avatar className="w-20 h-20">
+        <AvatarImage src="" alt="company_logo" />
+        <AvatarFallback>Smart Recruit</AvatarFallback>
+      </Avatar>
+
+      <div className="flex-1 space-y-2 font-medium">
+          <div className="text-xl pb-1">{invite.assessment_id}</div>
+
+          <div className="flex h-5 text-muted-foreground items-center space-x-4 text-sm">
+              <div className="flex items-center space-x-2">
+                  <Building2 />
+                  <span>new</span>
+              </div>
+              <Separator orientation="vertical" />
+              <div className="flex items-center space-x-2">
+                  <PiggyBank />
+                  <span>new</span>
+              </div>
+          </div>
+
+          {/* <div className="text-sm text-muted-foreground pt-2">{job.intro}</div> */}
+      </div>
+      
+      {/* Apply (will code this at a later time) */}
+        <Button size="invite" onClick={() => router.push(`/pages/online-assessment/${invite.assessment_id}`)}>
+          Accept
+        </Button>
+
+      <Button size="invite" variant="outline">
+          Decline 
+      </Button>
     </div>
-
-    <Button size="invite">
-        {/* will be id instead of 1 */}
-        <Link href="/pages/online-assessment/1">Accept</Link>
-    </Button>
-
-    <Button size="invite" variant="outline">
-        Ignore
-    </Button>
-
-    <ChevronDown />
-
-    {/* <div className="flex-1 space-y-1">
-      <p className="text-sm font-medium leading-none">{userId}</p>
-      <div className="text-sm text-muted-foreground">{text}</div>
-    </div> */}
-
-  </div>
-));
+  );
+});
 CardContent.displayName = "CardContent";
 
 const calculateTimeAgo = (timestamp: number) => {
@@ -130,25 +143,24 @@ const calculateTimeAgo = (timestamp: number) => {
 
 const CardFooter = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement> & {
-    // stringTime: string;
-  }
+  React.HTMLAttributes<HTMLDivElement> & InviteCardProps
 >(({ className, ...props }, ref) => {
-
-    const stringTime = "2024-04-14T12:00:00Z";
-  const timestamp = new Date(stringTime).getTime();
+  const timestampInvite = new Date(props.invite.invite_date).getTime();
+  const timestampExpire = new Date(props.invite.expire_date).getTime();
 
   return (
     <div
       ref={ref}
       className={cn(
-        "flex items-center justify-end px-4 pb-4 text-xs text-slate-600",
-        className,
+        "flex items-center justify-end space-x-4 px-4 pb-4 text-xs text-slate-600",
+        className
       )}
       {...props}
     >
       <CalendarDays />
-      <div className="pl-2">{calculateTimeAgo(timestamp)}</div>
+      <div className="pl-2">{calculateTimeAgo(timestampInvite)}</div>
+      <CalendarClock />
+      <div className="pl-2">{calculateTimeAgo(timestampExpire)}</div>
     </div>
   );
 });

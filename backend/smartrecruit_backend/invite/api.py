@@ -8,7 +8,7 @@ from .serializers import InviteSerializer
 @permission_classes([])
 def invite(request, user_id):
     try:
-        invite = Invite.objects.get(id=user_id)
+        invite = Invite.objects.get(user_id=user_id)
     except Invite.DoesNotExist:
         raise Http404("Invite does not exist")
 
