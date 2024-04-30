@@ -31,6 +31,7 @@ Non-Coding:
 Frontend:
 - ~Nextjs & Typescript~
 - ~Tailwind CSS~
+- ~Shadcn/ui Components~
 - ~Navigation & Page Creation~
 - ~Page Content (~Authentication~, ~Login~, ~Home~, ~Resume Upload~, ~Account Details~, ~Invitations~ & ~Job Listing~)~
 - Dynamic Page Content (~Job Listing~ & Online Assessments) 
