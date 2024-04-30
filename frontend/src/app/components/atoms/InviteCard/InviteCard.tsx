@@ -85,7 +85,7 @@ const CardContent = React.forwardRef<
       </Avatar>
 
       <div className="flex-1 space-y-2 font-medium">
-          <div className="text-xl pb-1">{invite.assessment_id}</div>
+          <div className="text-xl pb-1">{invite.assessment}</div>
 
           <div className="flex h-5 text-muted-foreground items-center space-x-4 text-sm">
               <div className="flex items-center space-x-2">
@@ -103,7 +103,7 @@ const CardContent = React.forwardRef<
       </div>
       
       {/* Apply (will code this at a later time) */}
-        <Button size="invite" onClick={() => router.push(`/pages/online-assessment/${invite.assessment_id}`)}>
+        <Button size="invite" onClick={() => router.push(`/pages/online-assessment/${invite.assessment}`)}>
           Accept
         </Button>
 

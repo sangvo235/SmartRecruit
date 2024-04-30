@@ -5,7 +5,7 @@ from online_assessment.serializers import AssessmentSerializer
 
 class InviteSerializer(serializers.ModelSerializer):
     user_email = serializers.CharField(source='user_id.email')
-    assessment = AssessmentSerializer(source='assessment_id')
+    # assessment = AssessmentSerializer(source='assessment_id')
 
     class Meta:
         model = Invite

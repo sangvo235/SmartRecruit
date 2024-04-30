@@ -6,11 +6,12 @@ import { useEffect, useState } from "react";
 
 export type InviteType = {
   user_id: string;
-  assessment_id: string;
+  user_email: string;
+  assessment: string;
   invite_date: string;
   expire_date: string;
-  expired: string;
-  completed: string;
+  expired: boolean;
+  completed: boolean;
 }
 
 const InvitationTabs = () => {
@@ -36,7 +37,7 @@ const InvitationTabs = () => {
 
         <TabsContent value="active">
           {invites.map((invite) => (
-            (invite.expired === "false" && invite.completed === "false") ? (
+            (invite.expired === false && invite.completed === false) ? (
               <Card key={invite.user_id}>
                 <CardContent invite={invite} />
                 <CardFooter invite={invite}/>
