@@ -6,7 +6,7 @@ from .serializers import InviteSerializer
 @api_view(['GET'])
 @authentication_classes([])
 @permission_classes([])
-def job_detail(request, user_id):
+def invite(request, user_id):
     try:
         invite = Invite.objects.get(id=user_id)
     except Invite.DoesNotExist:

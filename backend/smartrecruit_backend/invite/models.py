@@ -1,5 +1,4 @@
 from django.db import models
-
 from online_assessment.models import Assessment
 from useraccount.models import User
 

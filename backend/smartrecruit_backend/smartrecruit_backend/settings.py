@@ -91,6 +91,7 @@ INSTALLED_APPS = [
     'online_assessment',
     'results',
     'questions',
+    'invite',
 ]
 
 MIDDLEWARE = [
