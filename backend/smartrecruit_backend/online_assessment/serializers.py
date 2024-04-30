@@ -11,4 +11,5 @@ class AssessmentListSerializer(serializers.ModelSerializer):
             'number_of_questions',
             'time',
             'required_score_to_pass',
+            'job',
         )

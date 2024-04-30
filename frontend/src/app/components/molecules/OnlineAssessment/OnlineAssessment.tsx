@@ -1,6 +1,8 @@
 "use client"
 import { useEffect, useState } from "react"
 import apiService from "@/app/services/apiService";
+import { Button } from "@/app/components/atoms/Button/Button";
+import { useRouter } from "next/navigation";
 
 export type OnlineAssessmentType = {
     id: string;
@@ -9,9 +11,12 @@ export type OnlineAssessmentType = {
     number_of_questions: number;
     time: number;
     required_score_to_pass: number;
+    job: string;
 }
 
 const OnlineAssessment = () => {
+    const router = useRouter(); 
+
     const [onlineAssessment, setOnlineAssessment] = useState<OnlineAssessmentType[]>([]);
     
       const getOnlineAssessment = async () => {
@@ -32,6 +37,9 @@ const OnlineAssessment = () => {
               <p>{onlineAssessment.number_of_questions}</p>
               <p>{onlineAssessment.time}</p>
               <p>{onlineAssessment.required_score_to_pass}</p>
+              <Button size="invite" variant="outline" onClick={() => router.push(`/pages/job/${onlineAssessment.job}`)}>
+                Job Details 
+              </Button>
             </div>
           ))}
         </div>
