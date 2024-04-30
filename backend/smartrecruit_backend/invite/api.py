@@ -6,8 +6,24 @@ from .serializers import InviteSerializer
 @api_view(['GET'])
 @authentication_classes([])
 @permission_classes([])
-def invite_details(request, user_id):
-    invites = Invite.objects.filter(user_id=user_id)
-    serializer = InviteSerializer(invites, many=True)
+def get_active_invites(request, user_id):
+    queryset = Invite.objects.filter(user_id=user_id, expired=False, completed=False)
+    serializer = InviteSerializer(queryset, many=True)
+    return JsonResponse({'data': serializer.data})
+
+@api_view(['GET'])
+@authentication_classes([])
+@permission_classes([])
+def get_expired_invites(request, user_id):
+    queryset = Invite.objects.filter(user_id=user_id, expired=True)
+    serializer = InviteSerializer(queryset, many=True)
+    return JsonResponse({'data': serializer.data})
+
+@api_view(['GET'])
+@authentication_classes([])
+@permission_classes([])
+def get_completed_invites(request, user_id):
+    queryset = Invite.objects.filter(user_id=user_id, completed=True)
+    serializer = InviteSerializer(queryset, many=True)
     return JsonResponse({'data': serializer.data})
 
