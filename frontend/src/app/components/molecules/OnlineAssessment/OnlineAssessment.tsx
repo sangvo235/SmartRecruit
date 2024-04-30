@@ -20,7 +20,7 @@ const OnlineAssessment = () => {
     const [onlineAssessment, setOnlineAssessment] = useState<OnlineAssessmentType[]>([]);
     
       const getOnlineAssessment = async () => {
-        const tmpOnlineAssessment = await apiService.get("/api/online_assessments/");
+        const tmpOnlineAssessment = await apiService.get(`/api/online_assessments/${onlineAssessment.map(assessment => assessment.id)}`);
         setOnlineAssessment(tmpOnlineAssessment.data);
       };
       
@@ -37,9 +37,15 @@ const OnlineAssessment = () => {
               <p>{onlineAssessment.number_of_questions}</p>
               <p>{onlineAssessment.time}</p>
               <p>{onlineAssessment.required_score_to_pass}</p>
-              <Button size="invite" variant="outline" onClick={() => router.push(`/pages/job/${onlineAssessment.job}`)}>
-                Job Details 
-              </Button>
+
+              <div className="space-x-4"> 
+                <Button size="invite" onClick={() => router.push(`/pages/job/${onlineAssessment.job}`)}>
+                  Start Online Assessment 
+                </Button>
+                <Button size="invite" variant="outline" onClick={() => router.push(`/pages/job/${onlineAssessment.job}`)}>
+                  Job Details 
+                </Button>
+              </div>
             </div>
           ))}
         </div>
