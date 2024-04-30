@@ -11,17 +11,13 @@ import { Avatar, AvatarFallback, AvatarImage } from "../../../components/atoms/A
 const FullJobDetails: React.FC<JobType | null> = () => {
     const params = useParams();
     const { id } = params;
+    
     const [job, setJob] = useState<JobType | null>(null);
-
     const [formattedDate, setFormattedDate] = useState<string>("");
 
     const getJob = async () => {
-        try {
-            const tmpJob = await apiService.get(`/api/jobs/${id}`);
-            setJob(tmpJob);
-        } catch (error) {
-            console.error("Error fetching job details:", error);
-        }
+        const tmpJob = await apiService.get(`/api/jobs/${id}`);
+        setJob(tmpJob);
     };
       
     useEffect(() => {
@@ -106,8 +102,8 @@ const FullJobDetails: React.FC<JobType | null> = () => {
                 </CardHeader>
 
                 <CardContent >
-                    <h1 className="text-2xl font-semibold flex items-center leading-none tracking-tight mb-4">Job Description</h1>
-                    <p className="ml-6">{job.description}</p>
+                    <div className="text-2xl font-semibold flex items-center leading-none tracking-tight mb-4">Job Description</div>
+                    <div className="ml-6">{job.description}</div>
                 </CardContent>
 
                 <CardFooter>
