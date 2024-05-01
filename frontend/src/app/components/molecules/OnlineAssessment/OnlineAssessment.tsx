@@ -4,6 +4,7 @@ import { useParams } from "next/navigation";
 import apiService from "@/app/services/apiService";
 import { Button } from "@/app/components/atoms/Button/Button";
 import { useRouter } from "next/navigation";
+import Test from "@/app/components/molecules/Test/Test";
 
 export type OnlineAssessmentType = {
     id: string;
@@ -45,9 +46,7 @@ const OnlineAssessment = () => {
               <p>{onlineAssessment.required_score_to_pass}</p>
 
               <div className="space-x-4"> 
-                <Button size="invite" onClick={() => router.push(`/pages/job/${onlineAssessment.job}`)}>
-                  Start Online Assessment 
-                </Button>
+                <Test />
                 <Button size="invite" variant="outline" onClick={() => router.push(`/pages/job/${onlineAssessment.job}`)}>
                   Job Details 
                 </Button>
