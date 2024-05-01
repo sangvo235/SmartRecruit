@@ -83,7 +83,7 @@ const CardContent = React.forwardRef<
           </div>
       </div>
       
-        <Button size="invite" onClick={() => router.push(`/pages/online-assessment/${invite.assessment.id}`)}>
+        <Button size="invite" onClick={() => router.push(`/pages/invite/${invite.assessment.id}`)}>
           Accept
         </Button>
 

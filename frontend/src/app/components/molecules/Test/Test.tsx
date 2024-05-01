@@ -1,25 +1,51 @@
 "use client"
-import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '../../atoms/Dialog/Dialog';
-import { Button } from '../../atoms/Button/Button';
+import { Key, useEffect, useState } from "react"
+import { useParams } from "next/navigation";
+import apiService from "@/app/services/apiService";
+import { Button } from "@/app/components/atoms/Button/Button";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from "@/app/components/atoms/Card/Card";
+import { RadioGroup, RadioGroupItem } from "@/app/components/atoms/RadioGroup/RadioGroup";
+import { Label } from "@/app/components/atoms/Label/Label";
 
 const Test = () => {
+  const params = useParams();
+  const { id } = params;
+
+  const [test, setTest] = useState<[]>([]);
+  
+    const getTest = async () => {
+      const tmpTest = await apiService.get(`/api/online_assessments/data/${id}`);
+      setTest(tmpTest.data);
+    };
+    
+    useEffect(() => {
+      getTest();
+  }, []);
 
     return (
-      <Dialog>
-        <DialogTrigger className='inline-flex items-center justify-center h-10 px-8 py-2 text-sm font-semibold bg-smartorange text-primary-foreground hover:bg-smartorange/90 whitespace-nowrapring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50'>
-            Start Online Assessment
-        </DialogTrigger>
-        
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Are you absolutely sure?</DialogTitle>
-            <DialogDescription>
-              This action cannot be undone. This will permanently delete your account
-              and remove your data from our servers.
-            </DialogDescription>
-          </DialogHeader>
-        </DialogContent>
-      </Dialog>
+      <>
+        {test.map((questionData, index) => (
+          <Card key={index} className="mb-4">
+            <CardHeader>
+              <CardTitle>{Object.keys(questionData)[0]}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <RadioGroup>
+                {questionData[Object.keys(questionData)[0]].map((answer, answerIndex) => (
+                  <div key={answerIndex} className="flex items-center space-x-2">
+                    <RadioGroupItem
+                      id={`answer-${index}-${answerIndex}`} 
+                      value={answer}
+                      name={`question-${index}`}
+                    />
+                    <Label htmlFor={`answer-${index}-${answerIndex}`}>{answer}</Label>
+                  </div>
+                ))}
+              </RadioGroup>
+            </CardContent>
+          </Card>
+        ))}
+      </>
     );
 }
 

@@ -4,7 +4,6 @@ import { useParams } from "next/navigation";
 import apiService from "@/app/services/apiService";
 import { Button } from "@/app/components/atoms/Button/Button";
 import { useRouter } from "next/navigation";
-import Test from "@/app/components/molecules/Test/Test";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from "@/app/components/atoms/Card/Card";
 import { BookType, Building2, PiggyBank, Hash, Timer } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from "@/app/components/atoms/Avatar/Avatar";
@@ -83,7 +82,9 @@ const OnlineAssessment = () => {
             </CardContent> */}
 
             <CardFooter className="space-x-4">
-              <Test />
+              <Button size="invite" onClick={() => router.push(`/pages/online-assessment/${onlineAssessment.id}`)}>
+                Start Assessment Assessment
+              </Button>
               <Button size="invite" variant="outline" onClick={() => router.push(`/pages/job/${onlineAssessment.job}`)}>
                 Job Details 
               </Button>
