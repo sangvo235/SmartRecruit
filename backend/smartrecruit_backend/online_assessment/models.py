@@ -11,7 +11,3 @@ class Assessment(models.Model):
 
     def __str__(self):
         return f'{self.name} - {self.topic}'
-    
-    def get_questions(self):
-        return self.questions_set.all()[:self.number_of_questions]
-
