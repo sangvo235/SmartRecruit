@@ -1,5 +1,6 @@
 from django.db import models
 from job.models import Job
+import random
 
 class Assessment(models.Model):
     name = models.CharField(max_length=100)
@@ -13,6 +14,6 @@ class Assessment(models.Model):
         return f'{self.name} - {self.topic}'
     
     def get_questions(self):
-        return self.question_set.all()[:self.number_of_questions]
-    
-        
+        questions = list(self.question_set.all())
+        random.shuffle(questions)
+        return questions[:self.number_of_questions]
