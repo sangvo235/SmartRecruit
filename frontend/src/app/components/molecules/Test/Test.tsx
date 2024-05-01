@@ -6,10 +6,8 @@ const Test = () => {
 
     return (
       <Dialog>
-        <DialogTrigger>
-          <Button size="invite">
-              Start Online Assessment 
-          </Button>
+        <DialogTrigger className='inline-flex items-center justify-center h-10 px-8 py-2 text-sm font-semibold bg-smartorange text-primary-foreground hover:bg-smartorange/90 whitespace-nowrapring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50'>
+            Start Online Assessment
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>

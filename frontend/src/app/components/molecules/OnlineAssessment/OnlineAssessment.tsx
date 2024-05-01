@@ -5,6 +5,9 @@ import apiService from "@/app/services/apiService";
 import { Button } from "@/app/components/atoms/Button/Button";
 import { useRouter } from "next/navigation";
 import Test from "@/app/components/molecules/Test/Test";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from "@/app/components/atoms/Card/Card";
+import { BookType, Building2, PiggyBank, Hash, Timer } from 'lucide-react';
+import { Avatar, AvatarFallback, AvatarImage } from "@/app/components/atoms/Avatar/Avatar";
 
 export type OnlineAssessmentType = {
     id: string;
@@ -37,22 +40,56 @@ const OnlineAssessment = () => {
     }, []);
   
     return (
-        <div>
-            <div>
-              <h1>{onlineAssessment.name}</h1>
-              <p>{onlineAssessment.topic}</p>
-              <p>{onlineAssessment.number_of_questions}</p>
-              <p>{onlineAssessment.time}</p>
-              <p>{onlineAssessment.required_score_to_pass}</p>
+        <>
+          <Card>
+            <CardHeader>
+                <CardTitle>Online Assessment: {onlineAssessment.name}</CardTitle>
 
-              <div className="space-x-4"> 
-                <Test />
-                <Button size="invite" variant="outline" onClick={() => router.push(`/pages/job/${onlineAssessment.job}`)}>
-                  Job Details 
-                </Button>
-              </div>
-            </div>
-        </div>
+                <div className="py-6"> 
+                    <Avatar className="w-40 h-40">
+                        <AvatarImage src={onlineAssessment.image_url} alt="company_logo" />
+                        <AvatarFallback>JD</AvatarFallback>
+                    </Avatar>
+                </div>
+                
+                <CardDescription>
+                    <Building2 className="w-4 h-4 mr-2" />
+                    <span>Company:</span>
+                    <span>{onlineAssessment.job_company}</span>
+                </CardDescription>
+                <CardDescription>
+                    <BookType className="w-4 h-4 mr-2" />
+                    <span>Topic:</span>
+                    <span>{onlineAssessment.topic}</span>
+                </CardDescription>
+                <CardDescription>
+                    <Hash className="w-4 h-4 mr-2" />
+                    <span>Questions:</span>
+                    <span>{onlineAssessment.number_of_questions}</span>
+                </CardDescription>
+                <CardDescription>
+                    <Timer className="w-4 h-4 mr-2" />
+                    <span>Time Limit:</span>
+                    <span>{onlineAssessment.time} minutes</span>
+                </CardDescription>
+                <CardDescription>
+                    <PiggyBank className="w-4 h-4 mr-2" />
+                    <span>Passing Score:</span>
+                    <span>{onlineAssessment.required_score_to_pass}%</span>
+                </CardDescription>
+            </CardHeader>
+
+            {/* <CardContent className="space-x-4">
+            </CardContent> */}
+
+            <CardFooter className="space-x-4">
+              <Test />
+              <Button size="invite" variant="outline" onClick={() => router.push(`/pages/job/${onlineAssessment.job}`)}>
+                Job Details 
+              </Button>
+            </CardFooter>
+        </Card>
+      </>
       );
       
 }
