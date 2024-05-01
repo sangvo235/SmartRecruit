@@ -1,8 +1,6 @@
 from django.db import models
 from online_assessment.models import Assessment
 
-# Create your models here.
-
 class Question(models.Model):
     text = models.CharField(max_length=200)
     assessment = models.ForeignKey(Assessment, on_delete=models.CASCADE)
@@ -12,7 +10,7 @@ class Question(models.Model):
         return str(self.text)
     
     def get_answers(self):
-        return self.answer.all()
+        return self.answer_set.all()
 
 class Answer(models.Model):
     text = models.CharField(max_length=200)
