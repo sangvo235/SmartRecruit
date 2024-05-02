@@ -29,7 +29,7 @@ Non-Coding:
 - ~Figma Prototyping~
 - ~System Architecture & Tech Stack~ 
 - ~Project README~
-- Diagram of Models
+- ~Diagram of Models~
 
 Frontend:
 - ~Nextjs & Typescript~
@@ -37,7 +37,7 @@ Frontend:
 - ~Shadcn/ui Components~
 - ~Navigation & Page Creation~
 - ~Page Content (~Authentication~, ~Login~, ~Home~, ~Resume Upload~, ~Account Details~, ~Invitations~ & ~Job Listing~)~
-- Dynamic Page Content (~Job Listing~ & Online Assessments) 
+- ~Dynamic Page Content (~Job Listing~ & ~Online Assessments~)~ 
 - ~Components/Molecules (~Authentication~, ~Navbar~, ~Footer~, ~Upload Resume~, ~Profile~, ~Invitation Tabs~, ~Job List~ & ~Online Assessment Cards~)~
 - ~Frontend Env File~
 - Integration with Backend Data (Resume Upload, ~Account Details~, ~Invitations~, ~Job Listing~ & ~Online Assessments~)
