@@ -25,6 +25,7 @@ def asessement_question_answer_data(request, pk):
     return JsonResponse({
         'data': questions,
         'time': assessments.time,
+        'name' : assessments.name,
     })
 
 @api_view(['POST'])
