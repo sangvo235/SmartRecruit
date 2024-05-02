@@ -27,16 +27,20 @@ const OnlineAssessment = () => {
     const { id } = params;
     const router = useRouter(); 
 
-    const [onlineAssessment, setOnlineAssessment] = useState<OnlineAssessmentType[]>([]);
+    const [onlineAssessment, setOnlineAssessment] = useState<OnlineAssessmentType | null>(null);
     
-      const getOnlineAssessment = async () => {
+    const getOnlineAssessment = async () => {
         const tmpOnlineAssessment = await apiService.get(`/api/online_assessments/${id}`);
         setOnlineAssessment(tmpOnlineAssessment.data);
-      };
+    };
       
-      useEffect(() => {
+    useEffect(() => {
         getOnlineAssessment();
     }, []);
+  
+    if (!onlineAssessment) {
+        return <div>Loading...</div>;
+    }
   
     return (
         <>
