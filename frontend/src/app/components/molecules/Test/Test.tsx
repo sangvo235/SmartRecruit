@@ -11,42 +11,80 @@ const Test = () => {
   const params = useParams();
   const { id } = params;
 
-  const [test, setTest] = useState<[]>([]);
-  
-    const getTest = async () => {
-      const tmpTest = await apiService.get(`/api/online_assessments/data/${id}`);
-      setTest(tmpTest.data);
-    };
-    
-    useEffect(() => {
-      getTest();
-  }, []);
+  const [test, setTest] = useState([]);
+  const [selectedValues, setSelectedValues] = useState({}); 
 
-    return (
-      <>
-        {test.map((questionData, index) => (
-          <Card key={index} className="mb-4">
-            <CardHeader>
-              <CardTitle>{Object.keys(questionData)[0]}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <RadioGroup>
-                {questionData[Object.keys(questionData)[0]].map((answer, answerIndex) => (
-                  <div key={answerIndex} className="flex items-center space-x-2">
-                    <RadioGroupItem
-                      id={`answer-${index}-${answerIndex}`} 
-                      value={answer}
-                      name={`question-${index}`}
-                    />
-                    <Label htmlFor={`answer-${index}-${answerIndex}`}>{answer}</Label>
-                  </div>
-                ))}
-              </RadioGroup>
-            </CardContent>
-          </Card>
-        ))}
-      </>
-    );
-}
+  useEffect(() => {
+    const getTest = async () => {
+      try {
+        const response = await apiService.get(`/api/online_assessments/data/${id}`);
+        setTest(response.data);
+        setSelectedValues(Object.fromEntries(response.data.map((question: {}) => [Object.keys(question)[0], ""])));
+      } catch (error) {
+        console.error("Error fetching test:", error);
+      }
+    };
+    if (id) {
+      getTest();
+    }
+  }, [id]);
+
+  const handleValueChange = (value: string, question: string) => {
+    setSelectedValues((prevSelectedValues) => ({
+      ...prevSelectedValues,
+      [question]: value,
+    }));
+  };
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const formData = Object.entries(selectedValues).map(([question, value]) => ({
+      [question]: [value],
+    }));
+
+    const response = await apiService.post(`/api/online_assessments/save/${id}`, JSON.stringify({ data: formData }));
+    
+    if ('detail' in response) {
+        console.error("Error saving assessment:", response.detail);
+    } else {
+        console.log("Answers submitted successfully.");
+    }
+
+  };
+
+  return (
+    <>
+      <form onSubmit={handleSubmit}>
+        {test.map((questionData, index) => {
+          const question = Object.keys(questionData)[0];
+          return (
+            <Card key={index} className="mb-4">
+              <CardHeader>
+                <CardTitle>{question}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <RadioGroup onValueChange={(value) => handleValueChange(value, question)}>
+                  {(questionData[question] as string[]).map((answer: string, answerIndex: Key | null | undefined) => (
+                    <div key={answerIndex} className="flex items-center space-x-2">
+                      <RadioGroupItem
+                        id={`answer-${index}-${answerIndex}`}
+                        value={answer}
+                      />
+                      <Label htmlFor={`answer-${index}-${answerIndex}`}>{answer}</Label>
+                    </div>
+                  ))}
+                </RadioGroup>
+              </CardContent>
+            </Card>
+          );
+        })}
+        <Button className="mt-6" type="submit" size="invite">
+          Submit Online Assessment 
+        </Button>
+      </form>
+    </>
+  );
+};
 
 export default Test;

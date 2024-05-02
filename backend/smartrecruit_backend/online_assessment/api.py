@@ -27,3 +27,11 @@ def asessement_question_answer_data(request, pk):
         'time': assessments.time,
     })
 
+@api_view(['POST'])
+@authentication_classes([])
+@permission_classes([])
+def save_asessement(request, pk):
+    print(request.POST)
+    if request.POST:
+        print(request.POST)
+    return JsonResponse({'text': 'success'})
