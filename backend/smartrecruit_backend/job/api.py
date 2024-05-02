@@ -15,10 +15,6 @@ def job_list(request):
 @authentication_classes([])
 @permission_classes([])
 def job_detail(request, job_id):
-    try:
-        job = Job.objects.get(id=job_id)
-    except Job.DoesNotExist:
-        raise Http404("Job does not exist")
-
+    job = Job.objects.get(id=job_id)
     serializer = JobDetailSerializer(job)
     return JsonResponse(serializer.data)
