@@ -11,12 +11,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = os.environ.get("SECRET_KEY", "12345")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(os.environ.get("DEBUG", default=0))
+#DEBUG = bool(os.environ.get("DEBUG", default=0))
+DEBUG = True
 
-ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]']
 
 AUTH_USER_MODEL = 'useraccount.User'
 
@@ -127,14 +128,15 @@ WSGI_APPLICATION = 'smartrecruit_backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': os.environ.get("SQL_ENGINE"),
-        'NAME': os.environ.get("SQL_DATABASE"),
-        'USER': os.environ.get("SQL_USER"),
-        'PASSWORD': os.environ.get("SQL_PASSWORD"),
-        'HOST': os.environ.get("SQL_HOST"),
-        'PORT': os.environ.get("SQL_PORT"),
+        'ENGINE': os.environ.get("SQL_ENGINE", 'django.db.backends.sqlite3'),  # Fallback to SQLite if not specified
+        'NAME': os.environ.get("SQL_DATABASE", os.path.join(BASE_DIR, 'db.sqlite3')),  # Default to SQLite DB in base dir
+        'USER': os.environ.get("SQL_USER", ''),
+        'PASSWORD': os.environ.get("SQL_PASSWORD", ''),
+        'HOST': os.environ.get("SQL_HOST", 'localhost'),  # Default to localhost if not specified
+        'PORT': os.environ.get("SQL_PORT", ''),
     }
 }
+
 
 
 # Password validation
