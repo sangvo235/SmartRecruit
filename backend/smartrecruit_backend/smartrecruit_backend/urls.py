@@ -8,8 +8,12 @@ urlpatterns = [
     path('api/jobs/', include('job.urls')),
     path('api/auth/', include('useraccount.urls')),
     path('api/user_details/', include('useraccount.urls')),
+<<<<<<< HEAD
     path('api/user_update/', include('useraccount.urls')),
     path('api/upload_avatar/', include('useraccount.urls')),
     path('api/online_assessments/', include('online_assessment.urls')),
     path('api/invite/', include('invite.urls')),
+=======
+    path('api/', include('ml_processing.urls')),
+>>>>>>> da1e56a (Local changes to settings and URLs)
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
