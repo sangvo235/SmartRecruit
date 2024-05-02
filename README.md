@@ -38,7 +38,7 @@ Frontend:
 - ~Navigation & Page Creation~
 - ~Page Content (~Authentication~, ~Login~, ~Home~, ~Resume Upload~, ~Account Details~, ~Invitations~ & ~Job Listing~)~
 - Dynamic Page Content (~Job Listing~ & Online Assessments) 
-- Components/Molecules (~Authentication~, ~Navbar~, ~Footer~, ~Upload Resume~, ~Profile~, ~Invitation Tabs~, ~Job List~ & Online Assessment Cards)
+- ~Components/Molecules (~Authentication~, ~Navbar~, ~Footer~, ~Upload Resume~, ~Profile~, ~Invitation Tabs~, ~Job List~ & ~Online Assessment Cards~)~
 - ~Frontend Env File~
 - Integration with Backend Data (Resume Upload, ~Account Details~, ~Invitations~, ~Job Listing~ & ~Online Assessments~)
 - Job Recruiter Interface (Create Online Assessments, Create Job Listing, Candidate Scores from Online Assessments Page, Candidate Profile Access)
