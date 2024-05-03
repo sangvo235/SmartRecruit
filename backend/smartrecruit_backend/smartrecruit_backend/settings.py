@@ -93,6 +93,8 @@ INSTALLED_APPS = [
     'results',
     'questions',
     'invite',
+    
+    'ml_processing'
 ]
 
 MIDDLEWARE = [
