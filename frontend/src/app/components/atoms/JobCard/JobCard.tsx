@@ -1,4 +1,3 @@
-
 import * as React from "react";import { cn } from "../../../lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "../Avatar/Avatar";
 import { Button } from "../Button/Button";
@@ -66,7 +65,7 @@ const CardContent = React.forwardRef<
               </div>
           </div>
 
-          <div className="text-sm text-muted-foreground">{job.info}</div>
+          <div className="text-sm text-muted-foreground pt-2">{job.intro}</div>
       </div>
       
       {/* Apply (will code this at a later time) */}

@@ -1,5 +1,4 @@
 "use client"
-
 import { useEffect, useState } from "react"
 import { Card, CardContent, CardFooter } from "../../atoms/JobCard/JobCard";
 import apiService from "@/app/services/apiService";
@@ -13,9 +12,11 @@ export type JobType = {
     industry: string;
     salary: number;
     description: string;
-    info: string;
+    intro: string;
     image_url: string;
-    // recruiter: Recruiter[];
+    recruiter: string;
+    recruiter_name: string;
+    recruiter_email: string;
     created_at: string;
 }
 
@@ -30,7 +31,7 @@ const JobList = () => {
       useEffect(() => {
         getJobs();
     }, []);
-
+  
     return (
         <div>
           {jobs.map((job) => (

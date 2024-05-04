@@ -28,11 +28,11 @@ class CustomUserManager(UserManager):
 class User(AbstractBaseUser, PermissionsMixin):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     email = models.EmailField(max_length=255, unique=True)
-    name = models.CharField(max_length=255, blank=True, null=True)
-    avatar = models.ImageField(upload_to='uploads/avatars')
-    bio = models.TextField(blank=True, null=True)
-    location = models.CharField(max_length=255, blank=True, null=True)
-    phone = models.CharField(max_length=15,blank=True, null=True)
+    name = models.CharField(max_length=255, blank=True, default='')
+    avatar = models.ImageField(upload_to='uploads/avatars', default='uploads/avatars/default.jpg')
+    bio = models.TextField(blank=True, default='')
+    location = models.CharField(max_length=255, blank=True, default='')
+    phone = models.CharField(max_length=15,blank=True, default='')
 
     is_active = models.BooleanField(default=True)
     is_superuser = models.BooleanField(default=False)

@@ -4,41 +4,65 @@
 - Group ID: AC4 
 - Client Name: Smaart Recruitment
 
+![Next.js](https://img.shields.io/badge/Next.js-000?logo=nextdotjs&logoColor=fff&style=for-the-badge)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=fff&style=for-the-badge)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-06B6D4?logo=tailwindcss&logoColor=fff&style=for-the-badge)
+![shadcn/ui](https://img.shields.io/badge/shadcn%2Fui-000?logo=shadcnui&logoColor=fff&style=for-the-badge)
+![Django](https://img.shields.io/badge/Django-092E20?logo=django&logoColor=fff&style=for-the-badge)
+![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=fff&style=for-the-badge)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?logo=scikitlearn&logoColor=fff&style=for-the-badge)
+![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?logo=pytorch&logoColor=fff&style=for-the-badge)
+![Keras](https://img.shields.io/badge/Keras-D00000?logo=keras&logoColor=fff&style=for-the-badge)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?logo=postgresql&logoColor=fff&style=for-the-badge)
+![Microsoft Azure](https://img.shields.io/badge/Microsoft%20Azure-0078D4?logo=microsoftazure&logoColor=fff&style=for-the-badge)
+![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=fff&style=for-the-badge)
+![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-007ACC?logo=visualstudiocode&logoColor=fff&style=for-the-badge)
+![Google Drive](https://img.shields.io/badge/Google%20Drive-4285F4?logo=googledrive&logoColor=fff&style=for-the-badge)
+
 <img width="523" alt="tech" src="https://github.com/sangvo235/SmartRecruit/assets/97276811/e6ffc76e-61c9-4239-997f-48d26f3c9db9">
 
 <img width="567" alt="sys-arc" src="https://github.com/sangvo235/SmartRecruit/assets/97276811/232909b7-8765-4250-8c33-3801bfe907e3">
 
 # Task List 📋
 Non-Coding:
-- ~Project README~
+- ~Google Drive~
 - ~Figma Prototyping~
+- ~System Architecture & Tech Stack~ 
+- ~Project README~
+- ~Diagram of Models~
 
 Frontend:
 - ~Nextjs & Typescript~
-- ~Tailwind~
+- ~Tailwind CSS~
+- ~Shadcn/ui Components~
 - ~Navigation & Page Creation~
-- Page Content (~Authentication~, ~Login~, ~Home~, ~Resume Upload~, ~Account Details~, ~Invitations~, ~Job Listing~ & Online Assessments)
-- Dynamic Page Content (~Job Listing~ & Online Assessments) 
-- Components/Molecules (~Authentication~, ~Navbar~, ~Footer~, ~Upload Resume~, ~Profile~, ~Invitation Tabs~, ~Job List~ & Online Assessment Cards)
+- ~Page Content (~Authentication~, ~Login~, ~Home~, ~Resume Upload~, ~Account Details~, ~Invitations~ & ~Job Listing~)~
+- ~Dynamic Page Content (~Job Listing~ & ~Online Assessments~)~ 
+- ~Components/Molecules (~Authentication~, ~Navbar~, ~Footer~, ~Upload Resume~, ~Profile~, ~Invitation Tabs~, ~Job List~ & ~Online Assessment Cards~)~
 - ~Frontend Env File~
-- Integration with Backend Data (Resume Upload, ~Account Details~, Invitations, ~Job Listing~ & Online Assessments)
+- Integration with Backend Data (Resume Upload, ~Account Details~, ~Invitations~, ~Job Listing~, ~Online Assessments~ & Results)
+- Job Recruiter Interface (Create Online Assessments, Create Job Listing, Candidate Scores from Online Assessments Page, Candidate Profile Access)
+
 
 Backend:
 - ~Docker for Django project with postgreSQL~
 - ~Django REST API~
 - ~Backend Env File~
 - ~Configurations~
-- Models (~User~, ~Job~, Invite & Online Assessment)
+- ~Models (~User~, ~Job~, ~Invite~, ~Online Assessment~, ~Question~ and ~Answer~)~
 - ~Serializers & API URLs~
 - ~Authentication~
+- APIs (~GET User Details~, ~POST User Details~, ~POST Avatar Upload~, ~GET Jobs~, ~GET Invites~, ~Filter Invites~, ~GET Online Assessment~ & POST Online Assessment).
+- APIs for Job Recruiter (POST Jobs & GET Candidate Details)
 - Integration with ML Component for Resume Upload
 - Cloud Storage
+- Debugging and Test Cases
 - Deployment
 
 Extra:
-- User to change account details on frontend 
+- ~User to change account details on frontend~ 
 - Recruiter to change job listing on frontend
-- Extending online assessment questionnaire format 
+- Extending online assessment questionnaire format
 
 # Software Required 💻
 Before starting please have the following installed.
