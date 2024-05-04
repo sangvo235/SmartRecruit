@@ -40,29 +40,29 @@ Frontend:
 - ~Dynamic Page Content (~Job Listing~ & ~Online Assessments~)~ 
 - ~Components/Molecules (~Authentication~, ~Navbar~, ~Footer~, ~Upload Resume~, ~Profile~, ~Invitation Tabs~, ~Job List~ & ~Online Assessment Cards~)~
 - ~Frontend Env File~
-- Integration with Backend Data (Resume Upload, ~Account Details~, ~Invitations~, ~Job Listing~, ~Online Assessments~ & Results)
-- Job Recruiter Interface (Create Online Assessments, Create Job Listing, Candidate Scores from Online Assessments Page, Candidate Profile Access)
-
+- ~User able to change account details on frontend~ 
+- ~Integration with Backend Data (Resume Upload, ~Account Details~, ~Invitations~, ~Job Listing~, ~Online Assessments~ & ~Results~)~
 
 Backend:
 - ~Docker for Django project with postgreSQL~
 - ~Django REST API~
 - ~Backend Env File~
 - ~Configurations~
-- ~Models (~User~, ~Job~, ~Invite~, ~Online Assessment~, ~Question~ and ~Answer~)~
 - ~Serializers & API URLs~
 - ~Authentication~
-- APIs (~GET User Details~, ~POST User Details~, ~POST Avatar Upload~, ~GET Jobs~, ~GET Invites~, ~Filter Invites~, ~GET Online Assessment~ & POST Online Assessment).
-- APIs for Job Recruiter (POST Jobs & GET Candidate Details)
-- Integration with ML Component for Resume Upload
-- Cloud Storage
-- Debugging and Test Cases
-- Deployment
+- ~Models (~User~, ~Job~, ~Invite~, ~Online Assessment~, ~Question~, ~Answer~ and ~Machine Learning~)~
+- ~APIs (~GET User Details~, ~POST User Details~, ~POST Avatar Upload~, ~GET Jobs~, ~GET Invites~, ~Filter Invites~, ~GET Online Assessment~ and ~Machine Learning~)~
 
-Extra:
-- ~User to change account details on frontend~ 
-- Recruiter to change job listing on frontend
-- Extending online assessment questionnaire format
+Fixes based on feedback / FINAL 2 weeks TODOs: 
+- Adding session tokens for online assessment testing results and authentication.
+- Authentication related issues with rendering on frontend once logged in.  
+- Frontend interface & API for listing candidate scores on online assessment for job recruiter.
+- Storage of uploaded resume.
+- Integrating machine learning component for resume upload.
+- Search bar and filtering system on job listing page based on the resume uploaded.
+- Have the user and recruiter displays to be different on the frontend.
+- Cloud storage option.
+- Deployment.
 
 # Software Required 💻
 Before starting please have the following installed.
