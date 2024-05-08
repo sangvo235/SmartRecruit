@@ -36,3 +36,12 @@ class AssessmentSerializer(serializers.ModelSerializer):
     
     def get_image_url(self, obj):
         return obj.job.image_url()
+    
+class AssessmentAnswerSerializer(serializers.Serializer):
+    question_text = serializers.CharField()
+    answered = serializers.CharField()
+
+class AssessmentResultSerializer(serializers.Serializer):
+    passed = serializers.BooleanField()
+    score = serializers.IntegerField()
+    results = AssessmentAnswerSerializer(many=True)

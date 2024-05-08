@@ -14,21 +14,20 @@ export type TestType = {
 }
 
 const Test = () => {
+  
   const params = useParams();
   const { id } = params;
 
   const [test, setTest] = useState([]);
   const [formValues, setFormValues] = useState<TestType | null>(null);
-  const [selectedValues, setSelectedValues] = useState({}); 
+  const [selectedValues, setSelectedValues] = useState<{ [key: string]: string }>({});
 
   useEffect(() => {
     const getTest = async () => {
       try {
         const response = await apiService.get(`/api/online_assessments/data/${id}`);
         setTest(response.data);
-
         setFormValues(response);
-
         setSelectedValues(Object.fromEntries(response.data.map((question: {}) => [Object.keys(question)[0], ""])));
       } catch (error) {
         console.error("Error fetching test:", error);
@@ -48,21 +47,27 @@ const Test = () => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+  
+    try {
+      const quizForm: { user_id: string, questions: string[], answers: string[] } = {
+        user_id: 'e5b81074-f591-4e2b-bc7f-6742d0998387',
+        questions: [],
+        answers: []
+      };
+      
+      Object.entries(selectedValues).forEach(([question, answer]) => {
+        quizForm.questions.push(question);
+        quizForm.answers.push(answer);
+      });
 
-    const formData = Object.entries(selectedValues).map(([question, value]) => ({
-      [question]: [value],
-    }));
+      const response = await apiService.post(`/api/online_assessments/save/${id}`, JSON.stringify(quizForm));
 
-    const response = await apiService.post(`/api/online_assessments/save/${id}`, JSON.stringify({ data: formData }));
-    
-    if ('detail' in response) {
-        console.error("Error saving assessment:", response.detail);
-    } else {
-        console.log("Answers submitted successfully.");
+      console.log("Test submitted successfully:", response); 
+    } catch (error) {
+      console.error("Error submitting test:", error);
     }
-
-  };
-
+  };  
+  
   return (
     <>
       <div className="text-5xl font-semibold leading-none tracking-tight text-center pb-8">{formValues?.name}</div>
