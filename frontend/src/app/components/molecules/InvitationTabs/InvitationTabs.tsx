@@ -1,6 +1,8 @@
 "use client"
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "../../atoms/Tabs/Tabs";
 import { Card, CardContent, CardFooter } from "../../atoms/InviteCard/InviteCard";
+import { Card2, CardContent2, CardFooter2 } from "../../atoms/InviteCardCompleted/InviteCardCompleted";
+import { Card3, CardContent3, CardFooter3 } from "../../atoms/InviteCardExpired/InviteCardExpired";
 import apiService from "@/app/services/apiService";
 import { useEffect, useState } from "react";
 import { OnlineAssessmentType } from "../OnlineAssessment/OnlineAssessment";
@@ -13,8 +15,7 @@ export type InviteType = {
   assessment: OnlineAssessmentType;
   invite_date: string;
   expire_date: string;
-  expired: boolean;
-  completed: boolean;
+  score: number;
 }
 
 const InvitationTabs = () => {
@@ -55,19 +56,19 @@ const InvitationTabs = () => {
 
         <TabsContent value="completed">
           {completedInvites.map((invite) => (
-            <Card key={invite.user_id}>
-              <CardContent invite={invite} />
-              <CardFooter invite={invite}/>
-            </Card>
+            <Card2 key={invite.user_id}>
+              <CardContent2 invite={invite} />
+              <CardFooter2 invite={invite}/>
+            </Card2>
           ))}
         </TabsContent>
 
         <TabsContent value="expired">
           {expiredInvites.map((invite) => (
-            <Card key={invite.user_id}>
-              <CardContent invite={invite} />
-              <CardFooter invite={invite}/>
-            </Card>
+            <Card3 key={invite.user_id}>
+              <CardContent3 invite={invite} />
+              <CardFooter3 invite={invite}/>
+            </Card3>
           ))}
         </TabsContent>
       </Tabs>

@@ -4,6 +4,8 @@ from .models import Assessment
 from .serializers import AssessmentSerializer
 from questions.models import Answer, Question
 from results.models import Result
+from useraccount.models import User 
+from invite.models import Invite
 
 @api_view(['GET'])
 @authentication_classes([])
@@ -37,10 +39,9 @@ def save_asessement(request, pk):
     if request.method == 'POST':
         data = request.data
 
-        user_id = data.get('user_id', None)
-        if user_id is None:
-            return JsonResponse({'error': 'User ID is required'}, status=400)
-
+        user_id = User.objects.get(id=data.get('user_id'))
+        invite = Invite.objects.get(assessment_id=pk, user_id=user_id)
+                
         questions = data.get('questions', [])
         answers = data.get('answers', [])
 
@@ -84,11 +85,12 @@ def save_asessement(request, pk):
                 })
 
         score_ = score * multiplier
-        Result.objects.create(assessment=assessment, score=score_, user_id=user_id)
+        Result.objects.create(invite=invite, score=score_, user_id=user_id)
 
         passed = score_ >= assessment.required_score_to_pass
 
         return JsonResponse({
+            'invite_id': invite.id,
             'passed': passed,
             'score': score_,
             'results': results

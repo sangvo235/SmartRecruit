@@ -5,7 +5,7 @@ import apiService from "@/app/services/apiService";
 import { Button } from "@/app/components/atoms/Button/Button";
 import { useRouter } from "next/navigation";
 import { Card, CardFooter, CardHeader, CardTitle, CardDescription } from "@/app/components/atoms/Card/Card";
-import { BookType, Building2, PiggyBank, Hash, Timer } from 'lucide-react';
+import { BookType, Building2, MapPin, PersonStanding, Hash, Timer } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from "@/app/components/atoms/Avatar/Avatar";
 
 export type OnlineAssessmentType = {
@@ -14,7 +14,6 @@ export type OnlineAssessmentType = {
     topic: string;
     number_of_questions: number;
     time: number;
-    required_score_to_pass: number;
     job: string;
     job_title: string;
     job_company: string;
@@ -61,6 +60,16 @@ const OnlineAssessment = () => {
                     <span>{onlineAssessment.job_company}</span>
                 </CardDescription>
                 <CardDescription>
+                    <MapPin className="w-4 h-4 mr-2" />
+                    <span>Location:</span>
+                    <span>{onlineAssessment.job_location}</span>
+                </CardDescription>
+                <CardDescription>
+                    <PersonStanding className="w-4 h-4 mr-2" />
+                    <span>Job Title:</span>
+                    <span>{onlineAssessment.job_title}</span>
+                </CardDescription>
+                <CardDescription>
                     <BookType className="w-4 h-4 mr-2" />
                     <span>Topic:</span>
                     <span>{onlineAssessment.topic}</span>
@@ -75,16 +84,11 @@ const OnlineAssessment = () => {
                     <span>Time Limit:</span>
                     <span>{onlineAssessment.time} minutes</span>
                 </CardDescription>
-                <CardDescription>
-                    <PiggyBank className="w-4 h-4 mr-2" />
-                    <span>Passing Score:</span>
-                    <span>{onlineAssessment.required_score_to_pass}%</span>
-                </CardDescription>
             </CardHeader>
 
             <CardFooter className="space-x-4">
               <Button size="invite" onClick={() => router.push(`/pages/online-assessment/${onlineAssessment.id}`)}>
-                Start Assessment Assessment
+                Start Online Assessment
               </Button>
               <Button size="invite" variant="outline" onClick={() => router.push(`/pages/job/${onlineAssessment.job}`)}>
                 Job Details 
