@@ -1,6 +1,7 @@
 "use client"
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "../../atoms/Tabs/Tabs";
 import { Card, CardContent, CardFooter } from "../../atoms/InviteCard/InviteCard";
+import { Card2, CardContent2, CardFooter2 } from "../../atoms/InviteCard2/InviteCard2";
 import apiService from "@/app/services/apiService";
 import { useEffect, useState } from "react";
 import { OnlineAssessmentType } from "../OnlineAssessment/OnlineAssessment";
@@ -13,8 +14,7 @@ export type InviteType = {
   assessment: OnlineAssessmentType;
   invite_date: string;
   expire_date: string;
-  expired: boolean;
-  completed: boolean;
+  score: number;
 }
 
 const InvitationTabs = () => {
@@ -55,10 +55,10 @@ const InvitationTabs = () => {
 
         <TabsContent value="completed">
           {completedInvites.map((invite) => (
-            <Card key={invite.user_id}>
-              <CardContent invite={invite} />
-              <CardFooter invite={invite}/>
-            </Card>
+            <Card2 key={invite.user_id}>
+              <CardContent2 invite={invite} />
+              <CardFooter2 invite={invite}/>
+            </Card2>
           ))}
         </TabsContent>
 
