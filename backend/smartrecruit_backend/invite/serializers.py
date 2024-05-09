@@ -33,8 +33,3 @@ class InviteSerializer(serializers.ModelSerializer):
         except Result.DoesNotExist:
             return None
     
-    def to_representation(self, instance):
-        data = super().to_representation(instance)
-        assessment_data = data.pop('assessment')  # Remove nested assessment data
-        data.update(assessment_data)  # Merge assessment data directly into parent data
-        return data
