@@ -176,7 +176,7 @@ const UserDetails: React.FC<UserProps> = ({ userId }) => {
                     </div>
       
                     <div className="flex justify-center space-x-4"> 
-                        <Button type="submit" size="invite" >Submit</Button>
+                        <Button type="submit" size="invite">Submit</Button>
                         <Button type="button" size="invite" variant="outline" onClick={handleCancel}>Cancel</Button>
                     </div>
 

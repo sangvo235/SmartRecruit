@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from .models import Assessment
-from job.serializers import JobListSerializer
 from django.conf import settings
 
 class AssessmentSerializer(serializers.ModelSerializer):
