@@ -1,12 +1,11 @@
 from rest_framework import serializers
 from .models import Invite
-from useraccount.serializers import UserDetailsSerializer
 from online_assessment.serializers import AssessmentSerializer
 from results.models import Result
 
 class InviteSerializer(serializers.ModelSerializer):
-    user_email = serializers.SerializerMethodField()
     assessment = AssessmentSerializer()
+    user_email = serializers.SerializerMethodField()
     score = serializers.SerializerMethodField()
 
     class Meta:
@@ -18,8 +17,6 @@ class InviteSerializer(serializers.ModelSerializer):
             'assessment',
             'invite_date',
             'expire_date',
-            'expired',
-            'completed',
             'score'
         )
 

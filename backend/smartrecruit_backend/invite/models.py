@@ -8,6 +8,4 @@ class Invite(models.Model):
     assessment = models.ForeignKey(Assessment, related_name='invites', on_delete=models.CASCADE, default=None, blank=True, null=True)
     invite_date = models.DateTimeField(auto_now_add=True)
     expire_date = models.DateTimeField()
-    expired = models.BooleanField(default=False)
-    completed = models.BooleanField(default=False)
 
