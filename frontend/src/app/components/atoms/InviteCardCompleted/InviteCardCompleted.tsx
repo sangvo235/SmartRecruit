@@ -1,8 +1,7 @@
 import * as React from "react";
 import { cn } from "../../../lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "../Avatar/Avatar";
-import { Button } from "../Button/Button";
-import { Building2, MapPin, UserRound, BookType, Hash, Timer, CalendarClock } from "lucide-react";
+import { Building2, MapPin, UserRound, BookType, Hash, Timer, Scroll, CalendarClock } from "lucide-react";
 import { InviteType } from "../../molecules/InvitationTabs/InvitationTabs";
 import { Separator } from "../Separator/Separator";
 import { useRouter } from "next/navigation";
@@ -12,7 +11,7 @@ interface InviteCardProps {
   invite: InviteType;
 }
 
-const Card3 = React.forwardRef<
+const Card2 = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
@@ -25,9 +24,9 @@ const Card3 = React.forwardRef<
     {...props}
   />
 ));
-Card3.displayName = "Card3";
+Card2.displayName = "Card2";
 
-const CardContent3 = React.forwardRef<
+const CardContent2 = React.forwardRef<
     HTMLDivElement, 
     React.HTMLAttributes<HTMLDivElement> & 
     InviteCardProps
@@ -80,15 +79,20 @@ const CardContent3 = React.forwardRef<
               <Timer className="w-6 h-6 mr-2" />
               <span>Time: {invite.assessment.time} minutes</span>
             </div>
+
+            <div className="flex items-center mt-2 text-smartorange">
+              <Scroll className="w-6 h-6 mr-2" />
+              <span>Your Score: {invite.score} / 100</span>
+            </div>
           </div>
       </div>
     </div>
   );
 });
-CardContent3.displayName = "CardContent3";
+CardContent2.displayName = "CardContent2";
 
 
-const CardFooter3 = React.forwardRef<
+const CardFooter2 = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement> & 
   InviteCardProps
@@ -115,7 +119,7 @@ const CardFooter3 = React.forwardRef<
 });
 
 export {
-  Card3,
-  CardContent3,
-  CardFooter3,
+  Card2,
+  CardContent2,
+  CardFooter2,
 };

@@ -1,8 +1,7 @@
 import * as React from "react";
 import { cn } from "../../../lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "../Avatar/Avatar";
-import { Button } from "../Button/Button";
-import { Building2, MapPin, UserRound, BookType, Hash, Timer, Scroll, CalendarClock } from "lucide-react";
+import { Building2, MapPin, UserRound, BookType, Hash, Timer, CalendarClock } from "lucide-react";
 import { InviteType } from "../../molecules/InvitationTabs/InvitationTabs";
 import { Separator } from "../Separator/Separator";
 import { useRouter } from "next/navigation";
@@ -12,7 +11,7 @@ interface InviteCardProps {
   invite: InviteType;
 }
 
-const Card2 = React.forwardRef<
+const Card3 = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
@@ -25,9 +24,9 @@ const Card2 = React.forwardRef<
     {...props}
   />
 ));
-Card2.displayName = "Card2";
+Card3.displayName = "Card3";
 
-const CardContent2 = React.forwardRef<
+const CardContent3 = React.forwardRef<
     HTMLDivElement, 
     React.HTMLAttributes<HTMLDivElement> & 
     InviteCardProps
@@ -67,22 +66,28 @@ const CardContent2 = React.forwardRef<
 
           <div className="text-black pt-2"> 
             <div className="flex items-center mt-2">
-              <Scroll className="w-6 h-6 mr-2" />
-              <span>Your Score: {invite.score} / 100</span>
+              <BookType className="w-6 h-6 mr-2" />
+              <span>Topic: {invite.assessment.topic}</span>
+            </div>
+
+            <div className="flex items-center mt-2">
+              <Hash className="w-6 h-6 mr-2" />
+              <span>Number of Questions: {invite.assessment.number_of_questions}</span>
+            </div>
+
+            <div className="flex items-center mt-2">
+              <Timer className="w-6 h-6 mr-2" />
+              <span>Time: {invite.assessment.time} minutes</span>
             </div>
           </div>
       </div>
-      
-        <Button size="invite" onClick={() => router.push(`/pages/invite/${invite.assessment.id}`)}>
-          View Details
-        </Button>
     </div>
   );
 });
-CardContent2.displayName = "CardContent2";
+CardContent3.displayName = "CardContent3";
 
 
-const CardFooter2 = React.forwardRef<
+const CardFooter3 = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement> & 
   InviteCardProps
@@ -109,7 +114,7 @@ const CardFooter2 = React.forwardRef<
 });
 
 export {
-  Card2,
-  CardContent2,
-  CardFooter2,
+  Card3,
+  CardContent3,
+  CardFooter3,
 };
