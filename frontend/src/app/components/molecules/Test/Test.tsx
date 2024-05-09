@@ -7,15 +7,16 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/app/components/atoms
 import { RadioGroup, RadioGroupItem } from "@/app/components/atoms/RadioGroup/RadioGroup";
 import { Label } from "@/app/components/atoms/Label/Label";
 import { Timer } from 'lucide-react';
+import { useRouter } from "next/navigation";
 
 export type TestType = {
     questions: string[];
     time: string;
     name: string;
+    answers: { [key: string]: string };
 }
 
 const Test = () => {
-  
   const params = useParams();
   const { id } = params;
 
@@ -23,15 +24,38 @@ const Test = () => {
   const [formValues, setFormValues] = useState<TestType | null>(null);
   const [selectedValues, setSelectedValues] = useState<{ [key: string]: string }>({});
   const timerBoxRef = useRef<HTMLDivElement>(null); 
+  const [shouldSubmitAutomatically, setShouldSubmitAutomatically] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const getTest = async () => {
       try {
-        const response = await apiService.get(`/api/online_assessments/data/${id}`);
-        setTest(response.data);
-        setFormValues(response);
-        setSelectedValues(Object.fromEntries(response.data.map((question: {}) => [Object.keys(question)[0], ""])));
-        activateTimer(response.time);
+        let testFromStorage = sessionStorage.getItem(`test_${id}`);
+        if (!testFromStorage) {
+          const response = await apiService.get(`/api/online_assessments/data/${id}`);
+          console.log("Data fetched from server:", response);
+          setTest(response.data);
+          const questions = response.data.map((question: any) => Object.keys(question)[0]);
+          setFormValues({ ...response, questions });
+          setSelectedValues(Object.fromEntries(response.data.map((question: {}) => [Object.keys(question)[0], ""])));
+
+          sessionStorage.setItem(`test_${id}`, JSON.stringify(response));
+          sessionStorage.setItem(`start_time_${id}`, String(Date.now()));
+          sessionStorage.setItem(`time_${id}`, response.time);
+        } else {
+          const parsedTest = JSON.parse(testFromStorage);
+          console.log("Data retrieved from sessionStorage:", parsedTest);
+          setTest(parsedTest.data);
+          const questions = parsedTest.data.map((question: any) => Object.keys(question)[0]);
+          setFormValues({ ...parsedTest, questions });
+          setSelectedValues(Object.fromEntries(parsedTest.data.map((question: {}) => [Object.keys(question)[0], ""])));
+
+          const startTime = parseInt(sessionStorage.getItem(`start_time_${id}`) || '0');
+          const storedTime = parseInt(sessionStorage.getItem(`time_${id}`) || '0');
+          const elapsedTimeInSeconds = Math.floor((Date.now() - startTime) / 1000);
+          const remainingTimeInSeconds = storedTime * 60 - elapsedTimeInSeconds;
+          activateTimer(remainingTimeInSeconds);
+        }
       } catch (error) {
         console.error("Error fetching test:", error);
       }
@@ -40,46 +64,35 @@ const Test = () => {
       getTest();
     }
   }, [id]);
-
-  const activateTimer = (time: any) => {
-    const timerBox = timerBoxRef.current; // Access the DOM element using the ref
-
+  
+  useEffect(() => {
+    if (shouldSubmitAutomatically) {
+      handleSubmit();
+    }
+  }, [shouldSubmitAutomatically]);
+  
+  const activateTimer = (time: number) => {
+    const timerBox = timerBoxRef.current;
+  
     if (timerBox) {
-      if (time.toString().length < 2) {
-        timerBox.innerHTML = `<b>0${time}:00</b>`;
-      } else {
-        timerBox.innerHTML = `<b>${time}:00</b>`;
-      }
-
-      let minutes = time - 1;
-      let seconds = 60;
-      let displaySeconds;
-      let displayMinutes;
-
+      let totalSeconds = time;
+  
       const timer = setInterval(() => {
-        seconds--;
-        if (seconds < 0) {
-          seconds = 59;
-          minutes--;
-        }
-
-        if (minutes.toString().length < 2) {
-          displayMinutes = `0${minutes}`;
-        } else {
-          displayMinutes = minutes;
-        }
-
-        if (seconds.toString().length < 2) {
-          displaySeconds = `0${seconds}`;
-        } else {
-          displaySeconds = seconds;
-        }
-
+        const minutes = Math.floor(totalSeconds / 60);
+        const seconds = totalSeconds % 60;
+  
+        const displayMinutes = String(minutes).padStart(2, '0');
+        const displaySeconds = String(seconds).padStart(2, '0');
+  
         timerBox.innerHTML = `<b>${displayMinutes}:${displaySeconds}</b>`;
-
-        if (minutes === 0 && seconds === 0) {
+  
+        sessionStorage.setItem(`remaining_time_${id}`, String(totalSeconds));
+  
+        totalSeconds--;
+  
+        if (totalSeconds < 0) {
           clearInterval(timer);
-          alert("Time's up!");
+          setShouldSubmitAutomatically(true);
         }
       }, 1000);
     } else {
@@ -94,8 +107,10 @@ const Test = () => {
     }));
   };
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const handleSubmit = async (event?: React.FormEvent<HTMLFormElement>) => {
+    if (event) {
+      event.preventDefault();
+    }
   
     try {
       const quizForm: { user_id: string, questions: string[], answers: string[] } = {
@@ -108,15 +123,17 @@ const Test = () => {
         quizForm.questions.push(question);
         quizForm.answers.push(answer);
       });
-
+  
       const response = await apiService.post(`/api/online_assessments/save/${id}`, JSON.stringify(quizForm));
-
+  
       console.log("Test submitted successfully:", response); 
+      sessionStorage.removeItem(`test_${id}`);
+      router.push(`/pages/invite`);
     } catch (error) {
       console.error("Error submitting test:", error);
     }
   };  
-  
+
   return (
     <>
       <div className="flex justify-between items-center text-5xl font-semibold leading-none tracking-tight text-center pb-8">
