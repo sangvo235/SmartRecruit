@@ -53,16 +53,17 @@ Backend:
 - ~Models (~User~, ~Job~, ~Invite~, ~Online Assessment~, ~Question~, ~Answer~ and ~Machine Learning~)~
 - ~APIs (~GET User Details~, ~POST User Details~, ~POST Avatar Upload~, ~GET Jobs~, ~GET Invites~, ~Filter Invites~, ~GET Online Assessment~ and ~Machine Learning~)~
 
-Fixes based on feedback / FINAL 2 weeks TODOs: 
-- Adding session tokens for online assessment testing results and authentication.
-- Authentication related issues with rendering on frontend once logged in.  
-- Frontend interface & API for listing candidate scores on online assessment for job recruiter.
-- Storage of uploaded resume.
-- Integrating machine learning component for resume upload.
-- Search bar and filtering system on job listing page based on the resume uploaded.
-- Have the user and recruiter displays to be different on the frontend.
-- Cloud storage option.
-- Deployment.
+TODOs: 
+- ~Improvement to Online Assessment (implemented session data, timer function and dyanmic result generation)~
+- ~Fixed the Invite API, Model and card components~ 
+- Authentication related issues with rendering on frontend once logged in and adding cookies
+- Frontend interface & API for listing candidate scores on online assessment for job recruiter
+- Storage of uploaded resume
+- Integrating machine learning component for resume upload
+- Search bar and filtering system on job listing page based on the resume uploaded
+- Have the user and recruiter displays to be different on the frontend
+- Cloud storage option
+- Deployment
 
 # Software Required 💻
 Before starting please have the following installed.
