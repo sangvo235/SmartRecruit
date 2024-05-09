@@ -2,8 +2,6 @@ from django.db import models
 from online_assessment.models import Assessment
 from useraccount.models import User
 
-# Create your models here.
-
 class Result(models.Model):
     assessment = models.ForeignKey(Assessment, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)

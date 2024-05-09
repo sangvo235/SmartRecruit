@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from .models import Assessment
-from job.serializers import JobListSerializer
 from django.conf import settings
 
 class AssessmentSerializer(serializers.ModelSerializer):
@@ -36,12 +35,3 @@ class AssessmentSerializer(serializers.ModelSerializer):
     
     def get_image_url(self, obj):
         return obj.job.image_url()
-    
-class AssessmentAnswerSerializer(serializers.Serializer):
-    question_text = serializers.CharField()
-    answered = serializers.CharField()
-
-class AssessmentResultSerializer(serializers.Serializer):
-    passed = serializers.BooleanField()
-    score = serializers.IntegerField()
-    results = AssessmentAnswerSerializer(many=True)
