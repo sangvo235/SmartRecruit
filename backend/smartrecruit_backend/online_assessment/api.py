@@ -4,6 +4,7 @@ from .models import Assessment
 from .serializers import AssessmentSerializer
 from questions.models import Answer, Question
 from results.models import Result
+from useraccount.models import User 
 
 @api_view(['GET'])
 @authentication_classes([])
@@ -37,10 +38,8 @@ def save_asessement(request, pk):
     if request.method == 'POST':
         data = request.data
 
-        user_id = data.get('user_id', None)
-        if user_id is None:
-            return JsonResponse({'error': 'User ID is required'}, status=400)
-
+        user_id = User.objects.get(id=data.get('user_id'))
+                
         questions = data.get('questions', [])
         answers = data.get('answers', [])
 
