@@ -2,6 +2,7 @@
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "../../atoms/Tabs/Tabs";
 import { Card, CardContent, CardFooter } from "../../atoms/InviteCard/InviteCard";
 import { Card2, CardContent2, CardFooter2 } from "../../atoms/InviteCard2/InviteCard2";
+import { Card3, CardContent3, CardFooter3 } from "../../atoms/InviteCard3/InviteCard3";
 import apiService from "@/app/services/apiService";
 import { useEffect, useState } from "react";
 import { OnlineAssessmentType } from "../OnlineAssessment/OnlineAssessment";
@@ -64,10 +65,10 @@ const InvitationTabs = () => {
 
         <TabsContent value="expired">
           {expiredInvites.map((invite) => (
-            <Card key={invite.user_id}>
-              <CardContent invite={invite} />
-              <CardFooter invite={invite}/>
-            </Card>
+            <Card3 key={invite.user_id}>
+              <CardContent3 invite={invite} />
+              <CardFooter3 invite={invite}/>
+            </Card3>
           ))}
         </TabsContent>
       </Tabs>
