@@ -12,7 +12,8 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(), name='rest_logout'),
     path('token/refresh/', get_refresh_view().as_view(), name='token_refresh'),
     path('<uuid:pk>/', api.user_details, name='api_user_details'),
+    path('<uuid:pk>/resume/', api.user_resume, name='api_user_resume'),
     path('<uuid:pk>/update/', api.user_update, name='api_user_update'),
-    path('<uuid:pk>/avatar/', api.upload_avatar, name='api_upload_avatar'),
-    path('<uuid:pk>/resume/', api.upload_resume, name='api_upload_resume'),
+    path('<uuid:pk>/upload/avatar/', api.upload_avatar, name='api_upload_avatar'),
+    path('<uuid:pk>/upload/resume/', api.upload_resume, name='api_upload_resume'),
 ]

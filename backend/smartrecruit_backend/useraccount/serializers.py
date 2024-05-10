@@ -8,10 +8,10 @@ class UserDetailsSerializer(serializers.ModelSerializer):
             'id',
             'email',
             'name',
-            'avatar_url',
             'bio',
             'location',
             'phone',
+            'avatar_url',
         )
 
 class UserResumeSerializer(serializers.ModelSerializer):
@@ -20,5 +20,5 @@ class UserResumeSerializer(serializers.ModelSerializer):
         fields = (
             'id',
             'email',
-            'resume',
+            'resume_url',
         )
