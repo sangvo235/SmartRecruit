@@ -7,6 +7,7 @@ import nltk
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 import jsonlines
+import os
 
 
 class ResumeProcessor:
@@ -26,7 +27,9 @@ class ResumeProcessor:
 
     def create_skill_ruler(self):
         ruler = EntityRuler(self.nlp)
-        skill_pattern_path = "/Users/zwilkinson/Docs/Swinburne Work/Semester 4/COS80029 Technology-Application-Project/SmartRecruit/backend/smartrecruit_backend/ml_processing/jz_skill_patterns.jsonl"
+        # Get the directory where the current script is located
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        skill_pattern_path = os.path.join(current_dir, 'jz_skill_patterns.jsonl')
 
         with jsonlines.open(skill_pattern_path) as reader:
             patterns = [line for line in reader]
