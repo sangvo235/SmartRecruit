@@ -80,7 +80,7 @@ const UserDetails: React.FC<UserProps> = ({ userId }) => {
             try {
                 const formData = new FormData();
                 formData.append('avatar', uploadedAvatar);
-                const response = await apiService.postFormData(`/api/upload_avatar/${id}/upload/avatar/`, formData);
+                const response = await apiService.postFormData(`/api/user_details/${id}/upload/avatar/`, formData);
                 if (response.avatar_url) {
                     setUserDetails(prevDetails => ({
                         ...prevDetails as UserDetailsType,
@@ -97,7 +97,7 @@ const UserDetails: React.FC<UserProps> = ({ userId }) => {
             }
         }
     
-        const response = await apiService.post(`/api/user_update/${id}/update/`, JSON.stringify(formValues));
+        const response = await apiService.post(`/api/user_details/${id}/update/`, JSON.stringify(formValues));
         
         if ('detail' in response) {
             setErrors([response.detail]);
