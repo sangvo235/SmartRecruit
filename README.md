@@ -56,9 +56,9 @@ Backend:
 TODOs: 
 - ~Improvement to Online Assessment (implemented cookies to store testing session data, timer function and dyanmic result generation)~
 - ~Fixed the Invite API, Model and card components~ 
+- ~Add resume property on user model, url path, GET and POST for upload of resume~
 - Login bug fixes (mostly with data not re-rendering immediately)
 - Frontend interface & API for listing candidate scores on online assessment for job recruiter
-- Storage of uploaded resume
 - Integrating machine learning component for resume upload
 - Search bar and filtering system on job listing page based on the resume uploaded
 - Have the user and recruiter displays to be different on the frontend
