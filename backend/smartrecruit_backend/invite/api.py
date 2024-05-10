@@ -2,7 +2,15 @@ from django.http import JsonResponse
 from django.utils import timezone
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from .models import Invite
-from .serializers import InviteSerializer
+from .serializers import InviteSerializer, AssessmentScoreListSerializer
+
+@api_view(['GET'])
+@authentication_classes([])
+@permission_classes([])
+def get_assessment_invites(request, assessment):
+    invites = Invite.objects.filter(assessment=assessment)
+    serializer = AssessmentScoreListSerializer(invites, many=True)
+    return JsonResponse({'data': serializer.data})
 
 @api_view(['GET'])
 @authentication_classes([])
