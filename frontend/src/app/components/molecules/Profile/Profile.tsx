@@ -57,7 +57,7 @@ const Profile: React.FC<UserProps> = ({ userId }) => {
                             <>
                                 {userDetails && (
                                     <>
-                                        <Label className="text-lg font-semibold">{userDetails.name}</Label>
+                                        <Label className="font-semibold sm:text-xs md:text-sm lg:text-lg">{userDetails.name}</Label>
                                         <Avatar className="h-12 w-12">
                                             <AvatarImage src={userDetails.avatar_url} />
                                             <AvatarFallback>{userDetails.name}</AvatarFallback>

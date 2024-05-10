@@ -19,7 +19,7 @@ const NavLinks: React.FC<NavLinksProps> = ({ userId }) => {
     }
 
     return (
-        <ul className="hidden h-full gap-12 lg:flex">
+        <ul className="h-full sm:gap-4 sm:flex sm:text-xs md:flex md:gap-8 md:text-sm lg:text-lg lg:flex lg:gap-12">
             {filteredNavLinks.map((link) => (
                 <Link href={link.href} key={link.key} className={isActive(link.href) ? 'active' : ''}>
                     {link.label}
