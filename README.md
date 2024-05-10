@@ -54,9 +54,9 @@ Backend:
 - ~APIs (~GET User Details~, ~POST User Details~, ~POST Avatar Upload~, ~GET Jobs~, ~GET Invites~, ~Filter Invites~, ~GET Online Assessment~ and ~Machine Learning~)~
 
 TODOs: 
-- ~Improvement to Online Assessment (implemented session data, timer function and dyanmic result generation)~
+- ~Improvement to Online Assessment (implemented cookies to store testing session data, timer function and dyanmic result generation)~
 - ~Fixed the Invite API, Model and card components~ 
-- Authentication related issues with rendering on frontend once logged in and adding cookies
+- Login bug fixes (mostly with data not re-rendering immediately)
 - Frontend interface & API for listing candidate scores on online assessment for job recruiter
 - Storage of uploaded resume
 - Integrating machine learning component for resume upload
