@@ -9,7 +9,7 @@ import { Textarea } from "../../atoms/Textarea/Textarea";
 import { Button } from "../../atoms/Button/Button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../atoms/Select/Select";
 
-interface UserProps {
+export interface UserProps {
     userId?: string | null;
 }
 
@@ -80,7 +80,7 @@ const UserDetails: React.FC<UserProps> = ({ userId }) => {
             try {
                 const formData = new FormData();
                 formData.append('avatar', uploadedAvatar);
-                const response = await apiService.postAvatarImageUpload(`/api/upload_avatar/${id}/avatar/`, formData);
+                const response = await apiService.postFormData(`/api/upload_avatar/${id}/upload/avatar/`, formData);
                 if (response.avatar_url) {
                     setUserDetails(prevDetails => ({
                         ...prevDetails as UserDetailsType,
@@ -175,7 +175,7 @@ const UserDetails: React.FC<UserProps> = ({ userId }) => {
                         </div>
                     </div>
       
-                    <div className="flex justify-center space-x-4"> 
+                    <div className="flex justify-center space-x-4 mt-6"> 
                         <Button type="submit" size="invite">Submit</Button>
                         <Button type="button" size="invite" variant="outline" onClick={handleCancel}>Cancel</Button>
                     </div>

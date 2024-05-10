@@ -1,13 +1,14 @@
 "use client"
-import { Key, useEffect, useRef, useState } from "react"
+import { Key, useEffect, useRef, useState } from "react";
 import { useParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import apiService from "@/app/services/apiService";
 import { Button } from "@/app/components/atoms/Button/Button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/app/components/atoms/Card/Card";
 import { RadioGroup, RadioGroupItem } from "@/app/components/atoms/RadioGroup/RadioGroup";
 import { Label } from "@/app/components/atoms/Label/Label";
 import { Timer } from 'lucide-react';
-import { useRouter } from "next/navigation";
+import { UserProps } from "../UserDetails/UserDetails";
 
 export type TestType = {
     questions: string[];
@@ -16,8 +17,11 @@ export type TestType = {
     answers: { [key: string]: string };
 }
 
-const Test = () => {
+const Test: React.FC<UserProps> = ({ userId }) => {
+  const [userIdS, setUserIdS] = useState<string | null>(null);
+
   const params = useParams();
+  const router = useRouter();
   const { id } = params;
 
   const [test, setTest] = useState([]);
@@ -25,13 +29,18 @@ const Test = () => {
   const [selectedValues, setSelectedValues] = useState<{ [key: string]: string }>({});
   const timerBoxRef = useRef<HTMLDivElement>(null); 
   const [shouldSubmitAutomatically, setShouldSubmitAutomatically] = useState(false);
-  const router = useRouter();
+
+  useEffect(() => {
+    if (userId) {
+      setUserIdS(userId);
+    }
+  }, [userId]);
 
   useEffect(() => {
     const getTest = async () => {
       try {
-        let testFromStorage = sessionStorage.getItem(`test_${id}`);
-        if (!testFromStorage) {
+        let testFromCookies = document.cookie.match(new RegExp('(^| )' + `test_${id}` + '=([^;]+)'));
+        if (!testFromCookies) {
           const response = await apiService.get(`/api/online_assessments/data/${id}`);
           console.log("Data fetched from server:", response);
           setTest(response.data);
@@ -39,19 +48,20 @@ const Test = () => {
           setFormValues({ ...response, questions });
           setSelectedValues(Object.fromEntries(response.data.map((question: {}) => [Object.keys(question)[0], ""])));
 
-          sessionStorage.setItem(`test_${id}`, JSON.stringify(response));
-          sessionStorage.setItem(`start_time_${id}`, String(Date.now()));
-          sessionStorage.setItem(`time_${id}`, response.time);
+          document.cookie = `test_${id}=${JSON.stringify(response)}; max-age=${60 * 60}; path=/`;
+          document.cookie = `start_time_${id}=${Date.now()}; max-age=${60 * 60}; path=/`;
+          document.cookie = `time_${id}=${response.time}; max-age=${60 * 60}; path=/`;
+          activateTimer(response.time * 60); 
         } else {
-          const parsedTest = JSON.parse(testFromStorage);
-          console.log("Data retrieved from sessionStorage:", parsedTest);
+          const parsedTest = JSON.parse(testFromCookies[2]);
+          console.log("Data retrieved from cookies:", parsedTest);
           setTest(parsedTest.data);
           const questions = parsedTest.data.map((question: any) => Object.keys(question)[0]);
           setFormValues({ ...parsedTest, questions });
           setSelectedValues(Object.fromEntries(parsedTest.data.map((question: {}) => [Object.keys(question)[0], ""])));
 
-          const startTime = parseInt(sessionStorage.getItem(`start_time_${id}`) || '0');
-          const storedTime = parseInt(sessionStorage.getItem(`time_${id}`) || '0');
+          const startTime = parseInt(document.cookie.match(new RegExp('(^| )' + `start_time_${id}` + '=([^;]+)'))?.[2] || '0');
+          const storedTime = parseInt(document.cookie.match(new RegExp('(^| )' + `time_${id}` + '=([^;]+)'))?.[2] || '0');
           const elapsedTimeInSeconds = Math.floor((Date.now() - startTime) / 1000);
           const remainingTimeInSeconds = storedTime * 60 - elapsedTimeInSeconds;
           activateTimer(remainingTimeInSeconds);
@@ -86,7 +96,7 @@ const Test = () => {
   
         timerBox.innerHTML = `<b>${displayMinutes}:${displaySeconds}</b>`;
   
-        sessionStorage.setItem(`remaining_time_${id}`, String(totalSeconds));
+        document.cookie = `remaining_time_${id}=${totalSeconds}; max-age=${totalSeconds}; path=/`;
   
         totalSeconds--;
   
@@ -114,7 +124,7 @@ const Test = () => {
   
     try {
       const quizForm: { user_id: string, questions: string[], answers: string[] } = {
-        user_id: 'e5b81074-f591-4e2b-bc7f-6742d0998387',
+        user_id: userIdS || "", 
         questions: [],
         answers: []
       };
@@ -127,7 +137,7 @@ const Test = () => {
       const response = await apiService.post(`/api/online_assessments/save/${id}`, JSON.stringify(quizForm));
   
       console.log("Test submitted successfully:", response); 
-      sessionStorage.removeItem(`test_${id}`);
+      document.cookie = `test_${id}=; max-age=0; path=/`;
       router.push(`/pages/invite`);
     } catch (error) {
       console.error("Error submitting test:", error);

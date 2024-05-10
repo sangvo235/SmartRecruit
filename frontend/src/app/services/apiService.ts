@@ -50,7 +50,7 @@ const apiService = {
         })
     },
 
-    postAvatarImageUpload: async function(url: string, formData: FormData): Promise<any> {
+    postFormData: async function(url: string, formData: FormData): Promise<any> {
         console.log('postFormData', url, formData);
 
         try {
