@@ -10,6 +10,14 @@ from invite.models import Invite
 @api_view(['GET'])
 @authentication_classes([])
 @permission_classes([])
+def assessment_list(request):
+    assessments = Assessment.objects.all()
+    serializer = AssessmentSerializer(assessments, many=True)
+    return JsonResponse({'data': serializer.data})
+
+@api_view(['GET'])
+@authentication_classes([])
+@permission_classes([])
 def assessment_details(request, pk):
     assessments = Assessment.objects.get(pk=pk)
     serializer = AssessmentSerializer(assessments)
