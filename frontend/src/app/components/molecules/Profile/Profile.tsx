@@ -21,10 +21,12 @@ const Profile: React.FC<UserProps> = ({ userId }) => {
         const tmpUserDetails = await apiService.get(`/api/user_details/${id}`);
         setUserDetails(tmpUserDetails);
     };
-      
+    
     useEffect(() => {
-        getUserDetails();
-    }, []);
+        if (userId) {
+            getUserDetails();
+        }
+    }, [userId]);
 
     const router = useRouter();
 
@@ -40,6 +42,12 @@ const Profile: React.FC<UserProps> = ({ userId }) => {
     const handleSignIn = async () => {
         router.push("/pages/authentication");
     }
+
+    useEffect(() => {
+        if (userId) {
+            getUserDetails();
+        }
+    }, [userId]);
 
         return (
             <DropdownMenu>
