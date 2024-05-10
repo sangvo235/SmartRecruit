@@ -9,7 +9,7 @@ import { Textarea } from "../../atoms/Textarea/Textarea";
 import { Button } from "../../atoms/Button/Button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../atoms/Select/Select";
 
-interface UserProps {
+export interface UserProps {
     userId?: string | null;
 }
 

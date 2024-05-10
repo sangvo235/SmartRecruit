@@ -6,6 +6,7 @@ import { Card3, CardContent3, CardFooter3 } from "../../atoms/InviteCardExpired/
 import apiService from "@/app/services/apiService";
 import { useEffect, useState } from "react";
 import { OnlineAssessmentType } from "../OnlineAssessment/OnlineAssessment";
+import { UserProps } from "../UserDetails/UserDetails";
 
 export type InviteType = {
   job: any;
@@ -18,24 +19,37 @@ export type InviteType = {
   score: number;
 }
 
-const InvitationTabs = () => {
-  const [activeInvites, setActiveInvites] = useState<InviteType[]>([]);
-  const [completedInvites, setCompletedInvites] = useState<InviteType[]>([]);
-  const [expiredInvites, setExpiredInvites] = useState<InviteType[]>([]);
-
-  const getUserInvites = async (userId: string) => {
-      const activeResponse = await apiService.get(`/api/invite/active/user/${userId}/`);
-      const completedResponse = await apiService.get(`/api/invite/completed/user/${userId}/`);
-      const expiredResponse = await apiService.get(`/api/invite/expired/user/${userId}/`);
-      
-      setActiveInvites(activeResponse.data);
-      setCompletedInvites(completedResponse.data);
-      setExpiredInvites(expiredResponse.data);
-  };
+const InvitationTabs: React.FC<UserProps> = ({ userId }) => {
+    const [id, setId] = useState<string | null>(null);
+    const [activeInvites, setActiveInvites] = useState<InviteType[]>([]);
+    const [completedInvites, setCompletedInvites] = useState<InviteType[]>([]);
+    const [expiredInvites, setExpiredInvites] = useState<InviteType[]>([]);
   
-  useEffect(() => {
-    getUserInvites("e5b81074-f591-4e2b-bc7f-6742d0998387");
-  }, []);
+    useEffect(() => {
+      if (userId) {
+        setId(userId);
+      }
+    }, [userId]);
+  
+    useEffect(() => {
+      if (id) {
+        const getInvites = async () => {
+          try {
+            const activeResponse = await apiService.get(`/api/invite/active/user/${id}`);
+            const completedResponse = await apiService.get(`/api/invite/completed/user/${id}`);
+            const expiredResponse = await apiService.get(`/api/invite/expired/user/${id}`);
+  
+            setActiveInvites(activeResponse.data);
+            setCompletedInvites(completedResponse.data);
+            setExpiredInvites(expiredResponse.data);
+          } catch (error) {
+            console.error("Error fetching invites:", error);
+          }
+        };
+  
+        getInvites();
+      }
+    }, [id]);
 
     return (
       <Tabs defaultValue="active" className="w-5/6">
