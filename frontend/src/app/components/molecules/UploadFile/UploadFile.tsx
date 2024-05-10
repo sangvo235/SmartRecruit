@@ -22,7 +22,7 @@ const UploadFile: React.FC<UserProps> = ({ userId }) => {
   });
 
   const getUploadedResume = async () => {
-    const tmpUploadedResume = await apiService.get(`/api/user_resume/${id}/resume/`);
+    const tmpUploadedResume = await apiService.get(`/api/user_details/${id}/resume/`);
     if (tmpUploadedResume) {
       setFormValues(tmpUploadedResume);
     }
@@ -38,7 +38,7 @@ const UploadFile: React.FC<UserProps> = ({ userId }) => {
       try {
         const formData = new FormData();
         formData.append('resume', file);
-        await apiService.postFormData(`/api/upload_resume/${id}/upload/resume/`, formData);
+        await apiService.postFormData(`/api/user_details/${id}/upload/resume/`, formData);
         getUploadedResume(); 
       } catch (error) {
         console.error('Resume upload failed:', error);
