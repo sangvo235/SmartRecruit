@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/app/components/atoms
 import { RadioGroup, RadioGroupItem } from "@/app/components/atoms/RadioGroup/RadioGroup";
 import { Label } from "@/app/components/atoms/Label/Label";
 import { Timer } from 'lucide-react';
+import { UserProps } from "../UserDetails/UserDetails";
 
 export type TestType = {
     questions: string[];
@@ -16,7 +17,9 @@ export type TestType = {
     answers: { [key: string]: string };
 }
 
-const Test = () => {
+const Test: React.FC<UserProps> = ({ userId }) => {
+  const [userIdS, setUserIdS] = useState<string | null>(null);
+
   const params = useParams();
   const router = useRouter();
   const { id } = params;
@@ -26,6 +29,12 @@ const Test = () => {
   const [selectedValues, setSelectedValues] = useState<{ [key: string]: string }>({});
   const timerBoxRef = useRef<HTMLDivElement>(null); 
   const [shouldSubmitAutomatically, setShouldSubmitAutomatically] = useState(false);
+
+  useEffect(() => {
+    if (userId) {
+      setUserIdS(userId);
+    }
+  }, [userId]);
 
   useEffect(() => {
     const getTest = async () => {
@@ -115,7 +124,7 @@ const Test = () => {
   
     try {
       const quizForm: { user_id: string, questions: string[], answers: string[] } = {
-        user_id: 'e5b81074-f591-4e2b-bc7f-6742d0998387',
+        user_id: userIdS || "", 
         questions: [],
         answers: []
       };
