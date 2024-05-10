@@ -42,6 +42,7 @@ const Test = () => {
           document.cookie = `test_${id}=${JSON.stringify(response)}; max-age=${60 * 60}; path=/`;
           document.cookie = `start_time_${id}=${Date.now()}; max-age=${60 * 60}; path=/`;
           document.cookie = `time_${id}=${response.time}; max-age=${60 * 60}; path=/`;
+          activateTimer(response.time * 60); 
         } else {
           const parsedTest = JSON.parse(testFromCookies[2]);
           console.log("Data retrieved from cookies:", parsedTest);
