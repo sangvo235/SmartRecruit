@@ -50,10 +50,10 @@ export function ComboboxDemo() {
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <Button
-          variant="outline"
+          variant="outline2"
           role="combobox"
           aria-expanded={open}
-          className="w-[200px] justify-between"
+          className="w-[500px] justify-between"
         >
           {value
             ? frameworks.find((framework) => framework.value === value)?.label
