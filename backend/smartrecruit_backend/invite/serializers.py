@@ -5,7 +5,7 @@ from results.models import Result
 
 class InviteSerializer(serializers.ModelSerializer):
     assessment = AssessmentSerializer()
-    user_email = serializers.SerializerMethodField()
+    user_email = serializers.CharField(source='user_id.email')
     score = serializers.SerializerMethodField()
 
     class Meta:
@@ -19,9 +19,6 @@ class InviteSerializer(serializers.ModelSerializer):
             'expire_date',
             'score'
         )
-
-    def get_user_email(self, obj):
-        return obj.user_id.email 
     
     def get_score(self, obj):
         try:
@@ -32,22 +29,19 @@ class InviteSerializer(serializers.ModelSerializer):
     
 class AssessmentScoreListSerializer(serializers.ModelSerializer):
     assessment_id = serializers.IntegerField(source='assessment.id')
-    assessment_name = serializers.CharField(source='assessment.name')
-    user_email = serializers.SerializerMethodField()
+    user_name = serializers.CharField(source='user_id.name')
+    user_email = serializers.CharField(source='user_id.email')
     score = serializers.SerializerMethodField()
 
     class Meta:
         model = Invite
         fields = (
+            'assessment_id',
             'user_id',
             'user_email',
-            'assessment_id',
-            'assessment_name',
+            'user_name',
             'score'
         )
-
-    def get_user_email(self, obj):
-        return obj.user_id.email 
 
     def get_score(self, obj):
         try:
