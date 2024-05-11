@@ -9,6 +9,7 @@ import { BookType, Building2, MapPin, PersonStanding, Hash, Timer } from 'lucide
 import { Avatar, AvatarFallback, AvatarImage } from "@/app/components/atoms/Avatar/Avatar";
 
 export type OnlineAssessmentType = {
+    required_score_to_pass: number;
     id: string;
     name: string;
     topic: string;

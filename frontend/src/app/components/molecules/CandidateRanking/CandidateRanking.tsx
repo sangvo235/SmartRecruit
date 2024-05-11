@@ -4,7 +4,7 @@ import { Check, ChevronsUpDown, Fingerprint, Mail, Scroll, UserRound } from "luc
 import { cn } from "../../../lib/utils";
 import { Button } from "../../atoms/Button/Button";
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "../../atoms/Command/Command";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from "../../atoms/Card/Card";
+import { Card, CardHeader, CardDescription } from "../../atoms/Card/Card";
 import { Popover, PopoverContent, PopoverTrigger } from "../../atoms/Popover/Popover";
 import { OnlineAssessmentType } from "@/app/components/molecules/OnlineAssessment/OnlineAssessment";
 import { useEffect, useState } from "react";
@@ -12,7 +12,7 @@ import apiService from "@/app/services/apiService";
 
 export function CandidateRanking() {
   const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState<{ label: string; value: string } | null>(null);
+  const [value, setValue] = React.useState<{ label: string; value: string, pass: number } | null>(null);
   const [onlineAssessment, setOnlineAssessment] = useState<OnlineAssessmentType[]>([]);
   const [results, setResults] = React.useState<any[]>([]);
 
@@ -38,6 +38,8 @@ export function CandidateRanking() {
         console.error("Error fetching invite details:", error);
       });
   };
+
+  console.log(onlineAssessment);
 
   return (
     <>
@@ -67,6 +69,7 @@ export function CandidateRanking() {
                       setValue({
                         label: `${assessment.name} - ${assessment.topic}`,
                         value: assessment.id,
+                        pass: assessment.required_score_to_pass,
                       });
                       setOpen(false);
                       handleSelect(assessment.id); 
@@ -88,7 +91,7 @@ export function CandidateRanking() {
       </Popover>
 
       {results.map((result, index) => (
-        <Card key={index}>
+        <Card key={index} className={result.score && value && result.score >= value.pass ? "border-2 border-emerald-500" : ""}>
           <CardHeader>
             <CardDescription>
               <UserRound className="w-4 h-4 mr-2" />
