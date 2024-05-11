@@ -5,7 +5,7 @@ from results.models import Result
 
 class InviteSerializer(serializers.ModelSerializer):
     assessment = AssessmentSerializer()
-    user_email = serializers.SerializerMethodField(source='user_id.email')
+    user_email = serializers.CharField(source='user_id.email')
     score = serializers.SerializerMethodField()
 
     class Meta:
