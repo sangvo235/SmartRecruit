@@ -30,7 +30,9 @@ export function CandidateRanking() {
   const handleSelect = (selectedValue: string) => {
     apiService.get(`/api/invite/details/${selectedValue}`)
       .then((response) => {
-        setResults(response.data);
+        const filteredResults = response.data.filter((result: { score: string | null; }) => result.score !== null && result.score !== '');
+        const sortedResults = filteredResults.sort((a: { score: number; }, b: { score: number; }) => b.score - a.score);
+        setResults(sortedResults);
       })
       .catch((error) => {
         console.error("Error fetching invite details:", error);
