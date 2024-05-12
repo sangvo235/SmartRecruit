@@ -99,38 +99,47 @@ export function CandidateRanking() {
             <span>Passing Score for Assessment: {value.pass} / 100</span>
           </div>
         )}
+
         {results.map((result, index) => (
-          <Card
+          <a
             key={index}
-            className={
-              result.score && value && result.score >= value.pass
-                ? "border-2 border-emerald-500"
-                : ""
-            }
+            href={`mailto:${result.user_email}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block mb-4"
           >
-            <CardHeader>
-              <CardDescription>
-                <UserRound className="w-4 h-4 mr-2" />
-                <span>Name: </span>
-                <span>{result.user_name}</span>
-              </CardDescription>
-              <CardDescription>
-                <Mail className="w-4 h-4 mr-2" />
-                <span>Email: </span>
-                <span>{result.user_email}</span>
-              </CardDescription>
-              <CardDescription>
-                <Fingerprint className="w-4 h-4 mr-2" />
-                <span>ID: </span>
-                <span>{result.user_id}</span>
-              </CardDescription>
-              <CardDescription>
-                <Scroll className="w-4 h-4 mr-2" />
-                <span>Candidate's Score: </span>
-                <span>{result.score} / 100</span>
-              </CardDescription>
-            </CardHeader>
-          </Card>
+            <Card
+              className={
+                "border-2 cursor-pointer transition duration-300 hover:border-blue-500" +
+                (result.score && value && result.score >= value.pass
+                  ? " border-emerald-500"
+                  : " border-gray-300")
+              }
+            >
+              <CardHeader>
+                <CardDescription>
+                  <UserRound className="w-4 h-4 mr-2" />
+                  <span>Name: </span>
+                  <span>{result.user_name}</span>
+                </CardDescription>
+                <CardDescription>
+                  <Mail className="w-4 h-4 mr-2" />
+                  <span>Email: </span>
+                  <span>{result.user_email}</span>
+                </CardDescription>
+                <CardDescription>
+                  <Fingerprint className="w-4 h-4 mr-2" />
+                  <span>ID: </span>
+                  <span>{result.user_id}</span>
+                </CardDescription>
+                <CardDescription>
+                  <Scroll className="w-4 h-4 mr-2" />
+                  <span>Candidate's Score: </span>
+                  <span>{result.score} / 100</span>
+                </CardDescription>
+              </CardHeader>
+            </Card>
+          </a>
         ))}
       </div>
     </>
