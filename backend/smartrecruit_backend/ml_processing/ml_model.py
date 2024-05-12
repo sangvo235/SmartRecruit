@@ -9,7 +9,6 @@ from nltk.stem import WordNetLemmatizer
 import jsonlines
 import os
 
-
 class ResumeProcessor:
     def __init__(self):
         # Load the spaCy model

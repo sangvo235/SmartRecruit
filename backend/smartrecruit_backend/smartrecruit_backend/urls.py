@@ -10,6 +10,6 @@ urlpatterns = [
     path('api/user_details/', include('useraccount.urls')),
     path('api/online_assessments/', include('online_assessment.urls')),
     path('api/invite/', include('invite.urls')),
-    path('api/', include('ml_processing.urls')),
+    path('api/ml/', include('ml_processing.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
