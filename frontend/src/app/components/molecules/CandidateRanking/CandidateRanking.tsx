@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import { Check, ChevronsUpDown, Fingerprint, Mail, Scroll, UserRound } from "lucide-react";
+import { Check, ChevronsUpDown, Fingerprint, Mail, Scroll, UserRound, FileCheck2 } from "lucide-react";
 import { cn } from "../../../lib/utils";
 import { Button } from "../../atoms/Button/Button";
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "../../atoms/Command/Command";
@@ -43,6 +43,8 @@ export function CandidateRanking() {
 
   return (
     <>
+      <span className="mr-2 font-semibold">Online Assessment:</span>
+
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button
@@ -57,7 +59,7 @@ export function CandidateRanking() {
         </PopoverTrigger>
         <PopoverContent className="w-[500px] p-0">
           <Command>
-            <CommandInput placeholder="Search online assessment..." />
+            <CommandInput placeholder="Search for an online assessment..." />
             <CommandEmpty>No online assessment found.</CommandEmpty>
             <CommandGroup>
               <CommandList>
@@ -90,32 +92,47 @@ export function CandidateRanking() {
         </PopoverContent>
       </Popover>
 
-      {results.map((result, index) => (
-        <Card key={index} className={result.score && value && result.score >= value.pass ? "border-2 border-emerald-500" : ""}>
-          <CardHeader>
-            <CardDescription>
-              <UserRound className="w-4 h-4 mr-2" />
-              <span>Name: </span>
-              <span>{result.user_name}</span>
-            </CardDescription>
-            <CardDescription>
-              <Mail className="w-4 h-4 mr-2" />
-              <span>Email: </span>
-              <span>{result.user_email}</span>
-            </CardDescription>
-            <CardDescription>
-              <Fingerprint className="w-4 h-4 mr-2" />
-              <span>ID: </span>
-              <span>{result.user_id}</span>
-            </CardDescription>
-            <CardDescription>
-              <Scroll className="w-4 h-4 mr-2" />
-              <span>Candidate's Score: </span>
-              <span>{result.score} / 100</span>
-            </CardDescription>
-          </CardHeader>
-        </Card>
-      ))}
+      <div className="my-6">
+        {value && value.pass && (
+          <div className="mx-auto mb-6 font-semibold flex items-center justify-center">
+            <FileCheck2 className="mr-2" />
+            <span>Passing Score for Assessment: {value.pass} / 100</span>
+          </div>
+        )}
+        {results.map((result, index) => (
+          <Card
+            key={index}
+            className={
+              result.score && value && result.score >= value.pass
+                ? "border-2 border-emerald-500"
+                : ""
+            }
+          >
+            <CardHeader>
+              <CardDescription>
+                <UserRound className="w-4 h-4 mr-2" />
+                <span>Name: </span>
+                <span>{result.user_name}</span>
+              </CardDescription>
+              <CardDescription>
+                <Mail className="w-4 h-4 mr-2" />
+                <span>Email: </span>
+                <span>{result.user_email}</span>
+              </CardDescription>
+              <CardDescription>
+                <Fingerprint className="w-4 h-4 mr-2" />
+                <span>ID: </span>
+                <span>{result.user_id}</span>
+              </CardDescription>
+              <CardDescription>
+                <Scroll className="w-4 h-4 mr-2" />
+                <span>Candidate's Score: </span>
+                <span>{result.score} / 100</span>
+              </CardDescription>
+            </CardHeader>
+          </Card>
+        ))}
+      </div>
     </>
   );
 }
