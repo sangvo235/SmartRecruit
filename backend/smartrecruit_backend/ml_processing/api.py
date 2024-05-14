@@ -2,8 +2,9 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from .models import SkillProcessor
 from useraccount.models import User
+from job.models import Job
 
-resume_processor = SkillProcessor()
+skill_processor = SkillProcessor()
 
 @api_view(['POST'])
 @authentication_classes([])
@@ -11,31 +12,29 @@ resume_processor = SkillProcessor()
 def match_resume(request):
     if request.method == 'POST':
         try:
-            job_description_id = request.data.get("job_description_id", None)
-            resume_text = request.data.get("resume_text", "")
+            user_id = request.data.get('user_id')
+            job_id = request.data.get('job_id')
 
-            if not job_description_id or not resume_text:
-                return Response({"error": "Both job description ID and resume text are required"}, status=400)
+            if not user_id or not job_id:
+                return Response({"error": "Both user ID and job ID are required"}, status=400)
 
-            job_desc = JobDescription.objects.get(id=job_description_id)
+            user = User.objects.get(id=user_id)
+            job = Job.objects.get(id=job_id)
 
-            # Extract skills from the resume
-            cleaned_resume_text = resume_processor.clean_text(resume_text)
-            resume_skills = resume_processor.extract_skills(cleaned_resume_text)
+            if not user.skills or not job.skills:
+                return Response({"error": "User and job must have skills"}, status=400)
 
-            # Compute the match score
-            common_skills = set(job_desc.skills).intersection(set(resume_skills))
-            score = len(common_skills) / len(job_desc.skills) if job_desc.skills else 0
+            common_skills = set(job.skills).intersection(set(user.skills))
+            score = len(common_skills) / len(job.skills) if job.skills else 0
             match_percentage = round(score * 100, 1)
 
             return Response({
-                "job_description_skills": job_desc.skills,
-                "resume_skills": resume_skills,
+                "user_skills": user.skills,
+                "job_skills": job.skills,
                 "match_percentage": match_percentage,
             })
-
-        except JobDescription.DoesNotExist:
-            return Response({"error": f"Job description with ID {job_description_id} not found"}, status=404)
+        except (User.DoesNotExist, Job.DoesNotExist):
+            return Response({"error": "User or job not found"}, status=404)
         except Exception as e:
             return Response({"error": str(e)}, status=500)
     return Response({'error': 'Method not allowed'}, status=405)
