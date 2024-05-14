@@ -70,10 +70,10 @@ class User(AbstractBaseUser, PermissionsMixin):
     def save(self, *args, **kwargs):
         if self.resume:
             try:
-                pdf_reader = PyPDF2.PdfFileReader(self.resume)
+                pdf_reader = PyPDF2.PdfReader(self.resume)
                 resume_text = ''
-                for page_num in range(pdf_reader.numPages):
-                    resume_text += pdf_reader.getPage(page_num).extractText()
+                for page_num in range(len(pdf_reader.pages)):
+                    resume_text += pdf_reader.pages[page_num].extract_text()
                 self.resume_text = resume_text
                 skills = resume_processor.analyze_resume(resume_text)
                 self.skills = skills
