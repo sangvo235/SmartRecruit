@@ -16,6 +16,7 @@ class Job(models.Model):
     recruiter = models.ForeignKey(User, related_name='jobs', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to='uploads/jobs')
+    skills = models.JSONField(blank=True, null=True)
 
     def image_url(self):
         return f'{settings.WEBSITE_URL}{self.image.url}'
