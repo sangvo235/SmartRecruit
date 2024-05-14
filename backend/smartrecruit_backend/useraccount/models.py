@@ -3,7 +3,7 @@ from django.conf import settings
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, UserManager
 from django.db import models
 import PyPDF2
-from ml_processing.ml_model import ResumeProcessor
+from ml_processing.models import ResumeProcessor
 from django.http import JsonResponse
 
 resume_processor = ResumeProcessor()

@@ -1,7 +1,6 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
-from .ml_model import ResumeProcessor
-from .models import JobDescription
+from .models import JobDescription, ResumeProcessor
 from useraccount.models import User
 
 resume_processor = ResumeProcessor()
