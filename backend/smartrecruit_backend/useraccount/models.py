@@ -2,6 +2,11 @@ import uuid
 from django.conf import settings
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, UserManager
 from django.db import models
+import PyPDF2
+from ml_processing.ml_model import ResumeProcessor
+from django.http import JsonResponse
+
+resume_processor = ResumeProcessor()
 
 class CustomUserManager(UserManager):
     def _create_user(self, name, email, password, **extra_fields):
@@ -34,6 +39,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     phone = models.CharField(max_length=15,blank=True, default='')
     avatar = models.ImageField(upload_to='uploads/avatars', default='uploads/avatars/default.jpg')
     resume = models.FileField(upload_to='uploads/resumes', blank=True, null=True)
+    resume_text = models.TextField(blank=True, default='')
+    skills = models.JSONField(blank=True, null=True)
 
     is_active = models.BooleanField(default=True)
     is_superuser = models.BooleanField(default=False)
@@ -59,4 +66,19 @@ class User(AbstractBaseUser, PermissionsMixin):
             return f'{settings.WEBSITE_URL}{self.resume.url}'
         else:
             return ''
-    
+        
+    def save(self, *args, **kwargs):
+        if self.resume:
+            try:
+                pdf_reader = PyPDF2.PdfFileReader(self.resume)
+                resume_text = ''
+                for page_num in range(pdf_reader.numPages):
+                    resume_text += pdf_reader.getPage(page_num).extractText()
+                self.resume_text = resume_text
+                skills = resume_processor.analyze_resume(resume_text)
+                self.skills = skills
+            except PyPDF2.utils.PdfReadError:
+                return JsonResponse({'error': 'Invalid PDF file. Please upload a valid PDF file.'}, status=400)
+
+        super().save(*args, **kwargs) 
+
