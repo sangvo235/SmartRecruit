@@ -59,7 +59,8 @@ class ResumeProcessor:
         return [ent.text for ent in doc.ents if ent.label_ == "SKILL"]
 
     def analyze_resume(self, resume_text):
-        # Combine cleaning and skill extraction
         clean_resume = self.clean_text(resume_text)
         skills = self.extract_skills(clean_resume)
-        return skills
+        unique_skills = list(set(skills))
+        
+        return unique_skills
