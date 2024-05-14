@@ -3,10 +3,9 @@ from django.conf import settings
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, UserManager
 from django.db import models
 import PyPDF2
-from ml_processing.models import ResumeProcessor
-from django.http import JsonResponse
+from ml_processing.models import SkillProcessor
 
-resume_processor = ResumeProcessor()
+skill_processor = SkillProcessor()
 
 class CustomUserManager(UserManager):
     def _create_user(self, name, email, password, **extra_fields):
@@ -69,16 +68,13 @@ class User(AbstractBaseUser, PermissionsMixin):
         
     def save(self, *args, **kwargs):
         if self.resume:
-            try:
-                pdf_reader = PyPDF2.PdfReader(self.resume)
-                resume_text = ''
-                for page_num in range(len(pdf_reader.pages)):
-                    resume_text += pdf_reader.pages[page_num].extract_text()
-                self.resume_text = resume_text
-                skills = resume_processor.analyze_resume(resume_text)
-                self.skills = skills
-            except PyPDF2.utils.PdfReadError:
-                return JsonResponse({'error': 'Invalid PDF file. Please upload a valid PDF file.'}, status=400)
+            pdf_reader = PyPDF2.PdfReader(self.resume)
+            resume_text = ''
+            for page_num in range(len(pdf_reader.pages)):
+                resume_text += pdf_reader.pages[page_num].extract_text()
+            self.resume_text = resume_text
+            skills = skill_processor.analyze_resume(resume_text)
+            self.skills = skills
 
         super().save(*args, **kwargs) 
 

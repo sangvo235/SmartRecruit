@@ -2,9 +2,9 @@ import uuid
 from django.conf import settings
 from django.db import models
 from useraccount.models import User
-from ml_processing.models import ResumeProcessor
+from ml_processing.models import SkillProcessor
 
-resume_processor = ResumeProcessor()
+skill_processor = SkillProcessor()
 
 class Job(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -26,7 +26,7 @@ class Job(models.Model):
     
     def save(self, *args, **kwargs):
         if self.description:
-            cleaned_text = resume_processor.clean_text(self.description)
-            self.skills = resume_processor.extract_skills(cleaned_text)
+            cleaned_text = skill_processor.clean_text(self.description)
+            self.skills = skill_processor.extract_skills(cleaned_text)
 
         super(Job, self).save(*args, **kwargs)

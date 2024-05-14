@@ -1,9 +1,9 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
-from .models import JobDescription, ResumeProcessor
+from .models import SkillProcessor
 from useraccount.models import User
 
-resume_processor = ResumeProcessor()
+resume_processor = SkillProcessor()
 
 @api_view(['POST'])
 @authentication_classes([])

@@ -10,7 +10,7 @@ from nltk.stem import WordNetLemmatizer
 import jsonlines
 import os
 
-class ResumeProcessor:
+class SkillProcessor:
     def __init__(self):
         # Load the spaCy model
         self.nlp = spacy.load(
