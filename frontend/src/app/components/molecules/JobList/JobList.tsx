@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react"
 import { Card, CardContent, CardFooter } from "../../atoms/JobCard/JobCard";
 import apiService from "@/app/services/apiService";
+import { UserProps } from "../UserDetails/UserDetails";
 
 export type JobType = {
     id: string;
@@ -20,7 +21,7 @@ export type JobType = {
     created_at: string;
 }
 
-const JobList = () => {
+const JobList: React.FC<UserProps> = ({ userId }) => {
     const [jobs, setJobs] = useState<JobType[]>([]);
     
       const getJobs = async () => {
@@ -30,13 +31,13 @@ const JobList = () => {
       
       useEffect(() => {
         getJobs();
-    }, []);
-  
-    return (
+      }, []);
+
+      return (
         <div>
           {jobs.map((job) => (
             <Card key={job.id}>
-              <CardContent job={job} />
+              <CardContent job={job} userId={userId ?? ""}/>
               <CardFooter job={job}/>
             </Card>
           ))}

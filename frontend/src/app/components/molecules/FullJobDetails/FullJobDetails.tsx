@@ -3,17 +3,20 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { JobType } from "../../../components/molecules/JobList/JobList";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from "../../../components/atoms/Card/Card";
-import { ReceiptText, Building2, MapPin, Briefcase, PiggyBank, Hash, Contact, Mail, CalendarDays, Car } from 'lucide-react';
+import { ReceiptText, Building2, MapPin, Briefcase, PiggyBank, Hash, Contact, Mail, CalendarDays } from 'lucide-react';
 import { Button } from "../../../components/atoms/Button/Button";
 import apiService from "@/app/services/apiService";
 import { Avatar, AvatarFallback, AvatarImage } from "../../../components/atoms/Avatar/Avatar";
+import { UserProps } from "../UserDetails/UserDetails";
 
-const FullJobDetails: React.FC<JobType | null> = () => {
+const FullJobDetails: React.FC<JobType & UserProps> = ({ userId }) => {
     const params = useParams();
     const { id } = params;
     
     const [job, setJob] = useState<JobType | null>(null);
     const [formattedDate, setFormattedDate] = useState<string>("");
+    const [errors, setErrors] = useState<string[]>([]);
+
 
     const getJob = async () => {
         const tmpJob = await apiService.get(`/api/jobs/${id}`);
@@ -23,6 +26,27 @@ const FullJobDetails: React.FC<JobType | null> = () => {
     useEffect(() => {
         getJob();
     }, [id]);
+
+    const handleApplyClick = async () => {
+        if (job === null) {
+            return;
+        }
+
+        const response = await apiService.post(`/api/ml/apply/`, JSON.stringify({ user_id: userId, job_id: job.id }));
+
+        if (response.access) {
+            console.log("Application sent successfully!");
+            const tmpMessage: string[] = Object.values(response).map((message: any) => {
+                return message;
+            })
+            setErrors(tmpMessage);  
+        } else {
+            const tmpErrors: string[] = Object.values(response).map((error: any) => {
+                return error;
+            })
+            setErrors(tmpErrors);      
+        }   
+    };
 
     // Logic for formatting the date
     useEffect(() => {
@@ -107,9 +131,17 @@ const FullJobDetails: React.FC<JobType | null> = () => {
                 </CardContent>
 
                 <CardFooter>
-                    <Button size="invite">
-                        Apply 
-                    </Button>
+                    <div>
+                        <Button size="invite" onClick={handleApplyClick}>
+                            Apply 
+                        </Button>
+                    
+                        {errors.map((error, index) => {
+                                return (
+                                <div key={`error_${index}`} className="text-red-500 font-semibold text-sm mt-2">{error}</div>
+                                )
+                            })}
+                    </div>
                 </CardFooter>
             </Card>
         </>

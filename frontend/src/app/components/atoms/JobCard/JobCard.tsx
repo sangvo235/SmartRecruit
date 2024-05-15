@@ -6,6 +6,8 @@ import { Separator } from "../Separator/Separator";
 import { JobType } from "../../molecules/JobList/JobList";
 import { Building2, MapPin, PiggyBank } from 'lucide-react';
 import { useRouter } from "next/navigation";
+import apiService from "../../../services/apiService";
+import { useState } from "react";
 
 interface JobCardProps {
     job: JobType;
@@ -27,10 +29,33 @@ Card.displayName = "Card";
 const CardContent = React.forwardRef<
     HTMLDivElement, 
     React.HTMLAttributes<HTMLDivElement> & 
-    JobCardProps
->(({ className, job, ...props }, ref) => {
+    JobCardProps &
+    { userId: string }
+>(({ className, job, userId, ...props }, ref) => {
 
   const router = useRouter(); 
+  const [errors, setErrors] = useState<string[]>([]);
+
+  const handleApplyClick = async () => {
+    if (job === null) {
+        return;
+    }
+
+    const response = await apiService.post(`/api/ml/apply/`, JSON.stringify({ user_id: userId, job_id: job.id }));
+
+    if (response.access) {
+        console.log("Application sent successfully!");
+        const tmpMessage: string[] = Object.values(response).map((message: any) => {
+            return message;
+        })
+        setErrors(tmpMessage);  
+    } else {
+        const tmpErrors: string[] = Object.values(response).map((error: any) => {
+            return error;
+        })
+        setErrors(tmpErrors);      
+    }   
+};
 
   return (
     <div
@@ -66,14 +91,18 @@ const CardContent = React.forwardRef<
           </div>
 
           <div className="text-sm text-muted-foreground pt-2">{job.intro}</div>
+          
+          {errors.map((error, index) => {
+            return (
+            <div key={`error_${index}`} className="text-red-500 font-semibold text-sm mt-2">{error}</div>
+            )
+          })}
       </div>
       
-      {/* Apply (will code this at a later time) */}
-      <Button size="invite">
+      <Button size="invite" onClick={handleApplyClick}>
           Apply 
       </Button>
 
-      {/* Read More */}
       <Button size="invite" variant="outline" onClick={() => router.push(`/pages/job/${job.id}`)}>
           Read More 
       </Button>

@@ -2,6 +2,10 @@ import uuid
 from django.conf import settings
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, UserManager
 from django.db import models
+import PyPDF2
+from ml_processing.models import SkillProcessor
+
+skill_processor = SkillProcessor()
 
 class CustomUserManager(UserManager):
     def _create_user(self, name, email, password, **extra_fields):
@@ -34,6 +38,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     phone = models.CharField(max_length=15,blank=True, default='')
     avatar = models.ImageField(upload_to='uploads/avatars', default='uploads/avatars/default.jpg')
     resume = models.FileField(upload_to='uploads/resumes', blank=True, null=True)
+    resume_text = models.TextField(blank=True, default='')
+    skills = models.JSONField(blank=True, null=True)
 
     is_active = models.BooleanField(default=True)
     is_superuser = models.BooleanField(default=False)
@@ -59,4 +65,16 @@ class User(AbstractBaseUser, PermissionsMixin):
             return f'{settings.WEBSITE_URL}{self.resume.url}'
         else:
             return ''
-    
+        
+    def save(self, *args, **kwargs):
+        if self.resume:
+            pdf_reader = PyPDF2.PdfReader(self.resume)
+            resume_text = ''
+            for page_num in range(len(pdf_reader.pages)):
+                resume_text += pdf_reader.pages[page_num].extract_text()
+            self.resume_text = resume_text
+            skills = skill_processor.analyze_resume(resume_text)
+            self.skills = skills
+
+        super().save(*args, **kwargs) 
+

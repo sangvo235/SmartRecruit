@@ -1,8 +1,7 @@
 from django.urls import path
-from . import views
+from . import api
 
 urlpatterns = [
-    path('process/', views.process_resume, name='process_resume'),
-    path('job_description/', views.parse_job_description, name='parse_job_description'),
-    path('match/', views.match_resume, name='match_resume'),
+    path('apply/', api.apply_to_job, name='apply_to_job'),
+    path('match/', api.match_resume, name='match_resume'),
 ]

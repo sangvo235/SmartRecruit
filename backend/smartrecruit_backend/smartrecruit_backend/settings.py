@@ -94,8 +94,8 @@ INSTALLED_APPS = [
     'results',
     'questions',
     'invite',
-    
-    'ml_processing'
+    'ml_processing',
+    'job_application',
 ]
 
 MIDDLEWARE = [

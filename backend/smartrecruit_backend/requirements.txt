@@ -12,3 +12,4 @@ spacy==3.7.4  # Updated to a newer version with better Python 3.11 support
 pandas>=1.4.0  # Ensure support for Python 3.11
 nltk>=3.7  # Ensure support for Python 3.11
 jsonlines==3.0.0
+PyPDF2==3.0.0
