@@ -59,8 +59,8 @@ TODOs:
 - ~Add resume property on user model, url path, GET and POST for upload of resume~
 - ~Login bug fixes (user details not rendering immediately)~
 - ~Frontend interface & API for listing candidate scores on online assessment for job recruiter~
-- Integrating machine learning component for resume upload
-- Search bar and filtering system on job listing page based on the resume uploaded
+- ~Integrating machine learning component for resume upload~
+- Results page with highest match for job applications
 - Have the user and recruiter displays to be different on the frontend
 - Cloud storage option
 - Deployment
