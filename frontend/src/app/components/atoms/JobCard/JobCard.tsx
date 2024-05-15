@@ -6,6 +6,7 @@ import { Separator } from "../Separator/Separator";
 import { JobType } from "../../molecules/JobList/JobList";
 import { Building2, MapPin, PiggyBank } from 'lucide-react';
 import { useRouter } from "next/navigation";
+import apiService from "../../../services/apiService";
 
 interface JobCardProps {
     job: JobType;
@@ -27,10 +28,15 @@ Card.displayName = "Card";
 const CardContent = React.forwardRef<
     HTMLDivElement, 
     React.HTMLAttributes<HTMLDivElement> & 
-    JobCardProps
->(({ className, job, ...props }, ref) => {
+    JobCardProps &
+    { userId: string }
+>(({ className, job, userId, ...props }, ref) => {
 
   const router = useRouter(); 
+
+  const handleApplyClick = async () => {
+      await apiService.post(`/api/ml/apply/`, JSON.stringify({ user_id: userId, job_id: job.id }));
+  };
 
   return (
     <div
@@ -68,12 +74,10 @@ const CardContent = React.forwardRef<
           <div className="text-sm text-muted-foreground pt-2">{job.intro}</div>
       </div>
       
-      {/* Apply (will code this at a later time) */}
-      <Button size="invite">
+      <Button size="invite" onClick={handleApplyClick}>
           Apply 
       </Button>
 
-      {/* Read More */}
       <Button size="invite" variant="outline" onClick={() => router.push(`/pages/job/${job.id}`)}>
           Read More 
       </Button>
