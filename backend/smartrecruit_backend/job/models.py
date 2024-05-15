@@ -27,6 +27,7 @@ class Job(models.Model):
     def save(self, *args, **kwargs):
         if self.description:
             cleaned_text = skill_processor.clean_text(self.description)
-            self.skills = skill_processor.extract_skills(cleaned_text)
+            extract_skills = skill_processor.extract_skills(cleaned_text)
+            self.skills = list(set(extract_skills))
 
         super(Job, self).save(*args, **kwargs)
