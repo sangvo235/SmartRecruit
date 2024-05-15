@@ -19,8 +19,14 @@ def apply_to_job(request):
             if not user_id or not job_id:
                 return Response({"error": "Both user ID and job ID are required"}, status=400)
 
-            user = User.objects.get(id=user_id)
-            job = Job.objects.get(id=job_id)
+            try:
+                user = User.objects.get(id=user_id)
+                job = Job.objects.get(id=job_id)
+            except (User.DoesNotExist, Job.DoesNotExist):
+                return Response({"error": "User or job not found"}, status=404)
+
+            if JobApplication.objects.filter(user=user, job=job).exists():
+                return Response({"error": "User has already applied to this job"}, status=400)
 
             common_skills = set(job.skills).intersection(set(user.skills))
             score = len(common_skills) / len(job.skills) if job.skills else 0
@@ -33,8 +39,6 @@ def apply_to_job(request):
             )
 
             return Response({"message": "Applied to job successfully"}, status=200)
-        except (User.DoesNotExist, Job.DoesNotExist):
-            return Response({"error": "User or job not found"}, status=404)
         except Exception as e:
             return Response({"error": str(e)}, status=500)
     return Response({'error': 'Method not allowed'}, status=405)
