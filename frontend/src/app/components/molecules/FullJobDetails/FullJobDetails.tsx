@@ -3,12 +3,13 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { JobType } from "../../../components/molecules/JobList/JobList";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from "../../../components/atoms/Card/Card";
-import { ReceiptText, Building2, MapPin, Briefcase, PiggyBank, Hash, Contact, Mail, CalendarDays, Car } from 'lucide-react';
+import { ReceiptText, Building2, MapPin, Briefcase, PiggyBank, Hash, Contact, Mail, CalendarDays } from 'lucide-react';
 import { Button } from "../../../components/atoms/Button/Button";
 import apiService from "@/app/services/apiService";
 import { Avatar, AvatarFallback, AvatarImage } from "../../../components/atoms/Avatar/Avatar";
+import { UserProps } from "../UserDetails/UserDetails";
 
-const FullJobDetails: React.FC<JobType | null> = () => {
+const FullJobDetails: React.FC<JobType & UserProps> = ({ userId }) => {
     const params = useParams();
     const { id } = params;
     
@@ -23,6 +24,12 @@ const FullJobDetails: React.FC<JobType | null> = () => {
     useEffect(() => {
         getJob();
     }, [id]);
+
+    const handleApplyClick = async () => {
+        if (job) {
+            await apiService.post(`/api/ml/apply/`, JSON.stringify({ user_id: userId, job_id: job.id }));
+        }
+    };
 
     // Logic for formatting the date
     useEffect(() => {
@@ -107,7 +114,7 @@ const FullJobDetails: React.FC<JobType | null> = () => {
                 </CardContent>
 
                 <CardFooter>
-                    <Button size="invite">
+                    <Button size="invite" onClick={handleApplyClick}>
                         Apply 
                     </Button>
                 </CardFooter>
