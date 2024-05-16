@@ -2,11 +2,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Profile from '../Profile/Profile';
 import NavLinks from '../NavLinks/NavLinks';
-import { getUserId } from '@/app/lib/actions';
+import { getUserId, isAdmin } from '@/app/lib/actions';
 
 const Navbar = async () => {
     const userId = await getUserId();
-
+    const userIsAdmin = await isAdmin();
+    
     return (
         <nav className="w-full fixed top-0 left-0 py-6 border-b bg-smartblue z-10 text-lg font-semibold">
             <div className="max-w-[1500px] mx-auto px-6 text-white">
@@ -19,8 +20,8 @@ const Navbar = async () => {
                             height={50}
                         />
                     </Link>
-                    <NavLinks userId={userId}/>
-                    <Profile userId={userId}/>
+                    <NavLinks userId={userId} isAdmin={userIsAdmin}/>
+                    <Profile userId={userId} />
                 </div>
             </div>
         </nav>
