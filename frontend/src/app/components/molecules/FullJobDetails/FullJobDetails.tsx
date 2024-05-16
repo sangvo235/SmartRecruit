@@ -17,7 +17,6 @@ const FullJobDetails: React.FC<JobType & UserProps> = ({ userId }) => {
     const [formattedDate, setFormattedDate] = useState<string>("");
     const [errors, setErrors] = useState<string[]>([]);
 
-
     const getJob = async () => {
         const tmpJob = await apiService.get(`/api/jobs/${id}`);
         setJob(tmpJob);
