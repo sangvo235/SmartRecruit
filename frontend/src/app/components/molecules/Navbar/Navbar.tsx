@@ -8,8 +8,6 @@ const Navbar = async () => {
     const userId = await getUserId();
     const userIsAdmin = await isAdmin();
     
-    console.log(userIsAdmin)
-
     return (
         <nav className="w-full fixed top-0 left-0 py-6 border-b bg-smartblue z-10 text-lg font-semibold">
             <div className="max-w-[1500px] mx-auto px-6 text-white">

@@ -87,7 +87,6 @@ export async function isAdmin() {
 
             if (response.ok) {
                 const userDetails = await response.json();
-                console.log('User Details:', userDetails);
                 return userDetails.is_staff || userDetails.is_superuser;
             } else {
                 console.error('Failed to fetch user details:', response.statusText);
@@ -103,7 +102,6 @@ export async function isAdmin() {
     }
 }
 
-// Get Data
 export async function getUserId() {
     const userId = cookies().get("session_userid")?.value
     return userId ? userId : null

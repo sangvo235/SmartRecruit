@@ -16,7 +16,9 @@ const NavLinks: React.FC<NavLinksProps> = ({ userId, isAdmin }) => {
         return currentPath === href ? 'text-accent' : '';
     };
 
-    const navLinks = userId ? (isAdmin ? NAV_LINKS_ADMIN : NAV_LINKS_USER) : NAV_LINKS_DEFAULT;
+    const navLinks = userId ? 
+        (isAdmin ? NAV_LINKS_ADMIN : NAV_LINKS_USER) : 
+        NAV_LINKS_DEFAULT;
         
     return (
         <ul className="h-full sm:gap-4 sm:flex sm:text-xs md:flex md:gap-8 md:text-sm lg:text-lg lg:flex lg:gap-12">

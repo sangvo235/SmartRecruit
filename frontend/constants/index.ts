@@ -15,7 +15,7 @@ export const NAV_LINKS_USER = [
 export const NAV_LINKS_ADMIN = [
     { href: '/', key: 'home', label: 'Home' },
     { href: '/pages/job', key: 'job', label: 'Job Listing' },
-    { href: '/pages/job-application', key: 'job-application', label: 'Job Applicantion Rankings' },
+    { href: '/pages/job-application', key: 'job-application', label: 'Job Applications' },
     { href: '/pages/ranking', key: 'ranking', label: 'Online Assessment Rankings' },
 ]
 

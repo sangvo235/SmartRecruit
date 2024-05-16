@@ -27,8 +27,6 @@ def user_admin(request, pk):
     serializer = AdminDetailsSerializer(user)
     return JsonResponse(serializer.data, safe=False)
 
-    # return JsonResponse({'data': serializer.data}, safe=False)
-
 @api_view(['POST'])
 @authentication_classes([])
 @permission_classes([])
