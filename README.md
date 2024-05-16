@@ -61,7 +61,8 @@ TODOs:
 - ~Frontend interface & API for listing candidate scores on online assessment for job recruiter~
 - ~Integrating machine learning component for resume upload~
 - ~APIs, models and job application ranking page~
-- Have the user and recruiter displays to be different on the frontend
+- ~Have the user and recruiter displays to be different on the frontend~
+- ~Frontend to invite candidates~
 - Deployment
 
 # Software Required 💻
