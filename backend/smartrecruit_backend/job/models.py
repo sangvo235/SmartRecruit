@@ -31,3 +31,6 @@ class Job(models.Model):
             self.skills = list(set(extract_skills))
 
         super(Job, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return f"{self.company} - {self.title}"
