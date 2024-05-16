@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import { Check, ChevronsUpDown, Fingerprint, Mail, Scroll, UserRound, FileCheck2 } from "lucide-react";
+import { Check, ChevronsUpDown, Fingerprint, Mail, Scroll, UserRound } from "lucide-react";
 import { cn } from "../../../lib/utils";
 import { Button } from "../../atoms/Button/Button";
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "../../atoms/Command/Command";
@@ -22,8 +22,8 @@ export type JobApplicationType = {
 export function JobApplication() {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState<{ label: string; value: string } | null>(null);
-  const [JobApplication, setJobApplication] = useState<JobApplicationType[]>([]);
-  const [results, setResults] = React.useState<any[]>([]);
+  const [jobApplication, setJobApplication] = useState<JobApplicationType[]>([]);
+  const [jobAppDetails, setJobAppDetails] = useState<JobApplicationType[]>([]);
 
   const getJobApplication = async () => {
     const tmpJobApplication = await apiService.get("/api/jobs/application/");
@@ -34,23 +34,37 @@ export function JobApplication() {
     getJobApplication();
   }, []);
 
-  console.log(value);
 
-  const handleSelect = (selectedValue: string) => {
-    apiService.get(`/api/jobs/${selectedValue}`)
-      .then((response) => {
-        const filteredResults = response.data.filter((job_application: { match_percentage: number | null; }) => job_application.match_percentage !== null && job_application.match_percentage !== null);
-        const sortedResults = filteredResults.sort((a: { match_percentage: number; }, b: { match_percentage: number; }) => b.match_percentage - a.match_percentage);
-        setResults(sortedResults);
-      })
-      .catch((error) => {
-        console.error("Error fetching job details:", error);
-      });
-  };
+const handleSelect = async (selectedValue: string) => {
+    try {
+    const response = await apiService.get(`/api/jobs/application/${selectedValue}/`);
+    const { data } = response;
+    const jobAppDetails = data;
 
-  return (
+    const users: JobApplicationType[] = [];
+    for (let i = 0; i < jobAppDetails.user_id.length; i++) {
+        users.push({
+            id: "", 
+            title: "", 
+            company: "", 
+            user_id: jobAppDetails.user_id[i],
+            user_name: jobAppDetails.user_name[i],
+            user_email: jobAppDetails.user_email[i],
+            match_percentage: jobAppDetails.match_percentage[i]
+        });
+    }
+
+    users.sort((a, b) => b.match_percentage - a.match_percentage);
+
+    setJobAppDetails(users);
+    } catch (error) {
+    console.error("Error fetching job details:", error);
+    }
+};
+
+return (
     <>
-      <span className="mr-2 font-semibold">Listed Jobs:</span>
+      <span className="mr-2 text-lg font-semibold">Listed Jobs:</span>
 
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
@@ -70,7 +84,7 @@ export function JobApplication() {
             <CommandEmpty>No jobs found.</CommandEmpty>
             <CommandGroup>
               <CommandList>
-                {JobApplication.map((job) => (
+                {jobApplication.map((job) => (
                   <CommandItem
                     key={job.id}
                     value={job.id}
@@ -99,35 +113,37 @@ export function JobApplication() {
       </Popover>
 
       <div className="my-6">
-        {results.map((result, index) => (
+        {!value && jobAppDetails.length === 0 && <p className="text-lg mt-32">Please select a job.</p>}
+        {value && jobAppDetails.length === 0 && <p className="text-lg mt-32">No job application details available.</p>}
+        {jobAppDetails.map((user, index) => (
           <a
             key={index}
-            href={`mailto:${result.user_email}`}
+            href={`mailto:${user.user_email}`}
             target="_blank"
             rel="noopener noreferrer"
             className="block mb-4"
           >
-            <Card className={"border-2 cursor-pointer transition duration-300 hover:border-blue-500"}>
+            <Card className="border-2 cursor-pointer transition duration-300 hover:border-blue-500">
               <CardHeader>
                 <CardDescription>
                   <UserRound className="w-4 h-4 mr-2" />
                   <span>Name: </span>
-                  <span>{result.user_name}</span>
+                  <span>{user.user_name}</span>
                 </CardDescription>
                 <CardDescription>
                   <Mail className="w-4 h-4 mr-2" />
                   <span>Email: </span>
-                  <span>{result.user_email}</span>
+                  <span>{user.user_email}</span>
                 </CardDescription>
                 <CardDescription>
                   <Fingerprint className="w-4 h-4 mr-2" />
                   <span>ID: </span>
-                  <span>{result.user_id}</span>
+                  <span>{user.user_id}</span>
                 </CardDescription>
                 <CardDescription>
                   <Scroll className="w-4 h-4 mr-2" />
                   <span>Job Application Match Score: </span>
-                  <span>{result.match_percentage} / 100</span>
+                  <span>{user.match_percentage} / 100</span>
                 </CardDescription>
               </CardHeader>
             </Card>

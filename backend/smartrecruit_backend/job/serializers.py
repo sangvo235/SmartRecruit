@@ -95,3 +95,22 @@ class JobApplicationRankSerializer(serializers.ModelSerializer):
             return job_application.match_percentage
         except JobApplication.DoesNotExist:
             return None
+
+    def get_job_applications(self, obj):
+        return JobApplication.objects.filter(job=obj)
+
+    def get_user_id(self, obj):
+        job_applications = self.get_job_applications(obj)
+        return [job_app.user.id for job_app in job_applications]
+
+    def get_user_name(self, obj):
+        job_applications = self.get_job_applications(obj)
+        return [job_app.user.name for job_app in job_applications]
+
+    def get_user_email(self, obj):
+        job_applications = self.get_job_applications(obj)
+        return [job_app.user.email for job_app in job_applications]
+
+    def get_match_percentage(self, obj):
+        job_applications = self.get_job_applications(obj)
+        return [job_app.match_percentage for job_app in job_applications]

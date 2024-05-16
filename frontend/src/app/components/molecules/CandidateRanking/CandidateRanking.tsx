@@ -43,7 +43,7 @@ export function CandidateRanking() {
 
   return (
     <>
-      <span className="mr-2 font-semibold">Online Assessment:</span>
+      <span className="mr-2 text-lg font-semibold">Online Assessment:</span>
 
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
@@ -93,12 +93,16 @@ export function CandidateRanking() {
       </Popover>
 
       <div className="my-6">
+
         {value && value.pass && (
-          <div className="mx-auto mb-6 font-semibold flex items-center justify-center">
+          <div className="mx-auto mb-6 text-lg font-semibold flex items-center justify-center">
             <FileCheck2 className="mr-2" />
             <span>Passing Score for Assessment: {value.pass} / 100</span>
           </div>
         )}
+
+        {!value && results.length === 0 && <p className="text-lg mt-32">Please select a online assessment.</p>}
+        {value && results.length === 0 && <p className="text-lg mt-32">No online assessment scores are available.</p>}
 
         {results.map((result, index) => (
           <a

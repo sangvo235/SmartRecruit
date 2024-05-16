@@ -14,6 +14,14 @@ def job_list(request):
 @api_view(['GET'])
 @authentication_classes([])
 @permission_classes([])
+def job_detail(request, job_id):
+    job = Job.objects.get(id=job_id)
+    serializer = JobDetailSerializer(job)
+    return JsonResponse(serializer.data)
+
+@api_view(['GET'])
+@authentication_classes([])
+@permission_classes([])
 def job_application_rank(request):
     jobs = Job.objects.all()
     serializer = JobApplicationRankSerializer(jobs, many=True)
@@ -22,8 +30,7 @@ def job_application_rank(request):
 @api_view(['GET'])
 @authentication_classes([])
 @permission_classes([])
-def job_detail(request, job_id):
+def job_application_detail(request, job_id):
     job = Job.objects.get(id=job_id)
-    serializer = JobDetailSerializer(job)
-    return JsonResponse(serializer.data)
-
+    serializer = JobApplicationRankSerializer(job)
+    return JsonResponse({'data': serializer.data})
