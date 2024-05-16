@@ -70,6 +70,39 @@ export async function resetAuthCookies() {
     cookies().set("session_refresh_token", "");
 }
 
+export async function isAdmin() {
+    try {
+        const userId = cookies().get("session_userid")?.value;
+        const accessToken = await getAccessToken();
+
+        if (userId && accessToken) {
+            const response = await fetch(`http://localhost:8000/api/user_details/${userId}/admin/`, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${accessToken}`,
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                const userDetails = await response.json();
+                console.log('User Details:', userDetails);
+                return userDetails.is_staff || userDetails.is_superuser;
+            } else {
+                console.error('Failed to fetch user details:', response.statusText);
+                return false;
+            }
+        } else {
+            console.error('User ID or access token is missing');
+            return false;
+        }
+    } catch (error) {
+        console.error('Error fetching user details:', error);
+        return false;
+    }
+}
+
 // Get Data
 export async function getUserId() {
     const userId = cookies().get("session_userid")?.value

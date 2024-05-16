@@ -22,3 +22,12 @@ class UserResumeSerializer(serializers.ModelSerializer):
             'email',
             'resume_url',
         )
+
+class AdminDetailsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = (
+            'id',
+            'is_staff',
+            'is_superuser',
+        )
