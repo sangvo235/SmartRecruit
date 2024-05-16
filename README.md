@@ -62,7 +62,6 @@ TODOs:
 - ~Integrating machine learning component for resume upload~
 - ~APIs, models and job application ranking page~
 - Have the user and recruiter displays to be different on the frontend
-- Cloud storage option
 - Deployment
 
 # Software Required 💻
