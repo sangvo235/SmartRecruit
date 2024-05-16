@@ -25,8 +25,6 @@ export function CandidateRanking() {
     getOnlineAssessment();
   }, []);
 
-  console.log(value);
-
   const handleSelect = (selectedValue: string) => {
     apiService.get(`/api/invite/details/${selectedValue}`)
       .then((response) => {
@@ -38,8 +36,6 @@ export function CandidateRanking() {
         console.error("Error fetching invite details:", error);
       });
   };
-
-  console.log(onlineAssessment);
 
   return (
     <>
