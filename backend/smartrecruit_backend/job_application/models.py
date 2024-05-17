@@ -7,4 +7,5 @@ class JobApplication(models.Model):
     job = models.ForeignKey(Job, on_delete=models.CASCADE)
     match_percentage = models.FloatField(null=True)
 
-
+    def __str__(self):
+        return f"{self.user.name} ({self.user.email}): {self.job}"

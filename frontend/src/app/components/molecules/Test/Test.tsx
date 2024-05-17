@@ -42,7 +42,6 @@ const Test: React.FC<UserProps> = ({ userId }) => {
         let testFromCookies = document.cookie.match(new RegExp('(^| )' + `test_${id}` + '=([^;]+)'));
         if (!testFromCookies) {
           const response = await apiService.get(`/api/online_assessments/data/${id}`);
-          console.log("Data fetched from server:", response);
           setTest(response.data);
           const questions = response.data.map((question: any) => Object.keys(question)[0]);
           setFormValues({ ...response, questions });
@@ -54,7 +53,6 @@ const Test: React.FC<UserProps> = ({ userId }) => {
           activateTimer(response.time * 60); 
         } else {
           const parsedTest = JSON.parse(testFromCookies[2]);
-          console.log("Data retrieved from cookies:", parsedTest);
           setTest(parsedTest.data);
           const questions = parsedTest.data.map((question: any) => Object.keys(question)[0]);
           setFormValues({ ...parsedTest, questions });

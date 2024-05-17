@@ -9,3 +9,6 @@ class Invite(models.Model):
     invite_date = models.DateTimeField(auto_now_add=True)
     expire_date = models.DateTimeField()
 
+    def __str__(self):
+        return f"{self.user_id.name} ({self.user_id.email}): {self.assessment.name} - {self.assessment.topic}"
+    

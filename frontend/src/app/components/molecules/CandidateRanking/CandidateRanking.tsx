@@ -25,8 +25,6 @@ export function CandidateRanking() {
     getOnlineAssessment();
   }, []);
 
-  console.log(value);
-
   const handleSelect = (selectedValue: string) => {
     apiService.get(`/api/invite/details/${selectedValue}`)
       .then((response) => {
@@ -38,8 +36,6 @@ export function CandidateRanking() {
         console.error("Error fetching invite details:", error);
       });
   };
-
-  console.log(onlineAssessment);
 
   return (
     <>
@@ -117,7 +113,7 @@ export function CandidateRanking() {
                 "border-2 cursor-pointer transition duration-300 hover:border-blue-500" +
                 (result.score && value && result.score >= value.pass
                   ? " border-emerald-500"
-                  : " border-gray-300")
+                  : " border-smartorange")
               }
             >
               <CardHeader>

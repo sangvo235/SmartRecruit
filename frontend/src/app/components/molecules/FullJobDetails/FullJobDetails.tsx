@@ -34,7 +34,6 @@ const FullJobDetails: React.FC<JobType & UserProps> = ({ userId }) => {
         const response = await apiService.post(`/api/ml/apply/`, JSON.stringify({ user_id: userId, job_id: job.id }));
 
         if (response.access) {
-            console.log("Application sent successfully!");
             const tmpMessage: string[] = Object.values(response).map((message: any) => {
                 return message;
             })
