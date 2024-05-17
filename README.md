@@ -63,6 +63,7 @@ TODOs:
 - ~APIs, models and job application ranking page~
 - ~Have the user and recruiter displays to be different on the frontend~
 - ~Update context name for django admin for better usability~
+- ~Added appropriate data to the backend~
 - Deployment
 
 # Software Required 💻
