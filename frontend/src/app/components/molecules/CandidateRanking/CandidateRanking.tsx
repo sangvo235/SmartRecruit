@@ -113,7 +113,7 @@ export function CandidateRanking() {
                 "border-2 cursor-pointer transition duration-300 hover:border-blue-500" +
                 (result.score && value && result.score >= value.pass
                   ? " border-emerald-500"
-                  : " border-gray-300")
+                  : " border-smartorange")
               }
             >
               <CardHeader>

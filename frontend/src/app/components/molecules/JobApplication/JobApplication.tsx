@@ -143,7 +143,7 @@ return (
                 <CardDescription>
                   <Scroll className="w-4 h-4 mr-2" />
                   <span>Job Application Match Score: </span>
-                  <span>{user.match_percentage} / 100</span>
+                  <span className="font-bold">{user.match_percentage}%</span>
                 </CardDescription>
               </CardHeader>
             </Card>
