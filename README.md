@@ -1,4 +1,7 @@
 # SmartRecruit 🧑‍💼
+The web application is deployed here: http://170.64.172.207/
+
+-----------------------------------------------------------
 - Course Name: COS80029 Technology Application Project
 - University: Swinburne University of Technology
 - Group ID: AC4 
