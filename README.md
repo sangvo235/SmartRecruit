@@ -212,7 +212,38 @@ docker exec -it backend-web-1 python manage.py createsuperuser
 
 - To sign in and use this please access: localhost:8000/admin/.
 
-### 6. Recommendations
+### 6. Deployment
+- The web application is deployed on a Digital Ocean Droplet (i.e. instance, server) with the help of nginx for reverse proxy, load balancing, mapping to server/media/static file locations and HTTP caching. 
+- The current specs for the droplet is: / 4 GB Memory / 25 GB Disk / SYD1 - Ubuntu 22.04 (LTS) x64.
+
+Here are some useful deployment commands that was used in the production process: 
+
+- Login into the server 
+```
+ssh root@170.64.172.207
+```
+
+- Change directory to webapps folder where the SmartRecruit application is stored
+```
+cd /webapps
+```
+
+- Reboot server
+```
+reboot
+```
+
+- Linux package updates
+```
+apt update
+```
+
+- Upgrade the updates
+```
+apt upgrade
+```
+
+### 7. Recommendations
 - If your using VSCode you can install the following which will help in streamlining the coding process.
 
 1. [Prettier](https://prettier.io/)
