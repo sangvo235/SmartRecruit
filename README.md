@@ -223,7 +223,7 @@ docker exec -it backend-web-1 python manage.py createsuperuser
 - The current specs for the droplet is: / 4 GB Memory / 25 GB Disk / SYD1 - Ubuntu 22.04 (LTS) x64.
 
 Here are some useful deployment commands that was used in the production process: 
-1. Backend
+#### 6.1. Backend
 - Login into the server 
 ```
 ssh root@170.64.172.207
@@ -283,9 +283,7 @@ docker image prune
 docker-compose python manage.py collectstatic
 ```
 
-
-
-2. Frontend
+#### 6.1. Frontend
 - Install node.js for Node.js 20 LTS on Ubuntu 22.04 by following the first 2 steps on:
 ```
 https://medium.com/@nsidana123/before-the-birth-of-of-node-js-15ee9262110c
