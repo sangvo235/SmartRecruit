@@ -21,6 +21,7 @@ The web application is deployed here: http://170.64.172.207/
 ![DigitalOcean](https://img.shields.io/badge/DigitalOcean-%230167ff.svg?style=for-the-badge&logo=digitalOcean&logoColor=white)
 ![Nginx](https://img.shields.io/badge/nginx-%23009639.svg?style=for-the-badge&logo=nginx&logoColor=white)
 ![Gunicorn](https://img.shields.io/badge/gunicorn-%298729.svg?style=for-the-badge&logo=gunicorn&logoColor=white)
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-007ACC?logo=visualstudiocode&logoColor=fff&style=for-the-badge)
 ![Google Drive](https://img.shields.io/badge/Google%20Drive-4285F4?logo=googledrive&logoColor=fff&style=for-the-badge)
 
@@ -215,7 +216,10 @@ docker exec -it backend-web-1 python manage.py createsuperuser
 - To sign in and use this please access: localhost:8000/admin/.
 
 ### 6. Deployment
-- The web application is deployed on a Digital Ocean Droplet (i.e. instance, server) with the help of nginx for reverse proxy, load balancing, mapping to server/media/static file locations and HTTP caching. 
+- The web application is deployed on a Digital Ocean Droplet (i.e. instance, server) with the help of :
+   - nginx for reverse proxy, load balancing, mapping to server/media/static file locations and HTTP caching.
+   - gunicorn for the webserver gateway interface (wsgi).
+   - node.js to extend use of js to server side.
 - The current specs for the droplet is: / 4 GB Memory / 25 GB Disk / SYD1 - Ubuntu 22.04 (LTS) x64.
 
 Here are some useful deployment commands that was used in the production process: 
@@ -282,9 +286,20 @@ docker-compose python manage.py collectstatic
 
 
 2. Frontend
-- Install nginx (this is not required previously as it is already apart of the docker file in the backend) + the nginx configuration files is created and edited directly on the server.
+- Install node.js for Node.js 20 LTS on Ubuntu 22.04 by following the first 2 steps on:
+```
+https://medium.com/@nsidana123/before-the-birth-of-of-node-js-15ee9262110c
+```
+
+- Install nginx (this is not required previously as it is already apart of the docker file in the backend)
 ```
 apt install nginx
+```
+
+- Remove default and add frontend.conf to server
+```
+/etc/nginx/sites-enabled/# rm default
+/etc/nginx/sites-enabled/# nano frontend.conf
 ```
 
 - Restart nginx
