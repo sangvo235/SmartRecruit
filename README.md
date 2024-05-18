@@ -277,14 +277,24 @@ docker-compose python manage.py collectstatic
 
 
 2. Frontend
-- Install nginx (this is not required previously as it is already apart of the docker file in the backend)
+- Install nginx (this is not required previously as it is already apart of the docker file in the backend) + the nginx configuration files is created and edited directly on the server.
 ```
 apt install nginx
 ```
 
-- Install nginx (this is not required previously as it is already apart of the docker file in the backend)
+- Restart nginx
 ```
-apt install nginx
+sudo service nginx restart
+```
+
+- Build the Next.js app
+```
+npm run build
+```
+
+- Start the Next.js app
+```
+npm start
 ```
 
 ### 7. Recommendations
