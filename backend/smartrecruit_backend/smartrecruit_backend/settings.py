@@ -18,7 +18,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY", "12345")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = bool(os.environ.get("DEBUG", default=0))
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['170.64.172.207', 'localhost', '127.0.0.1', '[::1]']
 
@@ -66,7 +66,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://170.64.172.207:1337"
 ]
 
-CORS_TRUSTED_ORIGINS = [
+CSRF_TRUSTED_ORIGINS = [
     "http://localhost:3000",
     "http://localhost:8000",
     "http://127.0.0.1:3000",
@@ -206,7 +206,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'static'
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
