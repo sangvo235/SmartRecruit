@@ -8,9 +8,9 @@ djangorestframework-simplejwt==5.3.1
 pillow==10.2.0
 channels==4.0.0
 daphne==4.0.0
-spacy==3.7.4  # Updated to a newer version with better Python 3.11 support
-pandas>=1.4.0  # Ensure support for Python 3.11
-nltk>=3.7  # Ensure support for Python 3.11
+spacy==3.7.4  
+pandas>=1.4.0  
+nltk>=3.7
 jsonlines==3.0.0
 PyPDF2==3.0.0
 gunicorn==22.0.0
