@@ -253,6 +253,9 @@ apt install docker-compose
 git clone https://github.com/sangvo235/SmartRecruit.git
 ```
 
+- Add env files (located in this week 11 directory of the team's Google Drive)
+- Remember to remove add the . at the front and place it in the correct folder i.e. /backend (for .env.dev) and /frontend (for .env)
+
 - Docker builds (same as previously but different file now)
 ```
 docker-compose -f docker-compose.prod.yml up --build
