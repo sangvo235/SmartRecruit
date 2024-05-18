@@ -2,6 +2,9 @@ import os
 
 from pathlib import Path
 from datetime import timedelta
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -17,7 +20,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY", "12345")
 #DEBUG = bool(os.environ.get("DEBUG", default=0))
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]']
+ALLOWED_HOSTS = ['170.64.172.207', 'localhost', '127.0.0.1', '[::1]']
 
 AUTH_USER_MODEL = 'useraccount.User'
 

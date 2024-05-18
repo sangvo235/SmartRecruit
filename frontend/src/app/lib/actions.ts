@@ -6,7 +6,7 @@ export async function handleRefresh() {
 
     const refreshToken = await getRefreshToken();
 
-    const token = await fetch('http://localhost:8000/api/auth/token/refresh/', {
+    const token = await fetch('http://170.64.172.207:1337/api/auth/token/refresh/', {
         method: 'POST',
         body: JSON.stringify({
             refresh: refreshToken
@@ -76,7 +76,7 @@ export async function isAdmin() {
         const accessToken = await getAccessToken();
 
         if (userId && accessToken) {
-            const response = await fetch(`http://localhost:8000/api/user_details/${userId}/admin/`, {
+            const response = await fetch(`http://170.64.172.207:1337/api/user_details/${userId}/admin/`, {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${accessToken}`,
