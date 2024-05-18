@@ -217,7 +217,7 @@ docker exec -it backend-web-1 python manage.py createsuperuser
 - The current specs for the droplet is: / 4 GB Memory / 25 GB Disk / SYD1 - Ubuntu 22.04 (LTS) x64.
 
 Here are some useful deployment commands that was used in the production process: 
-
+1. Backend
 - Login into the server 
 ```
 ssh root@170.64.172.207
@@ -241,6 +241,50 @@ apt update
 - Upgrade the updates
 ```
 apt upgrade
+```
+
+- Install docker on server
+```
+apt install docker-compose
+```
+
+- Clone Repository on server
+```
+git clone https://github.com/sangvo235/SmartRecruit.git
+```
+
+- Docker builds (same as previously but different file now)
+```
+docker-compose -f docker-compose.prod.yml up --build
+```
+
+- Creating superuser on server
+```
+docker-compose -f ../docker-compose.prod.yml exec web python manage.py createsuperuser
+```
+
+- Clearing docker images that are not in use
+```
+docker image ls
+docker image prune
+```
+
+- Required if using django admin in production as there is an error in relation to the routing and css styling of the admin.
+```
+docker-compose python manage.py collectstatic
+```
+
+
+
+2. Frontend
+- Install nginx (this is not required previously as it is already apart of the docker file in the backend)
+```
+apt install nginx
+```
+
+- Install nginx (this is not required previously as it is already apart of the docker file in the backend)
+```
+apt install nginx
 ```
 
 ### 7. Recommendations
