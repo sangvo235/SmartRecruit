@@ -20,7 +20,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY", "12345")
 #DEBUG = bool(os.environ.get("DEBUG", default=0))
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]']
+ALLOWED_HOSTS = ['170.64.172.207', 'localhost', '127.0.0.1', '[::1]']
 
 AUTH_USER_MODEL = 'useraccount.User'
 
