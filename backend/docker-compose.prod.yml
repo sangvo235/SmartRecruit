@@ -7,11 +7,16 @@ services:
       - 1337:80
     depends_on:
       - web
+    volumes:
+      - media_volume:/usr/src/smartrecruit_backend/media/
+      - static_volume:/usr/src/smartrecruit_backend/static/
   web:
     build: ./smartrecruit_backend
     command: gunicorn smartrecruit_backend.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - ./smartrecruit_backend/:/usr/src/smartrecruit_backend/
+      - media_volume:/usr/src/smartrecruit_backend/media/
+      - static_volume:/usr/src/smartrecruit_backend/static/
     expose:
       - 8000
     env_file: 
@@ -35,3 +40,5 @@ services:
 
 volumes: 
   postgres_data:
+  media_volume:
+  static_volume:
