@@ -56,6 +56,13 @@ Backend:
 - ~Models (~User~, ~Job~, ~Invite~, ~Online Assessment~, ~Question~, ~Answer~ and ~Machine Learning~)~
 - ~APIs (~GET User Details~, ~POST User Details~, ~POST Avatar Upload~, ~GET Jobs~, ~GET Invites~, ~Filter Invites~, ~GET Online Assessment~ and ~Machine Learning~)~
 
+Deployment:
+- ~Create server on Digital Ocean via a droplet instance~
+- ~Clone repository on the server~
+- ~Create new env files for backend and frontend~
+- ~Backend: Install docker compose, set up a docker file for prod and nginx configuation~
+- ~Frontend: Node.js installation and nginx configuation~
+
 TODOs: 
 - ~Improvement to Online Assessment (implemented cookies to store testing session data, timer function and dyanmic result generation)~
 - ~Fixed the Invite API, Model and card components~ 
@@ -67,7 +74,7 @@ TODOs:
 - ~Have the user and recruiter displays to be different on the frontend~
 - ~Update context name for django admin for better usability~
 - ~Added appropriate data to the backend~
-- Deployment
+- ~Deployment~
 
 # Software Required 💻
 Before starting please have the following installed.
