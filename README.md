@@ -26,6 +26,13 @@ The web application is deployed here: http://170.64.172.207/
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-007ACC?logo=visualstudiocode&logoColor=fff&style=for-the-badge)
 ![Google Drive](https://img.shields.io/badge/Google%20Drive-4285F4?logo=googledrive&logoColor=fff&style=for-the-badge)
 
+- ![Django](https://img.shields.io/badge/Django-092E20?logo=django&logoColor=fff&style=for-the-badge)
+- ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=fff&style=for-the-badge)
+- ![Spacy](https://img.shields.io/badge/spaCy-09A3D5.svg?style=for-the-badge&logo=spaCy&logoColor=white)
+- ![JSONL](https://img.shields.io/badge/JSONL-3C2179.svg?style=for-the-badge)
+- ![NLTK](https://img.shields.io/badge/NLTK-006272.svg?style=for-the-badge&logo=Python&logoColor=white)
+- ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+
 ## System Architecture Summary
 <img width="675" alt="sys-summary" src="https://github.com/sangvo235/SmartRecruit/assets/97276811/f4c72e6e-cdc8-487d-b4b7-e91c22572fac">
 
