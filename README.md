@@ -1,4 +1,7 @@
 # SmartRecruit 🧑‍💼
+The web application is deployed here: http://170.64.172.207/
+
+-----------------------------------------------------------
 - Course Name: COS80029 Technology Application Project
 - University: Swinburne University of Technology
 - Group ID: AC4 
@@ -10,18 +13,26 @@
 ![shadcn/ui](https://img.shields.io/badge/shadcn%2Fui-000?logo=shadcnui&logoColor=fff&style=for-the-badge)
 ![Django](https://img.shields.io/badge/Django-092E20?logo=django&logoColor=fff&style=for-the-badge)
 ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=fff&style=for-the-badge)
-![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?logo=scikitlearn&logoColor=fff&style=for-the-badge)
-![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?logo=pytorch&logoColor=fff&style=for-the-badge)
-![Keras](https://img.shields.io/badge/Keras-D00000?logo=keras&logoColor=fff&style=for-the-badge)
+![Spacy](https://img.shields.io/badge/spaCy-09A3D5.svg?style=for-the-badge&logo=spaCy&logoColor=white)
+![Pandas](https://img.shields.io/badge/pandas-150458.svg?style=for-the-badge&logo=pandas&logoColor=white)
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?logo=postgresql&logoColor=fff&style=for-the-badge)
-![Microsoft Azure](https://img.shields.io/badge/Microsoft%20Azure-0078D4?logo=microsoftazure&logoColor=fff&style=for-the-badge)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=fff&style=for-the-badge)
+![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
+![DigitalOcean](https://img.shields.io/badge/DigitalOcean-%230167ff.svg?style=for-the-badge&logo=digitalOcean&logoColor=white)
+![Nginx](https://img.shields.io/badge/nginx-%23009639.svg?style=for-the-badge&logo=nginx&logoColor=white)
+![Gunicorn](https://img.shields.io/badge/gunicorn-%298729.svg?style=for-the-badge&logo=gunicorn&logoColor=white)
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-007ACC?logo=visualstudiocode&logoColor=fff&style=for-the-badge)
 ![Google Drive](https://img.shields.io/badge/Google%20Drive-4285F4?logo=googledrive&logoColor=fff&style=for-the-badge)
 
-<img width="523" alt="tech" src="https://github.com/sangvo235/SmartRecruit/assets/97276811/e6ffc76e-61c9-4239-997f-48d26f3c9db9">
+## System Architecture Summary
+<img width="675" alt="sys-summary" src="https://github.com/sangvo235/SmartRecruit/assets/97276811/f4c72e6e-cdc8-487d-b4b7-e91c22572fac">
 
-<img width="567" alt="sys-arc" src="https://github.com/sangvo235/SmartRecruit/assets/97276811/232909b7-8765-4250-8c33-3801bfe907e3">
+## System Architecture Diagram
+![sys-architecture-diagram](https://github.com/sangvo235/SmartRecruit/assets/97276811/5f7e2449-3333-4782-b0ee-4b1410983e13)
+
+## Model Diagram
+![Model Diagrams](https://github.com/sangvo235/SmartRecruit/assets/97276811/66e8de93-7ae1-49d6-9b79-932f784ae532)
 
 # Task List 📋
 Non-Coding:
@@ -53,6 +64,13 @@ Backend:
 - ~Models (~User~, ~Job~, ~Invite~, ~Online Assessment~, ~Question~, ~Answer~ and ~Machine Learning~)~
 - ~APIs (~GET User Details~, ~POST User Details~, ~POST Avatar Upload~, ~GET Jobs~, ~GET Invites~, ~Filter Invites~, ~GET Online Assessment~ and ~Machine Learning~)~
 
+Deployment:
+- ~Create server on Digital Ocean via a droplet instance~
+- ~Clone repository on the server~
+- ~Create new env files for backend and frontend~
+- ~Backend: Install docker compose, set up a docker file for prod and nginx configuation~
+- ~Frontend: Node.js installation and nginx configuation~
+
 TODOs: 
 - ~Improvement to Online Assessment (implemented cookies to store testing session data, timer function and dyanmic result generation)~
 - ~Fixed the Invite API, Model and card components~ 
@@ -64,7 +82,7 @@ TODOs:
 - ~Have the user and recruiter displays to be different on the frontend~
 - ~Update context name for django admin for better usability~
 - ~Added appropriate data to the backend~
-- Deployment
+- ~Deployment~
 
 # Software Required 💻
 Before starting please have the following installed.
@@ -202,7 +220,107 @@ docker exec -it backend-web-1 python manage.py createsuperuser
 
 - To sign in and use this please access: localhost:8000/admin/.
 
-### 6. Recommendations
+### 6. Deployment
+- The web application is deployed on a Digital Ocean Droplet (i.e. instance, server) with the help of :
+   - nginx for reverse proxy, load balancing, mapping to server/media/static file locations and HTTP caching.
+   - gunicorn for the webserver gateway interface (wsgi).
+   - node.js to extend use of js to server side.
+- The current specs for the droplet is: / 4 GB Memory / 25 GB Disk / SYD1 - Ubuntu 22.04 (LTS) x64.
+
+Here are some useful deployment commands that was used in the production process: 
+#### 6.1. Backend
+- Login into the server 
+```
+ssh root@170.64.172.207
+```
+
+- Change directory to webapps folder where the SmartRecruit application is stored
+```
+cd /webapps
+```
+
+- Reboot server
+```
+reboot
+```
+
+- Linux package updates
+```
+apt update
+```
+
+- Upgrade the updates
+```
+apt upgrade
+```
+
+- Install docker on server
+```
+apt install docker-compose
+```
+
+- Clone Repository on server
+```
+git clone https://github.com/sangvo235/SmartRecruit.git
+```
+
+- Add env files (located in this week 11 directory of the team's Google Drive)
+- Remember to remove add the . at the front and place it in the correct folder i.e. /backend (for .env.dev) and /frontend (for .env)
+
+- Docker builds (same as previously but different file now)
+```
+docker-compose -f docker-compose.prod.yml up --build
+```
+
+- Creating superuser on server
+```
+docker-compose -f ../docker-compose.prod.yml exec web python manage.py createsuperuser
+```
+
+- Clearing docker images that are not in use
+```
+docker image ls
+docker image prune
+```
+
+- Required if using django admin in production as there is an error in relation to the routing and css styling of the admin.
+```
+docker-compose python manage.py collectstatic
+```
+
+#### 6.1. Frontend
+- Install node.js for Node.js 20 LTS on Ubuntu 22.04 by following the first 2 steps on:
+```
+https://medium.com/@nsidana123/before-the-birth-of-of-node-js-15ee9262110c
+```
+
+- Install nginx (this is not required previously as it is already apart of the docker file in the backend)
+```
+apt install nginx
+```
+
+- Remove default and add frontend.conf to server
+```
+/etc/nginx/sites-enabled/# rm default
+/etc/nginx/sites-enabled/# nano frontend.conf
+```
+
+- Restart nginx
+```
+sudo service nginx restart
+```
+
+- Build the Next.js app
+```
+npm run build
+```
+
+- Start the Next.js app
+```
+npm start
+```
+
+### 7. Recommendations
 - If your using VSCode you can install the following which will help in streamlining the coding process.
 
 1. [Prettier](https://prettier.io/)
