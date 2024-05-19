@@ -86,7 +86,6 @@ TODOs:
 
 # Software Required 💻
 Before starting please have the following installed.
-For running locally please clone from the frontend-and-backend-bug-fixes instead of main (as this is the code post deployment). 
 
 ## Python
 - [Python3.12](https://www.python.org/downloads/)
@@ -126,6 +125,7 @@ For running locally please clone from the frontend-and-backend-bug-fixes instead
 
 # Running the Application 👨‍🚀
 Follow the following steps to get the application up and running.
+- For running locally please clone from the frontend-and-backend-bug-fixes instead of main (as this is the code post deployment). 
 
 ### 1. Clone the Repository
 Clone the project repository to your local machine using Git.
