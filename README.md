@@ -27,7 +27,7 @@ The web application is deployed here: http://170.64.172.207/
 
 <img width="675" alt="sys-summary" src="https://github.com/sangvo235/SmartRecruit/assets/97276811/f4c72e6e-cdc8-487d-b4b7-e91c22572fac">
 
-<img width="1149" alt="system-architecture-diagram" src="https://github.com/sangvo235/SmartRecruit/assets/97276811/4387dc7a-48bf-49db-b8d9-be23c1bfe7e9">
+![sys-architecture-diagram](https://github.com/sangvo235/SmartRecruit/assets/97276811/5f7e2449-3333-4782-b0ee-4b1410983e13)
 
 # Task List 📋
 Non-Coding:
