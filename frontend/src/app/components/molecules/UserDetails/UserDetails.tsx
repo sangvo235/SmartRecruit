@@ -7,7 +7,7 @@ import apiService from "@/app/services/apiService";
 import { Card, CardContent, CardHeader, CardTitle } from "../../atoms/Card/Card";
 import { Textarea } from "../../atoms/Textarea/Textarea";
 import { Button } from "../../atoms/Button/Button";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../atoms/Select/Select";
+// import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../atoms/Select/Select";
 
 export interface UserProps {
     userId?: string | null;
@@ -158,6 +158,12 @@ const UserDetails: React.FC<UserProps> = ({ userId }) => {
                         </div>
                         <div className="mb-4">
                             <Label htmlFor="location">Location</Label>
+                            <Input type="text" id="location" name="location" value={formValues.location} onChange={handleInputChange} />
+                        </div>
+
+                        {/* Component is not compatible with the form in production */}
+                        {/* <div className="mb-4">
+                            <Label htmlFor="location">Location</Label>
                                 <Select name="location" value={formValues.location} onValueChange={(value) => setFormValues({ ...formValues, location: value })}>
                                     <SelectTrigger>
                                         <SelectValue>{formValues.location}</SelectValue>
@@ -172,7 +178,7 @@ const UserDetails: React.FC<UserProps> = ({ userId }) => {
                                         <SelectItem value="VIC">VIC</SelectItem>
                                     </SelectContent>
                                 </Select>
-                        </div>
+                        </div> */}
                     </div>
       
                     <div className="flex justify-center space-x-4 mt-6"> 
