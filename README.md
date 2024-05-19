@@ -321,6 +321,14 @@ npm run build
 npm start
 ```
 
+- Alternatively we can install pm2 to run the node in the background
+```
+npm install -g pm2
+pm2 start npm --name "SmartRecruit" -- start
+pm2 list
+pm2 delete SmartRecruit
+```
+
 ### 7. Recommendations
 - If your using VSCode you can install the following which will help in streamlining the coding process.
 
