@@ -25,10 +25,10 @@ The web application is deployed here: http://170.64.172.207/
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-007ACC?logo=visualstudiocode&logoColor=fff&style=for-the-badge)
 ![Google Drive](https://img.shields.io/badge/Google%20Drive-4285F4?logo=googledrive&logoColor=fff&style=for-the-badge)
 
-# System Architecture Summary ✍️
+## System Architecture Summary ✍️
 <img width="675" alt="sys-summary" src="https://github.com/sangvo235/SmartRecruit/assets/97276811/f4c72e6e-cdc8-487d-b4b7-e91c22572fac">
 
-# System Architecture Diagram 📊
+## System Architecture Diagram 📊
 ![sys-architecture-diagram](https://github.com/sangvo235/SmartRecruit/assets/97276811/5f7e2449-3333-4782-b0ee-4b1410983e13)
 
 # Task List 📋
