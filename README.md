@@ -86,6 +86,7 @@ TODOs:
 
 # Software Required 💻
 Before starting please have the following installed.
+For running locally please clone from the frontend-and-backend-bug-fixes instead of main (as this is the code post deployment). 
 
 ## Python
 - [Python3.12](https://www.python.org/downloads/)
