@@ -7,6 +7,9 @@ The web application is deployed here: http://170.64.172.207/
 - Group ID: AC4 
 - Client Name: Smaart Recruitment
 
+## Short-Demo
+https://github.com/sangvo235/SmartRecruit/assets/97276811/1d016621-c865-49ed-bab3-04e3a018b913
+
 ## Technology Stack
 #### 🖥️ Frontend-APP 
 ![Next.js](https://img.shields.io/badge/Next.js-000?logo=nextdotjs&logoColor=fff&style=for-the-badge)
