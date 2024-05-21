@@ -23,7 +23,7 @@ The web application is deployed here: http://170.64.172.207/
 
 #### 🤖 Machine Learning Modelling
 ![Spacy](https://img.shields.io/badge/spaCy-09A3D5.svg?style=for-the-badge&logo=spaCy&logoColor=white)
-![JSONL](https://img.shields.io/badge/JSONL-3C2179.svg?style=for-the-badge)
+![JSONL](https://img.shields.io/badge/JSON-000?logo=json&logoColor=fff&style=for-the-badge)
 ![NLTK](https://img.shields.io/badge/NLTK-006272.svg?style=for-the-badge&logo=Python&logoColor=white)
 
 #### 📂 Database
