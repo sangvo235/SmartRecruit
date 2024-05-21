@@ -8,25 +8,25 @@ The web application is deployed here: http://170.64.172.207/
 - Client Name: Smaart Recruitment
 
 ## Tech Stack
-#### Frontend-APP
+#### 🖥️ Frontend-APP 
 ![Next.js](https://img.shields.io/badge/Next.js-000?logo=nextdotjs&logoColor=fff&style=for-the-badge)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=fff&style=for-the-badge)
 
-#### Frontend-CSS
+#### 🏰 Frontend-CSS
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-06B6D4?logo=tailwindcss&logoColor=fff&style=for-the-badge)
 ![shadcn/ui](https://img.shields.io/badge/shadcn%2Fui-000?logo=shadcnui&logoColor=fff&style=for-the-badge)
 
-#### Backend
+#### ⚙️ Backend 
 ![Django](https://img.shields.io/badge/Django-092E20?logo=django&logoColor=fff&style=for-the-badge)
 ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=fff&style=for-the-badge)
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 
-#### Machine Learning Modelling
+#### 🤖 Machine Learning Modelling
 ![Spacy](https://img.shields.io/badge/spaCy-09A3D5.svg?style=for-the-badge&logo=spaCy&logoColor=white)
 ![JSONL](https://img.shields.io/badge/JSONL-3C2179.svg?style=for-the-badge)
 ![NLTK](https://img.shields.io/badge/NLTK-006272.svg?style=for-the-badge&logo=Python&logoColor=white)
 
-#### Database
+#### 📂 Database
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?logo=postgresql&logoColor=fff&style=for-the-badge)
 
 #### ☁️ DevOps & Deployment
