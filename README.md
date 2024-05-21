@@ -23,7 +23,7 @@ The web application is deployed here: http://170.64.172.207/
 
 #### 🤖 Machine Learning Modelling
 ![Spacy](https://img.shields.io/badge/spaCy-09A3D5.svg?style=for-the-badge&logo=spaCy&logoColor=white)
-![JSONL](https://img.shields.io/badge/JSON-000?logo=json&logoColor=fff&style=for-the-badge)
+![JSONL](https://img.shields.io/badge/JSON-3C2179?logo=json&logoColor=fff&style=for-the-badge)
 ![NLTK](https://img.shields.io/badge/NLTK-006272.svg?style=for-the-badge&logo=Python&logoColor=white)
 
 #### 📂 Database
@@ -37,6 +37,7 @@ The web application is deployed here: http://170.64.172.207/
 ![DigitalOcean](https://img.shields.io/badge/DigitalOcean-%230167ff.svg?style=for-the-badge&logo=digitalOcean&logoColor=white)
 ![Nginx](https://img.shields.io/badge/nginx-%23009639.svg?style=for-the-badge&logo=nginx&logoColor=white)
 ![Gunicorn](https://img.shields.io/badge/gunicorn-%298729.svg?style=for-the-badge&logo=gunicorn&logoColor=white)
+![PM2](https://img.shields.io/badge/PM2-2B037A?logo=pm2&logoColor=fff&style=for-the-badge)
 
 #### 👷 Project Management
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-007ACC?logo=visualstudiocode&logoColor=fff&style=for-the-badge)
